@@ -110,14 +110,14 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/WorkoutLabel"
+            android:id="@+id/LoginLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/workout_title"
+                android:id="@+id/login_title"
                 android:layout_width="244dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

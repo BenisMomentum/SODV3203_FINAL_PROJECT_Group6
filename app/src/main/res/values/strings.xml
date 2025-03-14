@@ -18,4 +18,8 @@
     <string name="arms">Arms</string>
     <string name="back">Back</string>
     <string name="workout_label">Workout_Label</string>
+    <string name="add_a_new_workout">Add a New Workout</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_paragraph">Your journey to a stronger, healthier you starts now. Let’s take that big step together!</string>
+    <string name="login">Login</string>
 </resources>

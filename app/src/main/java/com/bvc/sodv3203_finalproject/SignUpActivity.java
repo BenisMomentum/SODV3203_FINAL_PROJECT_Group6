@@ -1,4 +1,9 @@
 package com.bvc.sodv3203_finalproject;
 
-public class SignUpActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SignUpActivity extends AppCompatActivity {
+
+
+
 }

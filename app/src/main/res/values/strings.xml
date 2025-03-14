@@ -35,4 +35,6 @@
     <string name="or_sign_up_with_label">or sign up with</string>
     <string name="don_t_have_an_account_label">Don\'t have an account?</string>
     <string name="sign_up_onClickListener">Sign Up</string>
+    <string name="contentDesc_btnGmail">Sign in with Gmail or Google</string>
+    <string name="contentDesc_btnFacebook">Sign in with Facebook</string>
 </resources>

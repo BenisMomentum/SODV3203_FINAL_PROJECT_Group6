@@ -5,15 +5,53 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BackgroundColor"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:id="@+id/Launch_Screen"
+        android:layout_width="283dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="333dp"
+        android:layout_marginBottom="334dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/TitleBig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/bigtitle"
+            android:textColor="@color/YellowSecondary"
+            android:textSize="50sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/TitleStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/step"
+            android:textColor="@color/GreenSecondary"
+            android:textSize="50sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/big_step_Iicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="53dp"
+        android:contentDescription="@string/bigstep_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/Launch_Screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/group" />
 </androidx.constraintlayout.widget.ConstraintLayout>

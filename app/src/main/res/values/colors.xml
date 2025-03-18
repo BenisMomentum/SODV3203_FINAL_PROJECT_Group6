@@ -6,6 +6,11 @@
     <color name="YellowSecondary">#D9F460</color>
     <color name="GreenSecondary">#3FBA73</color>
     <color name="TextColor">#3C3C3C</color>"
+    <color name="my_light_primary">#FF6200EE</color>
+    <color name="my_light_on_primary">#FFFFFF</color>
+    <color name="my_dark_primary">#3700B3</color>
+    <color name="my_dark_on_primary">#FFFFFF</color>
+
 
 
 </resources>

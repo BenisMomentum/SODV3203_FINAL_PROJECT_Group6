@@ -74,4 +74,7 @@
     <string name="textview">TextView</string>
     <string name="createAccount_SignUp_btn_text">Sign Up</string>
     <string name="passReset_ExplanationText">Please enter your email so that we can recover your password</string>
+    <string name="delete">Delete Account\n</string>
+    <string name="delete_question">Are you sure you want delete this account?</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>

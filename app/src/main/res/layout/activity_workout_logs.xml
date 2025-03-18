@@ -8,8 +8,8 @@
     android:background="@color/BackgroundColor">
 
     <LinearLayout
-        android:id="@+id/footer_container"
-        android:layout_width="456dp"
+        android:id="@+id/homeBar"
+        android:layout_width="0dp"
         android:layout_height="76dp"
         android:background="@color/YellowSecondary"
         android:backgroundTint="@color/YellowSecondary"
@@ -27,7 +27,7 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:backgroundTint="@color/YellowSecondary"
-            app:srcCompat="@drawable/home_switch"
+            app:srcCompat="@drawable/homebar_home_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:background="@color/YellowSecondary"
             android:backgroundTint="@color/YellowSecondary"
-            app:srcCompat="@drawable/vector"
+            app:srcCompat="@drawable/homebar_workout_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
@@ -46,7 +46,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@color/YellowSecondary"
-            app:srcCompat="@drawable/seach"
+            app:srcCompat="@drawable/homebar_search_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
@@ -55,7 +55,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@color/YellowSecondary"
-            app:srcCompat="@drawable/bot_workout"
+            app:srcCompat="@drawable/homebar_settings_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
 
@@ -80,7 +80,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btn_back"
+                android:id="@+id/btn_goBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -101,7 +101,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/forgotten_txt"
+            android:id="@+id/createAccount_TitleText"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:gravity="center"
@@ -110,7 +110,7 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/container_set_password_label"
+            android:id="@+id/createAccount_formContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -237,13 +237,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/reset_section"
+            android:id="@+id/login_ComponentSection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/forgot_label"
+                android:id="@+id/forgotPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"

@@ -140,7 +140,6 @@
                     android:id="@+id/password_setting_label"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:text="@string/password_setting"
                     android:textSize="18sp"
@@ -150,7 +149,6 @@
                     android:id="@+id/btnforgotPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:backgroundTint="@color/BackgroundColor"
                     app:srcCompat="@drawable/dropdown_arrow"
                     tools:ignore="ContentDescription" />
@@ -187,7 +185,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:backgroundTint="@color/BackgroundColor"
                     android:contentDescription="@string/dropdown_arrow"
                     app:srcCompat="@drawable/dropdown_arrow" />

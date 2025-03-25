@@ -2,7 +2,8 @@ package com.bvc.sodv3203_finalproject.workouts;
 
 import android.util.Log;
 
-import java.lang.annotation.Target;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Workout {
 
@@ -43,6 +44,19 @@ public class Workout {
         this.targetMuscle = TargetMuscle.valueOf(targetMuscle);
     }
 
+    //I am averse to putting try-catches in constructors. This is easier.
+    public Workout(JSONObject obj) throws JSONException{
+
+        this.name = obj.getString(WorkoutJSONKeys.NAME);
+        this.description = obj.getString(WorkoutJSONKeys.DESCRIPTION);
+
+        this.targetMuscle = (TargetMuscle) obj.get(WorkoutJSONKeys.TARGET_MUSCLE);
+
+        this.sets = obj.getInt(WorkoutJSONKeys.SETS);
+        this.reps = obj.getInt(WorkoutJSONKeys.REPS);
+
+    }
+
     public void parseIntoSets(String input){
         try {
             this.sets = Integer.parseInt(input);
@@ -57,5 +71,22 @@ public class Workout {
         } catch (NumberFormatException e) {
             Log.d("Workout_Parse", "Err: Could not parse string: \n\t" + input);
         }
+    }
+
+    public JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+
+        try {
+            obj.put(WorkoutJSONKeys.NAME, this.name);
+            obj.put(WorkoutJSONKeys.DESCRIPTION, this.description);
+            obj.put(WorkoutJSONKeys.TARGET_MUSCLE, this.targetMuscle.name().toLowerCase());
+            obj.put(WorkoutJSONKeys.SETS, this.sets);
+            obj.put(WorkoutJSONKeys.REPS, this.reps);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        return obj;
     }
 }

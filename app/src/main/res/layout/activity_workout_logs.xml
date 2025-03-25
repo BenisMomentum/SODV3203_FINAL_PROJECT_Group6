@@ -118,9 +118,8 @@
 
             <TextView
                 android:id="@+id/forgot_password_label"
-                android:layout_width="244dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:paddingStart="16sp"
                 android:text="@string/workout_label"
                 android:textAlignment="viewStart"
@@ -135,7 +134,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:padding="10dp"
                 tools:ignore="DuplicateIds">

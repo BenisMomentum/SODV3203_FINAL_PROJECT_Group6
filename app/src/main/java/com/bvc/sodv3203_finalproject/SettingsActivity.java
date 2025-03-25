@@ -27,36 +27,27 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         //used for dark_mode
-        sharedPreferences =getSharedPreferences("settings", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
         boolean isDarkModeOn = sharedPreferences.getBoolean("dark_mode", false);
 
-        if(isDarkModeOn){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            darkModeSwitch.setChecked(true);
-        }else{
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            darkModeSwitch.setChecked(false);
-        }
+        setDefaultNightMode(isDarkModeOn);
+
+        darkModeSwitch.setChecked(isDarkModeOn);
 
         //change the theme when switch btn is active
         darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                editor.putBoolean("dark_mode", true);
-            } else {
 
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                editor.putBoolean("dark_mode", false);
+            setDefaultNightMode(isChecked);
 
-            }
+            editor.putBoolean("dark_mode", isChecked);
+
             editor.apply();
 
             //initialize the activity to apply the theme change
             Intent intent = getIntent();
             finish();
             startActivity(intent);
-
         });
 
 
@@ -69,5 +60,14 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    //Function made to keep code DRY
+    private void setDefaultNightMode(boolean isModeNight){
+        if(isModeNight){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 }

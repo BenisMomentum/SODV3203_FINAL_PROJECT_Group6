@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,14 @@ public class WorkoutData {
         int index = routines.indexOf(routine);
 
         return routines.get(index);
+    }
+
+    public int length(){
+        return routines.size();
+    }
+
+    public List<WorkoutRoutine> routines(){
+        return routines;
     }
 
     public JSONObject toJSON(){
@@ -105,6 +114,21 @@ public class WorkoutData {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @SuppressLint("NewApi")
+    public void loadTestingData() {
+        //TESTING DATA, REMOVE WHEN WE HAVE PERSITENCY:
+
+        WorkoutRoutine routine1 = new WorkoutRoutine("Test Workout 1", new DayOfWeek[]{DayOfWeek.SUNDAY});
+        Workout w = new Workout("Pushups", "test description", 4, 10, TargetMuscle.CHEST);
+
+        routine1.add(w);
+
+        //WARNING: CLEARS DATA
+        routines.clear();
+
+        routines.add(routine1);
     }
 
 }

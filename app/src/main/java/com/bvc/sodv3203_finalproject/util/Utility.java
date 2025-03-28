@@ -2,10 +2,12 @@ package com.bvc.sodv3203_finalproject.util;
 
 import android.content.Context;
 import android.os.Build;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.DayOfWeek;
 

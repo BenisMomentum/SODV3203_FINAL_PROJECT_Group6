@@ -8,6 +8,48 @@
     android:background="@color/BackgroundColor">
 
     <LinearLayout
+        android:id="@+id/go_back_search"
+        android:layout_width="@dimen/backBtn_width"
+        android:layout_height="@dimen/backBtn_height"
+        android:backgroundTint="@color/BackgroundColor"
+        android:gravity="center"
+        android:onClick="btn_GoBack"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_goBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/BackgroundColor"
+            app:srcCompat="@drawable/arrow"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/label_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:textColor="@color/TextColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/createAccount_TitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/workout_logs"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/go_back_search" />
+
+    <LinearLayout
         android:id="@+id/homeBar"
         android:layout_width="0dp"
         android:layout_height="76dp"
@@ -21,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_footer_home"
+            android:id="@+id/homeBtn_Home"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
@@ -31,7 +73,7 @@
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/btn_footer_workout"
+            android:id="@+id/homeBtn_workout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -41,7 +83,7 @@
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/btn_footer_search"
+            android:id="@+id/homeBtn_search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -50,7 +92,7 @@
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/bnt_footer_settings"
+            android:id="@+id/homeBtn_settings"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -59,167 +101,146 @@
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/create_account"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/createAccount_TitleText">
 
         <LinearLayout
-            android:id="@+id/go_back_search"
-            android:layout_width="133dp"
-            android:layout_height="72dp"
-            android:backgroundTint="@color/BackgroundColor"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btn_goBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/BackgroundColor"
-                app:srcCompat="@drawable/arrow"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            <TextView
-                android:id="@+id/label_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/back"
-                android:textColor="@color/TextColor"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/createAccount_TitleText"
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:gravity="center"
-            android:text="@string/workout_logs"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/createAccount_formContainer"
+            android:id="@+id/workout_workoutContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/forgot_password_label"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingStart="16sp"
-                android:text="@string/workout_label"
-                android:textAlignment="viewStart"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:ignore="RtlSymmetry,TextSizeCheck" />
-
             <LinearLayout
-                android:id="@+id/btns_weekday_container"
-                style="?android:attr/buttonBarStyle"
+                android:id="@+id/workoutExample"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:ignore="DuplicateIds">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btn_Sunday"
-                    style="?android:attr/buttonBarButtonStyle"
+                <TextView
+                    android:id="@+id/forgot_password_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/YellowSecondary"
-                    android:text="@string/sunday"
-                    android:textColor="@color/TextColor"
-                    tools:ignore="DuplicateIds,NestedWeights,DuplicateSpeakableTextCheck" />
+                    android:padding="12dp"
+                    android:text="@string/workout_label"
+                    android:textAlignment="viewStart"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/btn_Monday"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/YellowSecondary"
-                    android:text="@string/monday"
-                    android:textColor="@color/TextColor"
-                    tools:ignore="DuplicateIds,DuplicateSpeakableTextCheck" />
+                <LinearLayout
+                    android:id="@+id/btns_weekday_container"
+                    style="?android:attr/buttonBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    tools:ignore="DuplicateIds">
 
-                <Button
-                    android:id="@+id/btn_Tuesday"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/YellowSecondary"
-                    android:text="@string/tuesday"
-                    android:textColor="@color/TextColor"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
+                    <Button
+                        android:id="@+id/btn_Sunday"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/YellowSecondary"
+                        android:clickable="false"
+                        android:text="@string/sunday"
+                        android:textColor="@color/TextColor"
+                        tools:ignore="DuplicateIds,NestedWeights,DuplicateSpeakableTextCheck" />
 
-                <Button
-                    android:id="@+id/btn_Wednesday"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/YellowSecondary"
-                    android:text="@string/wednesday"
-                    android:textColor="@color/TextColor"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
+                    <Button
+                        android:id="@+id/btn_Monday"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/YellowSecondary"
+                        android:clickable="false"
+                        android:text="@string/monday"
+                        android:textColor="@color/TextColor"
+                        tools:ignore="DuplicateIds,DuplicateSpeakableTextCheck" />
 
-                <Button
-                    android:id="@+id/btn_thursday"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/YellowSecondary"
-                    android:text="@string/thursday"
-                    android:textColor="@color/TextColor" />
+                    <Button
+                        android:id="@+id/btn_Tuesday"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/YellowSecondary"
+                        android:clickable="false"
+                        android:text="@string/tuesday"
+                        android:textColor="@color/TextColor"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
 
-                <Button
-                    android:id="@+id/btn_friday"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/YellowSecondary"
-                    android:text="@string/friday"
-                    android:textColor="@color/TextColor"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
+                    <Button
+                        android:id="@+id/btn_Wednesday"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/YellowSecondary"
+                        android:clickable="false"
+                        android:text="@string/wednesday"
+                        android:textColor="@color/TextColor"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
 
-                <Button
-                    android:id="@+id/btn_sunday"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/YellowSecondary"
-                    android:text="@string/saturday"
-                    android:textColor="@color/TextColor" />
+                    <Button
+                        android:id="@+id/btn_thursday"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/YellowSecondary"
+                        android:clickable="false"
+                        android:text="@string/thursday"
+                        android:textColor="@color/TextColor" />
+
+                    <Button
+                        android:id="@+id/btn_friday"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/YellowSecondary"
+                        android:clickable="false"
+                        android:text="@string/friday"
+                        android:textColor="@color/TextColor"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
+
+                    <Button
+                        android:id="@+id/btn_sunday"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/YellowSecondary"
+                        android:clickable="false"
+                        android:text="@string/saturday"
+                        android:textColor="@color/TextColor" />
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/homeBar">
 
         <LinearLayout
             android:id="@+id/container_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="185dp"
             android:orientation="horizontal"
             android:textAlignment="center">
 
@@ -232,25 +253,19 @@
                 android:backgroundTint="@color/BackgroundColor"
                 app:srcCompat="@drawable/bot_video_add"
                 tools:ignore="ContentDescription,ImageContrastCheck,InefficientWeight,SpeakableTextPresentCheck" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/login_ComponentSection"
+        <TextView
+            android:id="@+id/addWorkoutTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/forgotPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20sp"
-                android:text="Add a New Workout"
-                android:textAlignment="center"
-                android:textColor="@color/TextColor"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:padding="10dp"
+            android:text="@string/add_a_new_workout"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

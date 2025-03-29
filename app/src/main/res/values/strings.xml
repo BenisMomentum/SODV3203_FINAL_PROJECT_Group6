@@ -77,4 +77,5 @@
     <string name="delete">Delete Account\n</string>
     <string name="delete_question">Are you sure you want delete this account?</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="workout_ScrollView_SpeakText">Workout List</string>
 </resources>

@@ -70,7 +70,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/go_back_search"
+            android:id="@+id/back_container"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:backgroundTint="@color/BackgroundColor"

@@ -1,12 +1,14 @@
 package com.bvc.sodv3203_finalproject.workouts;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Dimension;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bvc.sodv3203_finalproject.R;
 
@@ -31,11 +33,10 @@ public class WorkoutFactory {
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setLayoutParams( new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
 
-
         Context layoutContext = layout.getContext();
 
         //TITLE CREATION AND SETTING
-        TextView title = new TextView(layoutContext);
+        TextView title = new TextView(context);
 
         title.setText(routine.name);
         title.setPadding(titlePadding,titlePadding,titlePadding,titlePadding);
@@ -43,11 +44,10 @@ public class WorkoutFactory {
         title.setWidth(WRAP_CONTENT);
         title.setHeight(WRAP_CONTENT);
         title.setTypeface(null, Typeface.BOLD);
-        title.setTextColor(R.color.TextColor);
 
         layout.addView(title);
 
-        LinearLayout dateDisplayLayout = new LinearLayout(layoutContext);
+        LinearLayout dateDisplayLayout = new LinearLayout(context);
 
         LinearLayout.LayoutParams dateDisplayLayoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
 
@@ -58,7 +58,6 @@ public class WorkoutFactory {
 
 
         Context dateDisplayContext = dateDisplayLayout.getContext();
-
 
         return layout;
     }

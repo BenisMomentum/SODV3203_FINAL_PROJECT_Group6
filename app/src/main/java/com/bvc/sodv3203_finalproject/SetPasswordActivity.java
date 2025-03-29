@@ -32,6 +32,10 @@ public class SetPasswordActivity extends AppCompatActivity {
         });
     }
 
+    // I still need to create validation for the password being matched or not.
+
+    //having a problem when I press reset it crashes. I need to figure it out.
+
     public void reset() {
         if (newPassword != null && confirmPassword != null) {
             newPassword.setText("");

@@ -36,7 +36,7 @@ public class WorkoutFactory {
         Context layoutContext = layout.getContext();
 
         //TITLE CREATION AND SETTING
-        TextView title = new TextView(context);
+        TextView title = new TextView(layoutContext);
 
         title.setText(routine.name);
         title.setPadding(titlePadding,titlePadding,titlePadding,titlePadding);
@@ -45,19 +45,19 @@ public class WorkoutFactory {
         title.setHeight(WRAP_CONTENT);
         title.setTypeface(null, Typeface.BOLD);
 
-        layout.addView(title);
 
-        LinearLayout dateDisplayLayout = new LinearLayout(context);
-
-        LinearLayout.LayoutParams dateDisplayLayoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
+        LinearLayout dateDisplayLayout = new LinearLayout(layoutContext);
+        LinearLayout.LayoutParams dateDisplayLayoutParams = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
 
         dateDisplayLayoutParams.setMargins(DATE_DISPLAY_MARGIN, DATE_DISPLAY_MARGIN, DATE_DISPLAY_MARGIN, DATE_DISPLAY_MARGIN);
 
         dateDisplayLayout.setOrientation(LinearLayout.HORIZONTAL);
         dateDisplayLayout.setLayoutParams(dateDisplayLayoutParams);
 
-
         Context dateDisplayContext = dateDisplayLayout.getContext();
+
+
+        layout.addView(title);
 
         return layout;
     }

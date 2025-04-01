@@ -1,9 +1,6 @@
 package com.bvc.sodv3203_finalproject.workouts;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,10 +40,8 @@ public class WorkoutRoutine {
 
     //The following functions are to
     //Simplify and shorten future syntax.
-    public int add(Workout workout){
+    public void add(Workout workout){
         this.workouts.add(workout);
-
-        return 0;
     }
 
     public Workout get(int index){

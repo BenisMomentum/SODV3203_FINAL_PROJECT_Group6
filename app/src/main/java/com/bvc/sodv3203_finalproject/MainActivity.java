@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_workout_logs);
+        setContentView(R.layout.activity_launch_page);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -43,24 +43,24 @@ public class MainActivity extends AppCompatActivity {
         //This is where we'd swap over to the login page.
 
         //Artificial delay.
-//        new CountDownTimer(1000, 1000){
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                //Does nothing. Should not do anything.
-//            }
-//            @Override
-//            public void onFinish(){
-//
-//                switchToLogin();
-//            }
-//        }.start();
+        new CountDownTimer(1000, 1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                //Does nothing. Should not do anything.
+            }
+            @Override
+            public void onFinish(){
+
+                switchToLogin();
+            }
+        }.start();
 
     }
 
     //Moved to function for cleanliness
     private void switchToLogin(){
 
-        final Intent moveToLogin = new Intent(this, LoginActivity.class);
+        final Intent moveToLogin = new Intent(this, WorkoutLogActivity.class);
 
         startActivity(moveToLogin);
     }

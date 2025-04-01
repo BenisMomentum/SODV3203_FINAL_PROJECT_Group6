@@ -115,118 +115,8 @@
             android:id="@+id/workout_workoutContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/forgot_password_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:text="@string/workout_label"
-                    android:textAlignment="viewStart"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/btns_weekday_container"
-                    style="?android:attr/buttonBarStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:orientation="horizontal"
-                    android:padding="10dp"
-                    tools:ignore="DuplicateIds">
-
-                    <Button
-                        android:id="@+id/btn_Sunday"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/YellowSecondary"
-                        android:clickable="false"
-                        android:text="@string/sunday"
-                        android:textColor="@color/TextColor"
-                        tools:ignore="DuplicateIds,NestedWeights,DuplicateSpeakableTextCheck" />
-
-                    <Button
-                        android:id="@+id/btn_Monday"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/YellowSecondary"
-                        android:clickable="false"
-                        android:text="@string/monday"
-                        android:textColor="@color/TextColor"
-                        tools:ignore="DuplicateIds,DuplicateSpeakableTextCheck" />
-
-                    <Button
-                        android:id="@+id/btn_Tuesday"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/YellowSecondary"
-                        android:clickable="false"
-                        android:text="@string/tuesday"
-                        android:textColor="@color/TextColor"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
-
-                    <Button
-                        android:id="@+id/btn_Wednesday"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/YellowSecondary"
-                        android:clickable="false"
-                        android:text="@string/wednesday"
-                        android:textColor="@color/TextColor"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
-
-                    <Button
-                        android:id="@+id/btn_thursday"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/YellowSecondary"
-                        android:clickable="false"
-                        android:text="@string/thursday"
-                        android:textColor="@color/TextColor" />
-
-                    <Button
-                        android:id="@+id/btn_friday"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/YellowSecondary"
-                        android:clickable="false"
-                        android:text="@string/friday"
-                        android:textColor="@color/TextColor"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
-
-                    <Button
-                        android:id="@+id/btn_sunday"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/YellowSecondary"
-                        android:clickable="false"
-                        android:text="@string/saturday"
-                        android:textColor="@color/TextColor" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
+            android:addStatesFromChildren="false"
+            android:orientation="vertical" />
     </ScrollView>
 
     <LinearLayout
@@ -245,7 +135,7 @@
             android:textAlignment="center">
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/workout_btn_AddNew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"

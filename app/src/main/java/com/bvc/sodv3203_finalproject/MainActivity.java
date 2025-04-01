@@ -1,9 +1,7 @@
 package com.bvc.sodv3203_finalproject;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -11,14 +9,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
+import android.widget.ImageButton;
 
-import java.time.DayOfWeek;
 
 public class MainActivity extends AppCompatActivity {
+    public String Base_URL = "https://www.api-ninjas.com/api/exercises";
+    public String API_URL_KEY = "BrcmuaWFWMgEDYFRX2rACA==GTJG6pXv69ECiGwA"; // API Key
+    ImageButton btnHome;
+    ImageButton btnWorkout;
+    ImageButton btnSearch;
+    ImageButton btnSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +32,22 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        //for future implementation -> footer bar
+        btnHome = findViewById(R.id.homeBtn_Home);
+        btnWorkout = findViewById(R.id.homeBtn_workout);
+        btnSearch = findViewById(R.id.homeBtn_search);
+        btnSettings = findViewById(R.id.homeBtn_settings);
+
+
         //This is where we'd start synchronizing our persistent data from files.
 
         WorkoutData.getInstance().loadTestingData();
+
+
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
 
         //This is where we'd swap over to the login page.
@@ -58,14 +68,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Moved to function for cleanliness
-    private void switchToLogin(){
+    private void switchToLogin() {
 
         final Intent moveToLogin = new Intent(this, LoginActivity.class);
 
         startActivity(moveToLogin);
     }
 
-    public void btn_GoBack(View view){
+    public void btn_GoBack(View view) {
         finish();
     }
+
+
+    //this is sample try for connecting API. I adapted Pedrp's code using resources
+
+
+
 }
+

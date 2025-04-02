@@ -23,7 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         //darkmode switch
-        darkModeSwitch = findViewById(R.id.switch_dark_mode);
+        darkModeSwitch = findViewById(R.id.settings_darkModeSwitch);
 
 
         //used for dark_mode
@@ -52,8 +52,8 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         //not too sure about this
-        ImageButton btnForgotPassword = findViewById(R.id.btnforgotPassword);
-        ImageButton btnDeleteAccount = findViewById(R.id.btnDeleteAccount);
+        ImageButton btnForgotPassword = findViewById(R.id.settings_btn_forgotPwd);
+        ImageButton btnDeleteAccount = findViewById(R.id.settings_btn_DelAcc);
 
         btnForgotPassword.setOnClickListener(v -> {
             Intent intent = new Intent(SettingsActivity.this, SetPasswordActivity.class);

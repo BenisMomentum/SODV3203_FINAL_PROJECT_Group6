@@ -18,8 +18,8 @@ public class SetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_password);
 
-        newPassword = findViewById(R.id.confirm_password_placeholder_set_password);
-        confirmPassword = findViewById(R.id.confirm_password_placeholder_set_password);
+        newPassword = findViewById(R.id.setPwd_confirm);
+        confirmPassword = findViewById(R.id.setPwd_confirm);
         resetBtn = findViewById(R.id.forgot_btn_Submit);
 
 

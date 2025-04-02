@@ -110,7 +110,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/forgot_EmailOrPhoneInput"
+                android:id="@+id/setPwd_password"
                 android:layout_width="390dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="10dp"

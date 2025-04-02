@@ -19,6 +19,7 @@ public class APICaller extends AsyncTask<String, Void, String> {
 
 //    This class calls our API. Some methods are abstracted for the sake of ease.
 
+    public static final String API_RET_KEY = "exercises";
     private static final String API_URL = "https://api.api-ninjas.com/v1/exercises";
     private static final String API_KEY = "BrcmuaWFWMgEDYFRX2rACA==GTJG6pXv69ECiGwA";
 
@@ -29,7 +30,7 @@ public class APICaller extends AsyncTask<String, Void, String> {
 
             JSONObject obj = new JSONObject();
 
-            obj.put("exercises", new JSONArray(data.get()));
+            obj.put(API_RET_KEY, new JSONArray(data.get()));
 
             return obj;
 

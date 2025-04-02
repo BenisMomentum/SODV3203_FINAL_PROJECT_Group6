@@ -14,6 +14,7 @@
         android:layout_height="@dimen/backBtn_height"
         android:backgroundTint="@color/BackgroundColor"
         android:gravity="center"
+        android:onClick="btn_GoBack"
         android:orientation="horizontal">
 
         <ImageButton
@@ -38,7 +39,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/createAccount_TitleContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -67,7 +67,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/workoutExample"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
@@ -78,7 +77,6 @@
         tools:ignore="TextSizeCheck">
 
         <TextView
-            android:id="@+id/forgot_TitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -104,7 +102,6 @@
             tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/email_number_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -129,7 +126,6 @@
             tools:ignore="LabelFor,TextFields,SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/password_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -155,7 +151,6 @@
             tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
         <TextView
-            android:id="@+id/confirm_password_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -184,7 +179,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/login_ComponentSection"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:gravity="center"

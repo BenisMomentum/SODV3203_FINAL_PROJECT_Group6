@@ -48,9 +48,9 @@
         android:id="@+id/big_step_Iicon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="53dp"
+        android:layout_marginBottom="-20dp"
         android:contentDescription="@string/bigstep_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/Launch_Screen"
+        app:layout_constraintBottom_toTopOf="@+id/Launch_Screen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/group" />

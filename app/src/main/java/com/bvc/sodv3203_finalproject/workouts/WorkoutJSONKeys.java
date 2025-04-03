@@ -5,11 +5,16 @@ package com.bvc.sodv3203_finalproject.workouts;
 //Doesn't require memorizing keys
 public class WorkoutJSONKeys {
 
+    //When parsing from file
     public static String NAME = "name";
-    public static String DESCRIPTION = "desc";
     public static String SETS = "sets";
     public static String REPS = "reps";
     public static String TARGET_MUSCLE = "target_muscle";
+
+    //When parsing from API
+
+    public static String API_NAME = "name";
+    public static String API_MUSCLE = "target";
 
     //WorkoutRoutine's tags
 

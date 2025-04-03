@@ -121,7 +121,7 @@ public class WorkoutData {
         //TESTING DATA, REMOVE WHEN WE HAVE PERSITENCY:
 
         WorkoutRoutine routine1 = new WorkoutRoutine("Test Workout 1", new DayOfWeek[]{DayOfWeek.SUNDAY});
-        Workout w = new Workout("Pushups", "test description", 4, 10, TargetMuscle.CHEST);
+        Workout w = new Workout("Pushups", 4, 10, TargetMuscle.CHEST);
 
         routine1.add(w);
 

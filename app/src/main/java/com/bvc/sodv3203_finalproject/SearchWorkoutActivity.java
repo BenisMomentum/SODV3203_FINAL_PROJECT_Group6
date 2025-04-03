@@ -28,21 +28,12 @@ public class SearchWorkoutActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.settings_btn_search);
         showAllButton = findViewById(R.id.settings_btn_all);
 
-        searchButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                searchWorkouts();
-            }
-        });
-        showAllButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                showAllWorkouts();
-            }
-        });
-        }
+        searchButton.setOnClickListener(v -> searchWorkouts());
+        showAllButton.setOnClickListener(v -> showAllWorkouts());
+    }
 
-        private void searchWorkouts() {
+
+    private void searchWorkouts() {
         String query = searchBar.getText().toString();
         if(query.isEmpty()){
             searchResults.setText("Please enter your search");
@@ -50,25 +41,25 @@ public class SearchWorkoutActivity extends AppCompatActivity {
         }
         List<Workout> results = WorkoutData.getInstance().searchWorkouts(query);
         displaySearchResults(results);
-        }
+    }
 
-        private void showAllWorkouts(){
+    private void showAllWorkouts(){
         List<Workout> allWorkouts = WorkoutData.getInstance().getAllWorkouts();
         displaySearchResults(allWorkouts);
-        }
+    }
 
-        private void displaySearchResults(List<Workout> workouts){
-        if(workouts.isEmpty()){
+    private void displaySearchResults(List<Workout> workouts) {
+        if (workouts.isEmpty()) {
             searchResults.setText("No workouts found");
-        }else{
+        } else {
             StringBuilder builder = new StringBuilder();
-            for(Workout workout : workouts) {
+            for (Workout workout : workouts) {
                 builder.append(workout.getName()).append("\n");
             }
             searchResults.setText(builder.toString());
         }
-
-
     }
 
 }
+
+

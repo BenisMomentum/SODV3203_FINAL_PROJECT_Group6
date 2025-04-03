@@ -38,6 +38,15 @@ public class Workout {
         this.targetMuscle = TargetMuscle.valueOf(targetMuscle);
     }
 
+    //-------------------------
+
+    public String getName() {
+        return name;
+    }
+
+
+    //--------------------
+
     public Workout(String name, String description, String targetMuscle) {
         this.name = name;
         this.description = description;
@@ -89,4 +98,6 @@ public class Workout {
 
         return obj;
     }
+
+
 }

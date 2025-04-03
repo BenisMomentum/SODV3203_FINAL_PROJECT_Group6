@@ -116,4 +116,11 @@ public class WorkoutRoutine {
 
         return obj;
     }
+
+    //--------------------------------------------
+    // added to have it on WorkoutData for searching workout page
+    public List<Workout> getWorkouts(){
+        return workouts;
+    }
+
 }

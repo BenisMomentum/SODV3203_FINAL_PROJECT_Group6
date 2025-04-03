@@ -130,5 +130,29 @@ public class WorkoutData {
 
         routines.add(routine1);
     }
+//----------------------------------------------------------------------
+
+    //I had to create these functions for the searchWorkout page
+    public List<Workout> searchWorkouts(String query) {//Create
+        List<Workout> results = new ArrayList<>();
+
+        for (WorkoutRoutine routine : routines) {
+            for (Workout workout : routine.getWorkouts()) { // we need this method in the WorkoutRoutine class
+                if (workout.getName().toLowerCase().contains(query.toLowerCase())) {
+                    results.add(workout);
+                }
+            }
+        }
+        return results;
+    }
+
+    public List<Workout> getAllWorkouts() {
+        List<Workout> allWorkouts = new ArrayList<>();
+        for (WorkoutRoutine routine : routines) {
+            allWorkouts.addAll(routine.getWorkouts()); // add all workouts of the list
+        }
+        return allWorkouts;
+    }
+    //--------------------------------------------------------------------------
 
 }

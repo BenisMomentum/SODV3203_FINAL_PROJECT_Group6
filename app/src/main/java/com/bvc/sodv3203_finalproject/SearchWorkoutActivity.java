@@ -1,9 +1,11 @@
 package com.bvc.sodv3203_finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ public class SearchWorkoutActivity extends AppCompatActivity {
     private EditText searchBar;
     private TextView searchResults;
     private Button searchButton, showAllButton;
+    ImageButton backBtn, homeBtn, workoutBtn, searchBtn, settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +30,26 @@ public class SearchWorkoutActivity extends AppCompatActivity {
         searchResults = findViewById(R.id.workout_searches);
         searchButton = findViewById(R.id.settings_btn_search);
         showAllButton = findViewById(R.id.settings_btn_all);
+        backBtn = findViewById(R.id.btn_goBack);
+        //------------------------------------------------footer btns
+        homeBtn = findViewById(R.id.homeBtn_Home);
+        workoutBtn = findViewById(R.id.homeBtn_workout);
+        searchBtn = findViewById(R.id.homeBtn_search);
+        settingsBtn = findViewById(R.id.homeBtn_settings);
+
+        homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
+        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
+        searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
+        settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
+        //--
 
         searchButton.setOnClickListener(v -> searchWorkouts());
         showAllButton.setOnClickListener(v -> showAllWorkouts());
+        backBtn.setOnClickListener(view -> finish());
     }
+
+
+
 
 
     private void searchWorkouts() {
@@ -59,6 +78,12 @@ public class SearchWorkoutActivity extends AppCompatActivity {
             searchResults.setText(builder.toString());
         }
     }
+//------------------------------------------------footer btns
+    private void navigateTo(Class<?> activityClass) {
+        Intent intent = new Intent(SearchWorkoutActivity.this, activityClass);
+        startActivity(intent);
+    }
+
 
 }
 

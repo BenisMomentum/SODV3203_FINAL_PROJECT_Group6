@@ -1,5 +1,6 @@
 package com.bvc.sodv3203_finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +18,7 @@ public class WorkoutLogActivity extends AppCompatActivity {
 
     LinearLayout workoutContainer;
 
-    ImageButton addNewWorkout;
+    ImageButton addNewWorkout, homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,19 @@ public class WorkoutLogActivity extends AppCompatActivity {
 
         workoutContainer = findViewById(R.id.workout_workoutContainer);
         addNewWorkout = findViewById(R.id.workout_btn_AddNew);
+        //------------------------------------------------footer btns
+        homeBtn = findViewById(R.id.homeBtn_Home);
+        workoutBtn = findViewById(R.id.homeBtn_workout);
+        searchBtn = findViewById(R.id.homeBtn_search);
+        settingsBtn = findViewById(R.id.homeBtn_settings);
+        backBtn = findViewById(R.id.btn_goBack);
+
+        homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
+        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
+        searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
+        settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
+        backBtn.setOnClickListener(view -> finish());
+
 
         addNewWorkout.setOnClickListener(this::WORKOUT_DEBUG_ADD);
     }
@@ -64,6 +78,12 @@ public class WorkoutLogActivity extends AppCompatActivity {
         workoutContainer.removeAllViews();
         loadWorkoutData();
 
+    }
+    //------------------------------------------------
+    //to have the footer image buttons functional
+    private void navigateTo(Class<?> activityClass) {
+        Intent intent = new Intent(WorkoutLogActivity.this, activityClass);
+        startActivity(intent);
     }
 
 }

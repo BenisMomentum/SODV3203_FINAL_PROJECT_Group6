@@ -16,10 +16,28 @@ public class SettingsActivity extends AppCompatActivity {
 
     public Switch darkModeSwitch; //darkmode swicth nbtn
 
+    ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_page);
+
+        //------------------------------------------------footer btns
+        homeBtn = findViewById(R.id.homeBtn_Home);
+        workoutBtn = findViewById(R.id.homeBtn_workout);
+        searchBtn = findViewById(R.id.homeBtn_search);
+        settingsBtn = findViewById(R.id.homeBtn_settings);
+        backBtn = findViewById(R.id.btn_goBack);
+
+
+        homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
+        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
+        searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
+        settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
+        backBtn.setOnClickListener(view -> finish());
+
+        //--
 
 
         //darkmode switch
@@ -69,5 +87,10 @@ public class SettingsActivity extends AppCompatActivity {
         }else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+    }
+    //to have the footer image buttons functional
+    private void navigateTo(Class<?> activityClass) {
+        Intent intent = new Intent(SettingsActivity.this, activityClass);
+        startActivity(intent);
     }
 }

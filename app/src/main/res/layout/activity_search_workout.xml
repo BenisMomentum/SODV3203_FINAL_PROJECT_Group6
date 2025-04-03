@@ -72,7 +72,7 @@
         <LinearLayout
             android:id="@+id/back_container"
             android:layout_width="@dimen/backBtn_width"
-            android:layout_height="@dimen/backBtn_height"
+            android:layout_height="115dp"
             android:backgroundTint="@color/BackgroundColor"
             android:gravity="center"
             android:orientation="horizontal">
@@ -81,6 +81,7 @@
                 android:id="@+id/btn_goBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/BackgroundColor"
                 app:srcCompat="@drawable/arrow"
@@ -90,6 +91,7 @@
                 android:id="@+id/label_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:layout_weight="1"
                 android:text="@string/back"
                 android:textColor="@color/TextColor"
@@ -101,7 +103,7 @@
         <TextView
             android:id="@+id/search_txt"
             android:layout_width="match_parent"
-            android:layout_height="116dp"
+            android:layout_height="100dp"
             android:gravity="center"
             android:text="@string/search"
             android:textSize="20sp"

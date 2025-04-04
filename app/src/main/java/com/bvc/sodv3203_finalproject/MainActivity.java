@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
-public class LaunchPageActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

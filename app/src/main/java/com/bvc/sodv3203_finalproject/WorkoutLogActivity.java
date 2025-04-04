@@ -83,7 +83,7 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
     //------------------------------------------------
     //to have the footer image buttons functional
     public void navigateTo(Class<?> activityClass) {
-        Intent intent = new Intent(MainActivity.this, activityClass);
+        Intent intent = new Intent(WorkoutLogActivity.this, activityClass);
         startActivity(intent);
     }
 

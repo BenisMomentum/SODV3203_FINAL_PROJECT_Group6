@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
 import java.util.List;
 
-public class SearchWorkoutActivity extends AppCompatActivity {
+public class SearchWorkoutActivity extends AppCompatActivity implements INavigation {
     private EditText searchBar;
     private TextView searchResults;
     private Button searchButton, showAllButton;
@@ -38,13 +39,13 @@ public class SearchWorkoutActivity extends AppCompatActivity {
         settingsBtn = findViewById(R.id.homeBtn_settings);
 
         homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
-        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
+        workoutBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
         //--
 
-        searchButton.setOnClickListener(v -> searchWorkouts());
-        showAllButton.setOnClickListener(v -> showAllWorkouts());
+        searchButton.setOnClickListener(this::searchWorkouts);
+        showAllButton.setOnClickListener(this::showAllWorkouts);
         backBtn.setOnClickListener(view -> finish());
     }
 
@@ -52,7 +53,7 @@ public class SearchWorkoutActivity extends AppCompatActivity {
 
 
 
-    private void searchWorkouts() {
+    public void searchWorkouts(View view) {
         String query = searchBar.getText().toString();
         if(query.isEmpty()){
             searchResults.setText("Please enter your search");
@@ -62,7 +63,7 @@ public class SearchWorkoutActivity extends AppCompatActivity {
         displaySearchResults(results);
     }
 
-    private void showAllWorkouts(){
+    public void showAllWorkouts(View view){
         List<Workout> allWorkouts = WorkoutData.getInstance().getAllWorkouts();
         displaySearchResults(allWorkouts);
     }
@@ -79,7 +80,7 @@ public class SearchWorkoutActivity extends AppCompatActivity {
         }
     }
 //------------------------------------------------footer btns
-    private void navigateTo(Class<?> activityClass) {
+    public void navigateTo(Class<?> activityClass) {
         Intent intent = new Intent(SearchWorkoutActivity.this, activityClass);
         startActivity(intent);
     }

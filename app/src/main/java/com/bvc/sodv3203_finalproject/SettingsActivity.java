@@ -14,6 +14,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     public SharedPreferences sharedPreferences; //for dark mode switch btn
 
+    public ImageButton homeBarBtn_workout;
+
     public Switch darkModeSwitch; //darkmode swicth nbtn
 
     ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
@@ -32,13 +34,12 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
-        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
+        workoutBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
         backBtn.setOnClickListener(view -> finish());
 
         //--
-
 
         //darkmode switch
         darkModeSwitch = findViewById(R.id.settings_darkModeSwitch);

@@ -2,18 +2,19 @@ package com.bvc.sodv3203_finalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutFactory;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
 import java.util.List;
 
-public class WorkoutLogActivity extends AppCompatActivity {
+public class WorkoutLogActivity extends AppCompatActivity implements INavigation {
 
 
     LinearLayout workoutContainer;
@@ -81,8 +82,8 @@ public class WorkoutLogActivity extends AppCompatActivity {
     }
     //------------------------------------------------
     //to have the footer image buttons functional
-    private void navigateTo(Class<?> activityClass) {
-        Intent intent = new Intent(WorkoutLogActivity.this, activityClass);
+    public void navigateTo(Class<?> activityClass) {
+        Intent intent = new Intent(MainActivity.this, activityClass);
         startActivity(intent);
     }
 

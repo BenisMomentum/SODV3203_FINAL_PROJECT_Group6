@@ -1,6 +1,6 @@
 package com.bvc.sodv3203_finalproject;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,13 +12,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
-import java.time.DayOfWeek;
-
-public class MainActivity extends AppCompatActivity {
+public class LaunchPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +61,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(moveToLogin);
     }
 
+//    All button hooks here are generic and will be used for common widgets app-wide.
+
     public void btn_GoBack(View view){
+        finish();
+    }
+
+
+    public void switchPages(Context context, Class<? extends AppCompatActivity> cls){
+        final Intent intent = new Intent(context, cls);
+
+        startActivity(intent);
         finish();
     }
 }

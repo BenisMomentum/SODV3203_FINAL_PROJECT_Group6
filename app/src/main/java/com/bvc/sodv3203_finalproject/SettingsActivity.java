@@ -2,6 +2,7 @@ package com.bvc.sodv3203_finalproject;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
@@ -19,6 +20,9 @@ public class SettingsActivity extends AppCompatActivity {
     public Switch darkModeSwitch; //darkmode swicth nbtn
 
     ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
+
+    private final static String PREF_SETTINGS_KEY = "settings";
+    private final static String PREF_DARKMODE_KEY = "dark_mode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,29 +50,12 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         //used for dark_mode
-        sharedPreferences = getSharedPreferences("settings", MODE_PRIVATE);
-        boolean isDarkModeOn = sharedPreferences.getBoolean("dark_mode", false);
+        sharedPreferences = getSharedPreferences(PREF_SETTINGS_KEY, MODE_PRIVATE);
+        boolean isDarkModeOn = sharedPreferences.getBoolean(PREF_DARKMODE_KEY, false);
 
         setDefaultNightMode(isDarkModeOn);
 
         darkModeSwitch.setChecked(isDarkModeOn);
-
-        //change the theme when switch btn is active
-        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-
-            setDefaultNightMode(isChecked);
-
-            editor.putBoolean("dark_mode", isChecked);
-
-            editor.apply();
-
-            //initialize the activity to apply the theme change
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-        });
-
 
         //not too sure about this
         ImageButton btnForgotPassword = findViewById(R.id.settings_btn_forgotPwd);
@@ -79,6 +66,21 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    public void settings_applyChanges(View view){
+
+        boolean isDark = darkModeSwitch.isChecked();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putBoolean("dark_mode", isDark);
+
+        editor.apply();
+
+        setDefaultNightMode(isDark);
+
+        finish();
     }
 
     //Function made to keep code DRY

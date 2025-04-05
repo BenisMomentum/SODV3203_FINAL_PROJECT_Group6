@@ -3,9 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    style="@style/BigStepTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/BackgroundColor">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/back_container"
+        android:layout_width="@dimen/backBtn_width"
+        android:layout_height="@dimen/backBtn_height"
+        android:backgroundTint="@color/BackgroundColor"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_goBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/BackgroundColor"
+            app:srcCompat="@drawable/arrow"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/label_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:textColor="@color/TextColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/homeBar"
@@ -67,59 +98,32 @@
         app:layout_constraintBottom_toTopOf="@+id/homeBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/back_container"
-            android:layout_width="@dimen/backBtn_width"
-            android:layout_height="115dp"
-            android:backgroundTint="@color/BackgroundColor"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btn_goBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/BackgroundColor"
-                app:srcCompat="@drawable/arrow"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            <TextView
-                android:id="@+id/label_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_weight="1"
-                android:text="@string/back"
-                android:textColor="@color/TextColor"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/back_container">
 
         <TextView
             android:id="@+id/search_txt"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="15dp"
             android:text="@string/search"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/search_SearchBar"
-            android:layout_width="390dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:autofillHints=""
             android:background="@drawable/btn_rounded_corner"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="@string/search_hint"
+            android:gravity="center"
+            android:hint="@string/search_placeholder"
             android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="12dp"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -131,25 +135,24 @@
 
             <Button
                 android:id="@+id/settings_btn_all"
-                style="?android:attr/buttonBarButtonStyle"
+                style="@style/Widget.BigStepTheme.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/YellowSecondary"
+                android:gravity="center"
                 android:text="@string/all_txt"
-                android:textColor="@color/TextColor" />
+                tools:ignore="TextSizeCheck" />
 
             <Button
                 android:id="@+id/settings_btn_search"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/YellowSecondary"
+                android:gravity="center"
                 android:text="@string/search_txt"
-                android:textColor="@color/black" />
+                tools:ignore="TextSizeCheck" />
 
         </LinearLayout>
 
@@ -157,18 +160,22 @@
             android:id="@+id/top_searches_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_rounded_corner"
+            android:backgroundTint="@color/YellowSecondary"
+            android:padding="10dp"
             android:text="@string/search_SearchResults"
+            android:textColor="@color/TextColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/search_cont_SearchResults"
             android:layout_width="match_parent"
-            android:layout_height="101dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scrollbars="vertical">
 
             <TextView
                 android:id="@+id/workout_searches"

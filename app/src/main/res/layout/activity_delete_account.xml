@@ -1,20 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    style="@style/BigStepTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BackgroundColor">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/back_container"
+        android:layout_width="@dimen/backBtn_width"
+        android:layout_height="@dimen/backBtn_height"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_goBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/BackgroundColor"
+            android:contentDescription="@string/delete_confirmBtn_SpeakText"
+            app:srcCompat="@drawable/arrow"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/label_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back"
+            android:textColor="@color/TextColor"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/backBtn_height"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/back_container">
 
         <TextView
             android:layout_width="match_parent"
@@ -28,14 +63,11 @@
 
         <Button
             android:id="@+id/delete_btn_Confirm"
+            style="@style/Widget.BigStepTheme.Button"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:background="@drawable/btn_rounded_corner"
-            android:backgroundTint="@color/YellowSecondary"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/delete"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            android:text="@string/delete" />
 
     </LinearLayout>
 

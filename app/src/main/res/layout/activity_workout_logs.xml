@@ -10,10 +10,9 @@
     <LinearLayout
         android:id="@+id/back_container"
         android:layout_width="@dimen/backBtn_width"
-        android:layout_height="115dp"
+        android:layout_height="@dimen/backBtn_height"
         android:backgroundTint="@color/BackgroundColor"
         android:gravity="center"
-        android:onClick="btn_GoBack"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,7 +21,6 @@
             android:id="@+id/btn_goBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:backgroundTint="@color/BackgroundColor"
             app:srcCompat="@drawable/arrow"
@@ -32,7 +30,6 @@
             android:id="@+id/label_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:text="@string/back"
             android:textColor="@color/TextColor"
@@ -127,7 +124,10 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/homeBar">
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/homeBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/container_add"
@@ -140,7 +140,6 @@
                 android:id="@+id/workout_btn_AddNew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/BackgroundColor"
                 app:srcCompat="@drawable/bot_video_add"

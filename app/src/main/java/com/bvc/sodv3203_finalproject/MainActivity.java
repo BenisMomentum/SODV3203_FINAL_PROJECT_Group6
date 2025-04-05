@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart(){
-        super.onStart();
+    protected void onResume(){
+        super.onResume();
 
         //This is where we'd swap over to the login page.
 
@@ -47,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish(){
 
-                switchToLogin();
+                switchToWorkoutLogs();
             }
         }.start();
 
     }
 
     //Moved to function for cleanliness
-    private void switchToLogin(){
+    private void switchToWorkoutLogs(){
 
         final Intent moveToLogin = new Intent(this, WorkoutLogActivity.class);
 

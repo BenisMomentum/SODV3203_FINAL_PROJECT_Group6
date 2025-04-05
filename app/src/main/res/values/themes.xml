@@ -1,14 +1,36 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.SODV3203_FinalProject" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="BigStepTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
-        <!-- Light Mode -->
 
-        <item name="colorPrimary">@color/my_light_primary</item>
-        <item name="colorOnPrimary">@color/my_light_on_primary</item>
+        <item name="colorPrimary">@color/my_light_on_primary</item>
+        <item name="colorSecondary">@color/GreenSecondary</item>
+        <item name="android:background">@color/BackgroundColor</item>
+        <item name="android:textColorPrimary">@color/TextColor</item>
+
+        <item name="android:buttonStyle">@style/Widget.BigStepTheme.Button</item>
     </style>
 
-    <style name="Theme.SODV3203_FinalProject" parent="Base.Theme.SODV3203_FinalProject" />
+    <style name="Widget.BigStepTheme.Button" parent="Widget.AppCompat.Button.Borderless.Colored">
+
+
+        <item name="android:background">@drawable/btn_rounded_corner</item>
+        <item name="android:backgroundTint">@color/YellowSecondary</item>
+
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:radius">10dp</item>
+
+    </style>
+
+    <style name="Widget.BigStepTheme.ImageButton" parent ="Widget.AppCompat.ImageButton">
+
+        <item name="android:background">@drawable/btn_rounded_corner</item>
+        <item name="android:backgroundTint">@color/YellowSecondary</item>
+        <item name="android:padding">16dp</item>
+
+    </style>
+
 </resources>

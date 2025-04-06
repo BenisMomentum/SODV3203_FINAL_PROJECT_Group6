@@ -11,8 +11,6 @@
         android:id="@+id/homeBar"
         android:layout_width="0dp"
         android:layout_height="76dp"
-        android:background="@color/YellowSecondary"
-        android:backgroundTint="@color/YellowSecondary"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,42 +20,36 @@
 
         <ImageButton
             android:id="@+id/homeBtn_Home"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             android:padding="15dp"
             app:srcCompat="@drawable/homebar_home_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_workout"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/YellowSecondary"
-            android:backgroundTint="@color/YellowSecondary"
-            android:padding="15dp"
             app:srcCompat="@drawable/homebar_workout_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_search"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             android:padding="15dp"
             app:srcCompat="@drawable/homebar_search_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_settings"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             android:padding="15dp"
             app:srcCompat="@drawable/homebar_settings_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
@@ -94,11 +86,11 @@
 
             <TextView
                 android:id="@+id/label_back"
+                style="@style/Widget.BigStepTheme.TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/back"
-                android:textColor="@color/TextColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -111,12 +103,13 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/Widget.BigStepTheme.TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:text="@string/settings_txt"
                 android:textAlignment="center"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -124,6 +117,7 @@
             android:id="@+id/settings_BtnContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -141,6 +135,7 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
+                    style="@style/Widget.BigStepTheme.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -150,10 +145,12 @@
 
                 <ImageButton
                     android:id="@+id/settings_btn_forgotPwd"
+                    style="@style/Widget.BigStepTheme.ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/BackgroundColor"
+                    android:layout_weight="0"
                     android:contentDescription="@string/settings_ForgotPwd_SpeakText"
+                    android:padding="0dp"
                     app:srcCompat="@drawable/dropdown_arrow"
                     tools:ignore="ContentDescription,TouchTargetSizeCheck" />
             </LinearLayout>
@@ -174,6 +171,7 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
+                    style="@style/Widget.BigStepTheme.TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -184,11 +182,13 @@
 
                 <ImageButton
                     android:id="@+id/settings_btn_DelAcc"
+                    style="@style/Widget.BigStepTheme.ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/BackgroundColor"
+                    android:layout_weight="0"
                     android:contentDescription="@string/dropdown_arrow"
+                    android:padding="0dp"
                     app:srcCompat="@drawable/dropdown_arrow"
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
@@ -204,9 +204,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="49dp"
                     android:layout_marginTop="10dp"
-                    android:checked="false"
                     android:text="@string/dark_mode"
-                    android:textColor="@color/material_dynamic_secondary30"
+                    android:textColor="@color/TextColor"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:ignore="NestedWeights,UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />

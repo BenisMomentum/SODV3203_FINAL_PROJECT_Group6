@@ -28,11 +28,11 @@
 
         <TextView
             android:id="@+id/label_back"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/back"
-            android:textColor="@color/TextColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -42,8 +42,6 @@
         android:id="@+id/homeBar"
         android:layout_width="0dp"
         android:layout_height="76dp"
-        android:background="@color/YellowSecondary"
-        android:backgroundTint="@color/YellowSecondary"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,39 +51,38 @@
 
         <ImageButton
             android:id="@+id/homeBtn_Home"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_home_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_workout"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/YellowSecondary"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_workout_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_search"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_search_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_settings"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_settings_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
@@ -102,6 +99,7 @@
 
         <TextView
             android:id="@+id/search_txt"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -112,6 +110,7 @@
 
         <EditText
             android:id="@+id/search_SearchBar"
+            style="@style/Widget.BigStepTheme.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -142,6 +141,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/all_txt"
+                android:textColor="@color/TextColor"
                 tools:ignore="TextSizeCheck" />
 
             <Button
@@ -152,6 +152,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/search_txt"
+                android:textColor="@color/TextColor"
                 tools:ignore="TextSizeCheck" />
 
         </LinearLayout>
@@ -162,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/btn_rounded_corner"
-            android:backgroundTint="@color/YellowSecondary"
+            android:backgroundTint="@color/buttonBGColor"
             android:padding="10dp"
             android:text="@string/search_SearchResults"
             android:textColor="@color/TextColor"
@@ -174,21 +175,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:gravity="center|top"
             android:orientation="vertical"
             android:scrollbars="vertical">
 
             <TextView
-                android:id="@+id/workout_searches"
-                android:layout_width="292dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="60dp"
-                android:background="@drawable/btn_rounded_corner"
-                android:backgroundTint="@color/white"
+                style="@style/Widget.BigStepTheme.WorkoutSearchResult.Container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/textview"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="@string/textview" />
 
         </LinearLayout>
 

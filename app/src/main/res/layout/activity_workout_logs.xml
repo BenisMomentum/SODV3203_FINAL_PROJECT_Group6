@@ -39,7 +39,8 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/createAccount_TitleText"
+        android:id="@+id/login_TitleText"
+        style="@style/Widget.BigStepTheme.TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -52,50 +53,42 @@
         android:id="@+id/homeBar"
         android:layout_width="0dp"
         android:layout_height="76dp"
-        android:background="@color/YellowSecondary"
-        android:backgroundTint="@color/YellowSecondary"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/homeBtn_Home"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_home_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_workout"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/YellowSecondary"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_workout_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_search"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_search_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_settings"
+            style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="@color/YellowSecondary"
             app:srcCompat="@drawable/homebar_settings_icon"
             tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
@@ -108,7 +101,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createAccount_TitleText">
+        app:layout_constraintTop_toBottomOf="@+id/login_TitleText">
 
         <LinearLayout
             android:id="@+id/workout_workoutContainer"
@@ -138,6 +131,7 @@
 
             <ImageButton
                 android:id="@+id/workout_btn_AddNew"
+                style="@style/Widget.BigStepTheme.ImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -149,12 +143,12 @@
 
         <TextView
             android:id="@+id/addWorkoutTitle"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="@string/add_a_new_workout"
             android:textAlignment="center"
-            android:textColor="@color/TextColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 

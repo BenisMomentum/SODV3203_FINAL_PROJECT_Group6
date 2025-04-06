@@ -5,15 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BackgroundColor"
-    android:backgroundTint="@color/BackgroundColor"
     android:orientation="vertical"
     android:textAlignment="center">
 
     <LinearLayout
-        android:id="@+id/back_container"
-        android:layout_width="133dp"
-        android:layout_height="115dp"
+        android:layout_width="@dimen/backBtn_width"
+        android:layout_height="@dimen/backBtn_height"
         android:backgroundTint="@color/BackgroundColor"
         android:gravity="center"
         android:orientation="horizontal">
@@ -22,7 +19,6 @@
             android:id="@+id/btn_goBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:backgroundTint="@color/BackgroundColor"
             app:srcCompat="@drawable/arrow"
@@ -30,19 +26,17 @@
 
         <TextView
             android:id="@+id/label_back"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_weight="1"
             android:text="@string/back"
-            android:textColor="@color/TextColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/set_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -51,7 +45,7 @@
         android:paddingEnd="10dp">
 
         <TextView
-            android:id="@+id/createAccount_TitleText"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -61,7 +55,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/createAccount_flavourText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -72,7 +65,7 @@
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/forgot_password_label"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="115dp"
             android:layout_height="0dp"
             android:layout_marginBottom="10dp"
@@ -87,95 +80,88 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/workoutExample"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:background="@color/GreenSecondary"
-        android:orientation="vertical">
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_rounded_corner"
+        android:backgroundTint="@color/GreenSecondary"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <LinearLayout
-            android:id="@+id/container_password"
+        <TextView
+            android:id="@+id/forgot_TitleText"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="UselessParent">
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#00000000"
+            android:text="@string/username_or_email_label"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/setPwd_password"
+            style="@style/Widget.BigStepTheme.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:hint="@string/hint"
+            android:inputType="textEmailAddress"
+            android:textAlignment="gravity"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/email_number_label"
+            style="@style/Widget.BigStepTheme.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#00000000"
+            android:text="@string/password_label"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/login_Password_Input"
+            style="@style/Widget.BigStepTheme.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:hint="@string/hint_password_"
+            android:inputType="textPassword" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000">
 
             <TextView
-                android:id="@+id/forgot_TitleText"
-                android:layout_width="match_parent"
+                android:id="@+id/addWorkoutTitle"
+                style="@style/Widget.BigStepTheme.TextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/username_or_email_label"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="15dp"
+                android:background="#00000000"
+                android:text="@string/forgot_password_onClick"
+                android:textAlignment="viewEnd"
                 android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/setPwd_password"
-                android:layout_width="390dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints=""
-                android:background="@drawable/btn_rounded_corner"
-                android:backgroundTint="@color/white"
-                android:ems="10"
-                android:hint="@string/hint"
-                android:inputType="textEmailAddress"
-                android:textAlignment="gravity"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/email_number_label"
-                android:layout_width="390dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/password_label"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/login_Password_Input"
-                android:layout_width="390dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:autofillHints=""
-                android:background="@drawable/btn_rounded_corner"
-                android:backgroundTint="@color/white"
-                android:ems="10"
-                android:hint="@string/hint_password_"
-                android:inputType="textPassword" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/addWorkoutTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="36dp"
-                    android:layout_marginBottom="15dp"
-                    android:text="@string/forgot_password_onClick"
-                    android:textAlignment="viewEnd"
-                    android:textColor="@color/TextColor"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/login_ComponentSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -183,7 +169,7 @@
         android:textAlignment="center">
 
         <Button
-            android:id="@+id/forgot_btn_Submit"
+            android:id="@+id/login_btn_submit"
             android:layout_width="137dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -196,6 +182,7 @@
 
         <TextView
             android:id="@+id/signup_label"
+            style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -204,7 +191,6 @@
             android:textSize="16sp" />
 
         <LinearLayout
-            android:id="@+id/btns_social_media"
             android:layout_width="wrap_content"
             android:layout_height="43dp"
             android:orientation="horizontal">
@@ -241,6 +227,7 @@
 
             <TextView
                 android:id="@+id/label_noAccount"
+                style="@style/Widget.BigStepTheme.TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -254,7 +241,7 @@
                 android:layout_marginStart="10dp"
                 android:text="@string/sign_up_onClickListener"
                 android:textAlignment="center"
-                android:textColor="@color/GreenSecondary"
+                android:textColor="#2E7D32"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>

@@ -2,16 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="BackgroundColor">#C8C8C8</color>
+    <color name="BackgroundColor">#A9A9A9</color>
     <color name="YellowSecondary">#D9F460</color>
     <color name="GreenSecondary">#3FBA73</color>
-    <color name="TextColor">#3C3C3C</color>"
+    <color name="TextColor">#343434</color>"
     <color name="my_light_primary">#FF6200EE</color>
     <color name="my_light_on_primary">#FFFFFF</color>
     <color name="my_dark_primary">#3700B3</color>
     <color name="my_dark_on_primary">#FFFFFF</color>
 
-    <color name="darkBackgroundColor">#001F00</color>
+    <color name="iconColor">@color/white</color>
+    <color name="iconBGColor">@color/YellowSecondary</color>
 
+    <color name="buttonTextColor">@color/white</color>
+    <color name="buttonBGColor">@color/YellowSecondary</color>
+
+    <color name="editTextHintColor">#663F3F3F</color>
+
+    <color name="workoutResultBGColor">#E80000</color>
+    <color name="workoutResultTextColor">@color/white</color>
 
 </resources>

@@ -4,12 +4,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="BackgroundColor">#001F00</color>
     <color name="YellowSecondary">#D9F460</color>
-    <color name="GreenSecondary">#3FBA73</color>
-    <color name="TextColor">#3C3C3C</color>"
+    <color name="GreenSecondary">#24CF68</color>
+    <color name="TextColor">@color/white</color>"
     <color name="my_light_primary">#FF6200EE</color>
     <color name="my_light_on_primary">#FFFFFF</color>
     <color name="my_dark_primary">#3700B3</color>
     <color name="my_dark_on_primary">#FFFFFF</color>
 
+    <color name="buttonTextColor">#FFFFFF</color>
+    <color name="buttonBGColor">#15C265</color>
+
+    <color name="iconColor">@color/white</color>
+    <color name="iconBGColor">@color/GreenSecondary</color>
+
+    <color name="workoutResultBGColor">#460CE8</color>
 
 </resources>

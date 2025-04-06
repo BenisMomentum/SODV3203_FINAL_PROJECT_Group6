@@ -20,7 +20,7 @@ public class SetPasswordActivity extends AppCompatActivity {
 
         newPassword = findViewById(R.id.setPwd_confirm);
         confirmPassword = findViewById(R.id.setPwd_confirm);
-        resetBtn = findViewById(R.id.forgot_btn_Submit);
+        resetBtn = findViewById(R.id.login_btn_submit);
 
 
 

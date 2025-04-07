@@ -43,6 +43,7 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity {
         };
 
         submit = findViewById(R.id.CWR_btn_submit);
+        submit.setOnClickListener(this::AddWorkoutToData);
 
     }
 
@@ -64,7 +65,7 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity {
             if(days[i].isChecked()){
 
                 String day = days[i].getText().toString();
-                workoutDays.add(DayOfWeek.valueOf(day));
+                workoutDays.add(Utility.getDay(day));
             }
         }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class SearchWorkoutActivity extends AppCompatActivity implements INavigation {
     private EditText searchBar;
-    private TextView searchResults;
+    private LinearLayout searchResults;
     private Button searchButton, showAllButton;
     ImageButton backBtn, homeBtn, workoutBtn, searchBtn, settingsBtn;
 
@@ -28,7 +29,7 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         setContentView(R.layout.activity_search_workout);
 
         searchBar = findViewById(R.id.search_SearchBar);
-        searchResults = findViewById(R.id.workout_searches);
+        searchResults = findViewById(R.id.search_cont_SearchResults);
         searchButton = findViewById(R.id.settings_btn_search);
         showAllButton = findViewById(R.id.settings_btn_all);
         backBtn = findViewById(R.id.btn_goBack);
@@ -44,8 +45,8 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
         //--
 
-        searchButton.setOnClickListener(this::searchWorkouts);
-        showAllButton.setOnClickListener(this::showAllWorkouts);
+//        searchButton.setOnClickListener(this::searchWorkouts);
+//        showAllButton.setOnClickListener(this::showAllWorkouts);
         backBtn.setOnClickListener(view -> finish());
     }
 
@@ -53,32 +54,32 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
 
 
 
-    public void searchWorkouts(View view) {
-        String query = searchBar.getText().toString();
-        if(query.isEmpty()){
-            searchResults.setText("Please enter your search");
-            return;
-        }
-        List<Workout> results = WorkoutData.getInstance().searchWorkouts(query);
-        displaySearchResults(results);
-    }
-
-    public void showAllWorkouts(View view){
-        List<Workout> allWorkouts = WorkoutData.getInstance().getAllWorkouts();
-        displaySearchResults(allWorkouts);
-    }
-
-    private void displaySearchResults(List<Workout> workouts) {
-        if (workouts.isEmpty()) {
-            searchResults.setText("No workouts found");
-        } else {
-            StringBuilder builder = new StringBuilder();
-            for (Workout workout : workouts) {
-                builder.append(workout.getName()).append("\n");
-            }
-            searchResults.setText(builder.toString());
-        }
-    }
+//    public void searchWorkouts(View view) {
+//        String query = searchBar.getText().toString();
+//        if(query.isEmpty()){
+//            searchResults.setText("Please enter your search");
+//            return;
+//        }
+//        List<Workout> results = WorkoutData.getInstance().searchWorkouts(query);
+//        displaySearchResults(results);
+//    }
+//
+//    public void showAllWorkouts(View view){
+//        List<Workout> allWorkouts = WorkoutData.getInstance().getAllWorkouts();
+//        displaySearchResults(allWorkouts);
+//    }
+//
+//    private void displaySearchResults(List<Workout> workouts) {
+//        if (workouts.isEmpty()) {
+//            searchResults.setText("No workouts found");
+//        } else {
+//            StringBuilder builder = new StringBuilder();
+//            for (Workout workout : workouts) {
+//                builder.append(workout.getName()).append("\n");
+//            }
+//            searchResults.setText(builder.toString());
+//        }
+//    }
 //------------------------------------------------footer btns
     public void navigateTo(Class<?> activityClass) {
         Intent intent = new Intent(SearchWorkoutActivity.this, activityClass);

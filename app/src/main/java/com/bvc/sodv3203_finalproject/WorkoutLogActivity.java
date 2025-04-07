@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
@@ -41,8 +42,6 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
         backBtn.setOnClickListener(view -> finish());
 
-
-        addNewWorkout.setOnClickListener(this::WORKOUT_DEBUG_ADD);
     }
 
     @Override

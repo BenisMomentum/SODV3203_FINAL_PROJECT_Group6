@@ -3,6 +3,7 @@ package com.bvc.sodv3203_finalproject.workouts;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -29,7 +30,7 @@ public class WorkoutFactory {
     public static LinearLayout createWidget(WorkoutRoutine routine, Context context){
 
         //LAYOUT CREATION AND SETTING
-        LinearLayout layout = new LinearLayout(new ContextThemeWrapper(context, R.style.Widget_BigStepTheme_WorkoutDisplay_Container));
+        LinearLayout layout = new LinearLayout(new ContextThemeWrapper(context, R.style.BigStepTheme_WorkoutDisplay_Container));
 
         layout.setOrientation(LinearLayout.VERTICAL);
         //layout.setLayoutParams( new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
@@ -59,6 +60,12 @@ public class WorkoutFactory {
 
 
         layout.addView(title);
+
+        if(layout == null){
+            Log.d("WorkoutFactory", "LAYOUT RETURNING NULL, ADDING DEFAULT");
+
+            return new LinearLayout(context);
+        }
 
         return layout;
     }

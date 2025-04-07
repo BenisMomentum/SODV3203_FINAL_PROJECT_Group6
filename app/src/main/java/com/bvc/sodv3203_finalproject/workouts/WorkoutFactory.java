@@ -3,6 +3,7 @@ package com.bvc.sodv3203_finalproject.workouts;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.view.ContextThemeWrapper;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,10 +29,10 @@ public class WorkoutFactory {
     public static LinearLayout createWidget(WorkoutRoutine routine, Context context){
 
         //LAYOUT CREATION AND SETTING
-        LinearLayout layout = new LinearLayout(context);
+        LinearLayout layout = new LinearLayout(new ContextThemeWrapper(context, R.style.Widget_BigStepTheme_WorkoutDisplay_Container));
 
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setLayoutParams( new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        //layout.setLayoutParams( new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
 
         Context layoutContext = layout.getContext();
 

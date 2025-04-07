@@ -77,4 +77,15 @@
     <string name="settings_ForgotPwd_SpeakText">Forgot Password</string>
     <string name="settings_apply">Apply Changes</string>
     <string name="delete_confirmBtn_SpeakText">Delete Account Button</string>
+    <string name="createWorkout_TitleText">Create Workout</string>
+    <string name="CWR_NameTag">Routine Name:</string>
+    <string name="CWR_workoutDays_text">Routine Days:</string>
+    <string name="CWR_Sunday">Sunday</string>
+    <string name="CWR_Monday">Monday</string>
+    <string name="CWR_Tuesday">Tuesday</string>
+    <string name="CWR_Wednesday">Wednesday</string>
+    <string name="CWR_Thursday">Thursday</string>
+    <string name="CWR_Friday">Friday</string>
+    <string name="CWR_Saturday">Saturday</string>
+    <string name="CWR_btn_SubmitText">Submit</string>
 </resources>

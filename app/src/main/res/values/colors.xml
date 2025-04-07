@@ -14,7 +14,7 @@
     <color name="iconColor">@color/white</color>
     <color name="iconBGColor">@color/YellowSecondary</color>
 
-    <color name="buttonTextColor">@color/white</color>
+    <color name="buttonTextColor">#24901C</color>
     <color name="buttonBGColor">@color/YellowSecondary</color>
 
     <color name="editTextHintColor">#663F3F3F</color>

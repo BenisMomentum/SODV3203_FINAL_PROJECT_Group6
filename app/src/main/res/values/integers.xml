@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="CWR_editText_maxLen">40</integer>
+</resources>

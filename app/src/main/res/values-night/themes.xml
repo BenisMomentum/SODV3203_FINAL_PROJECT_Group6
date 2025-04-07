@@ -13,18 +13,4 @@
         <item name="android:background">@color/BackgroundColor</item>
 
     </style>
-
-    <style name="Widget.BigStepTheme.Button" parent="Widget.AppCompat.Button.Borderless.Colored">
-
-
-        <item name="android:background">@drawable/btn_rounded_corner</item>
-        <item name="android:backgroundTint">@color/buttonBGColor</item>
-
-        <item name="android:padding">10dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/buttonTextColor</item>
-        <item name="android:radius">10dp</item>
-
-    </style>
 </resources>

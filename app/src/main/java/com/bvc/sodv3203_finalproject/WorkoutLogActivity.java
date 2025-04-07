@@ -72,6 +72,7 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         workoutContainer.postInvalidate();
     }
 
+    //DEBUG FUNCTION
     public void WORKOUT_DEBUG_ADD(View view){
 
         WorkoutData.getInstance().add(WorkoutData.getInstance().get(0));
@@ -80,6 +81,14 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         loadWorkoutData();
 
     }
+
+    public void btnHook_AddWorkout(View view){
+        Intent intent = new Intent(this, CreateWorkoutRoutineActivity.class);
+
+        startActivity(intent);
+    }
+
+
     //------------------------------------------------
     //to have the footer image buttons functional
     public void navigateTo(Class<?> activityClass) {

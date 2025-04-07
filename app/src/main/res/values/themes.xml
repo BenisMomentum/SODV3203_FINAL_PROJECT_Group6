@@ -11,6 +11,7 @@
         <item name="android:buttonStyle">@style/Widget.BigStepTheme.Button</item>
     </style>
 
+<!--    <style name="Widget.BigStepTheme"/>-->
     <style name="Widget.BigStepTheme.Button" parent="Widget.AppCompat.Button.Borderless.Colored">
 
 
@@ -37,6 +38,7 @@
 
         <item name="android:background">#00000000</item>
         <item name="android:textColor">@color/TextColor</item>
+        <item name="android:textSize">14sp</item>
 
     </style>
 
@@ -53,9 +55,12 @@
 
         <item name="android:textColorHint">@color/editTextHintColor</item>
         <item name="android:ems">10</item>
+        <item name="android:padding">12dp</item>
 
     </style>
 
+<!--  WorkoutSearchResult package  -->
+    <style name="Widget.BigStepTheme.WorkoutSearchResult"/>
     <style name="Widget.BigStepTheme.WorkoutSearchResult.Container">
 
         <item name="android:background">@drawable/btn_rounded_corner</item>
@@ -74,6 +79,27 @@
         <item name="android:layout_marginTop">10dp</item>
 
         <item name="android:padding">14dp</item>
+
+    </style>
+
+    <style name="Widget.BigStepTheme.WorkoutDisplay"/>
+    <style name="Widget.BigStepTheme.WorkoutDisplay.Container">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
+    <style name="Widget.BigStepTheme.CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/TextColor</item>
+        <item name="android:textSize">16sp</item>
+
+        <item name="android:padding">4dp</item>
+
+        <item name="android:minHeight">@dimen/checkBox_minHeight</item>
+        <item name="android:minWidth">@dimen/checkBox_minHeight</item>
 
     </style>
 

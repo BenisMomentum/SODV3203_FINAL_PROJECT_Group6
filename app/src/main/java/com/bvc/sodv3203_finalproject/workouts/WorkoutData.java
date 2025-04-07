@@ -155,4 +155,15 @@ public class WorkoutData {
     }
     //--------------------------------------------------------------------------
 
+    public boolean hasName(String name){
+
+        for(int i = 0; i < routines.size(); i++){
+            if(routines.get(i).name.equals(name)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

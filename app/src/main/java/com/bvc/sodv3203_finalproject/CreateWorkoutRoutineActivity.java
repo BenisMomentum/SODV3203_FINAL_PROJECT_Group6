@@ -11,6 +11,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bvc.sodv3203_finalproject.util.Utility;
+import com.bvc.sodv3203_finalproject.workouts.RoutineAdapter;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
@@ -75,7 +76,8 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity {
 
         Log.d("CreateWorkoutRoutineActivity", routine.name);
 
-        //Closes the activity once it's done.
+
+
         this.finish();
     }
 

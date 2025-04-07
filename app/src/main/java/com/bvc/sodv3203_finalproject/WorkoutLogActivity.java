@@ -6,9 +6,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.util.INavigation;
+import com.bvc.sodv3203_finalproject.workouts.RoutineAdapter;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutFactory;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
@@ -18,7 +21,7 @@ import java.util.List;
 public class WorkoutLogActivity extends AppCompatActivity implements INavigation {
 
 
-    LinearLayout workoutContainer;
+    RecyclerView workoutContainer;
 
     ImageButton addNewWorkout, homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
 
@@ -27,9 +30,11 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_logs);
 
-        workoutContainer = findViewById(R.id.workout_workoutContainer);
+
         addNewWorkout = findViewById(R.id.workout_btn_AddNew);
-        //------------------------------------------------footer btns
+
+        // Bottom Navigation Buttons
+
         homeBtn = findViewById(R.id.homeBtn_Home);
         workoutBtn = findViewById(R.id.homeBtn_workout);
         searchBtn = findViewById(R.id.homeBtn_search);
@@ -42,43 +47,19 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
         backBtn.setOnClickListener(view -> finish());
 
+        //Recycler view handling
+        workoutContainer = findViewById(R.id.workout_workoutContainer);
+        setRoutineDisplayAdapter();
     }
 
     @Override
-    protected void onStart(){
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
 
-        workoutContainer.removeAllViews();
-        loadWorkoutData();
-    }
+        if(workoutContainer == null) return;
 
-    public void loadWorkoutData(){
-
-        List<WorkoutRoutine> routines = WorkoutData.getInstance().routines();
-
-        for(int i = 0; i < routines.size(); i++){
-
-            LinearLayout widget = WorkoutFactory.createWidget(routines.get(i), this);
-
-            try {
-                workoutContainer.addView(widget, i, widget.getLayoutParams());
-            } catch (RuntimeException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        workoutContainer.postInvalidate();
-    }
-
-    //DEBUG FUNCTION
-    public void WORKOUT_DEBUG_ADD(View view){
-
-        WorkoutData.getInstance().add(WorkoutData.getInstance().get(0));
-
-        workoutContainer.removeAllViews();
-        loadWorkoutData();
-
+        //Will need adapting for editing a workout routine.
+        workoutContainer.getAdapter().notifyItemInserted(WorkoutData.getInstance().length() - 1);
     }
 
     public void btnHook_AddWorkout(View view){
@@ -87,6 +68,18 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         startActivity(intent);
     }
 
+    private void setRoutineDisplayAdapter(){
+
+        RoutineAdapter adapter = new RoutineAdapter();
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
+
+
+
+        workoutContainer.setLayoutManager(manager);
+        workoutContainer.setItemAnimator(new DefaultItemAnimator());
+        workoutContainer.setAdapter(adapter);
+
+    }
 
     //------------------------------------------------
     //to have the footer image buttons functional

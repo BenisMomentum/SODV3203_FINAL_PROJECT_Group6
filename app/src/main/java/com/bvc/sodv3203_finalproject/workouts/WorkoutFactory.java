@@ -33,7 +33,7 @@ public class WorkoutFactory {
         LinearLayout layout = new LinearLayout(new ContextThemeWrapper(context, R.style.BigStepTheme_WorkoutDisplay_Container));
 
         layout.setOrientation(LinearLayout.VERTICAL);
-        //layout.setLayoutParams( new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        layout.setLayoutParams( new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
 
         Context layoutContext = layout.getContext();
 

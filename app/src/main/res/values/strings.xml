@@ -88,4 +88,5 @@
     <string name="CWR_Friday">Friday</string>
     <string name="CWR_Saturday">Saturday</string>
     <string name="CWR_btn_SubmitText">Submit</string>
+    <string name="RLRD_TV_name_default">default_name</string>
 </resources>

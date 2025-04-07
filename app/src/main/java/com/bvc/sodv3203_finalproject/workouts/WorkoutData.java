@@ -32,6 +32,7 @@ public class WorkoutData {
         //This method helps shorten syntax massively.
         this.routines.add(routine);
 
+
         return 0;
     }
 

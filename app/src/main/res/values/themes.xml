@@ -9,12 +9,14 @@
         <item name="android:textColorPrimary">@color/TextColor</item>
 
         <item name="android:buttonStyle">@style/Widget.BigStepTheme.Button</item>
+
+        <item name="android:layout_margin">2dp</item>
     </style>
 
     <style name="Widget.BigStepTheme.Button" parent="Widget.AppCompat.Button.Borderless.Colored">
 
 
-        <item name="android:background">@drawable/btn_rounded_corner</item>
+        <item name="android:background">@drawable/round_corner_bg</item>
         <item name="android:backgroundTint">@color/buttonBGColor</item>
 
         <item name="android:padding">10dp</item>
@@ -49,12 +51,14 @@
 
     <style name="Widget.BigStepTheme.EditText" parent="Widget.AppCompat.EditText">
 
-        <item name="android:background">@drawable/btn_rounded_corner</item>
+        <item name="android:background">@drawable/round_corner_bg</item>
         <item name="android:backgroundTint">@color/white</item>
 
         <item name="android:textColorHint">@color/editTextHintColor</item>
         <item name="android:ems">10</item>
         <item name="android:padding">12dp</item>
+
+<!--        <item name="android:textColor">@color/black</item>-->
 
     </style>
 
@@ -62,7 +66,7 @@
     <style name="BigStepTheme.WorkoutSearchResult"/>
     <style name="BigStepTheme.WorkoutSearchResult.Container">
 
-        <item name="android:background">@drawable/btn_rounded_corner</item>
+        <item name="android:background">@drawable/round_corner_bg</item>
         <item name="android:backgroundTint">@color/workoutResultBGColor</item>
 
         <item name="android:textColor">@color/workoutResultTextColor</item>
@@ -86,6 +90,34 @@
 
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_margin">16dp</item>
+
+        <item name="android:background">@drawable/round_corner_bg</item>
+        <item name="android:backgroundTint">@color/workoutResultBGColor</item>
+
+    </style>
+
+    <style name="Widget.BigStepTheme.WorkoutDisplay.Container.TextView" parent="Widget.BigStepTheme.TextView">
+
+        <item name="android:textColor">@color/workoutResultTextColor</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+    <style name="BigStepTheme.WorkoutDisplay.DaysContainer"/>
+
+    <style name="Widget.BigStepTheme.WorkoutDisplay.Container.Day" parent="Widget.BigStepTheme.TextView">
+
+        <item name="android:background">@drawable/round_corner_bg</item>
+
+    <!--Default is false-->
+
+        <item name="android:backgroundTint">@color/workoutResult_dateDisplay_BG_false</item>
+        <item name="android:textColor">@color/workoutResult_dateDisplay_Text_false</item>
+
+        <item name="android:gravity">center</item>
+
 
     </style>
 

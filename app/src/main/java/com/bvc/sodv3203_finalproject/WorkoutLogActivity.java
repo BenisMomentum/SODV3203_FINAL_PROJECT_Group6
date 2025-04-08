@@ -4,19 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.util.INavigation;
-import com.bvc.sodv3203_finalproject.workouts.RoutineAdapter;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutFactory;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
-
-import java.util.List;
+import com.bvc.sodv3203_finalproject.Adapters.RoutineAdapter;
 
 public class WorkoutLogActivity extends AppCompatActivity implements INavigation {
 
@@ -59,7 +54,8 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         if(workoutContainer == null) return;
 
         //Will need adapting for editing a workout routine.
-        workoutContainer.getAdapter().notifyItemInserted(WorkoutData.getInstance().length() - 1);
+        //PS. I know it's deprecated. BUT SCREW THE RULES, I HAVE MONEY.
+        workoutContainer.getAdapter().notifyDataSetChanged();
     }
 
     public void btnHook_AddWorkout(View view){

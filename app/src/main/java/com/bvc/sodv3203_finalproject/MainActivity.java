@@ -2,6 +2,7 @@ package com.bvc.sodv3203_finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +32,13 @@ public class MainActivity extends AppCompatActivity {
         //This is where we'd start synchronizing our persistent data from files.
 
         WorkoutData.getInstance().loadTestingData();
+
+        setStartupThemeMode();
+
+        //This is a solution to a stupid problem...
+        Utility.applicationContext = getApplicationContext();
     }
+
 
     @Override
     protected void onResume(){
@@ -51,6 +59,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
+    }
+
+    private void setStartupThemeMode() {
+
+        SharedPreferences pref = getSharedPreferences(SettingsActivity.PREF_SETTINGS_KEY, MODE_PRIVATE);
+
+        //Gets dark mode. Default is Dark.
+        boolean isDark = pref.getBoolean(SettingsActivity.PREF_DARKMODE_KEY, true);
+
+        SettingsActivity.setDefaultNightMode(isDark);
     }
 
     //Moved to function for cleanliness

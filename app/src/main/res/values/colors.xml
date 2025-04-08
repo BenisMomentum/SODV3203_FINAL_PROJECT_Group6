@@ -22,4 +22,10 @@
     <color name="workoutResultBGColor">#E80000</color>
     <color name="workoutResultTextColor">@color/white</color>
 
+    <color name="workoutResult_dateDisplay_BG_true">#FFFC74</color>
+    <color name="workoutResult_dateDisplay_BG_false">#8E0000</color>
+
+    <color name="workoutResult_dateDisplay_Text_true">@color/black</color>
+    <color name="workoutResult_dateDisplay_Text_false">@color/white</color>
+
 </resources>

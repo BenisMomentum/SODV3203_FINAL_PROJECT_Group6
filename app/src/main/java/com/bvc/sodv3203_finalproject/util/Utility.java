@@ -14,6 +14,11 @@ import java.time.DayOfWeek;
 
 public class Utility {
 
+
+    //BEHOLD, a solution to a stupid problem.
+
+    public static Context applicationContext;
+
     /**
      *   @param  input   The source input for the text
      *   @return         The text from the input

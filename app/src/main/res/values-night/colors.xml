@@ -19,4 +19,8 @@
 
     <color name="workoutResultBGColor">#460CE8</color>
 
+    <color name="workoutResult_dateDisplay_BG_true">#3EABFF</color>
+    <color name="workoutResult_dateDisplay_BG_false">#713EFF</color>
+
+
 </resources>

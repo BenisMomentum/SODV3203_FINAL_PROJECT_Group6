@@ -21,8 +21,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
 
-    private final static String PREF_SETTINGS_KEY = "settings";
-    private final static String PREF_DARKMODE_KEY = "dark_mode";
+    public final static String PREF_SETTINGS_KEY = "settings";
+    public final static String PREF_DARKMODE_KEY = "dark_mode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     //Function made to keep code DRY
-    private void setDefaultNightMode(boolean isModeNight){
+    public static void setDefaultNightMode(boolean isModeNight){
         if(isModeNight){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }else{

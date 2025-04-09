@@ -95,4 +95,10 @@
     <string name="RLRD_PopUpMenu_Delete">Delete</string>
     <string name="EWR_titleText">Edit Workout</string>
     <string name="EWR_ET_hintTxt">New Routine Name</string>
+    <string name="RLWD_workoutTitle_default">default_text</string>
+    <string name="RLWD_targetMuscle_defaultText">default_tgt</string>
+    <string name="RLWD_setsTitle">Sets:</string>
+    <string name="RLWD_repsTitle">Reps:</string>
+    <string name="RLEWD_ET_setHint">Set Count</string>
+    <string name="RLEWD_ET_repHint">Rep Count</string>
 </resources>

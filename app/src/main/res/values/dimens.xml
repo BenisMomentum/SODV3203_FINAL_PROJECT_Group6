@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="checkBox_minHeight">50dp</dimen>
+    <dimen name="RLEWD_editText_width">70dp</dimen>
 </resources>

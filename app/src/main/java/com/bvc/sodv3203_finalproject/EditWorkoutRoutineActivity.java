@@ -10,7 +10,11 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bvc.sodv3203_finalproject.Adapters.EditWorkoutAdapter;
 import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
@@ -31,6 +35,10 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
     public CheckBox[] newDays;
     public Button submit;
 
+    public RecyclerView routineWorkouts;
+
+    public static int RoutineIndex = 0;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +46,9 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
 
         loadRoutineToEdit();
 
-        newName = findViewById(R.id.EWR_ET_routineName);
+        this.newName = findViewById(R.id.EWR_ET_routineName);
 
-        newDays = new CheckBox[]{
+        this.newDays = new CheckBox[]{
                 findViewById(R.id.EWR_CB_Sun),
                 findViewById(R.id.EWR_CB_Mon),
                 findViewById(R.id.EWR_CB_Tue),
@@ -50,6 +58,28 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
                 findViewById(R.id.EWR_CB_Sat)
         };
 
+        this.routineWorkouts = findViewById(R.id.EWR_cont_r_workout);
+        loadRoutineWorkoutAdapter();
+
+        if(this.editedRoutine == null){
+            RoutineIndex = -1;
+        }else{
+
+            RoutineIndex = WorkoutData.getInstance().indexOf(editedRoutine.name);
+
+        }
+    }
+
+
+
+    private void loadRoutineWorkoutAdapter() {
+        EditWorkoutAdapter adapter = new EditWorkoutAdapter(this);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
+
+
+        routineWorkouts.setLayoutManager(manager);
+        routineWorkouts.setItemAnimator(new DefaultItemAnimator());
+        routineWorkouts.setAdapter(adapter);
     }
 
     @Override
@@ -126,7 +156,6 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
     }
 
 
-
     @SuppressLint("NewApi")
     public void submit(View view){
 
@@ -147,11 +176,8 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
         int index = WorkoutData.getInstance().indexOf(editedRoutine.name);
 
         WorkoutData.getInstance().routines().set(index,
-                new WorkoutRoutine(name, workoutDays.toArray(new DayOfWeek[workoutDays.size()]))
+                new WorkoutRoutine(name, workoutDays.toArray(new DayOfWeek[0]))
         );
-
-
-        Log.d("EditWorkoutRoutineActivity", name);
 
         this.finish();
     }

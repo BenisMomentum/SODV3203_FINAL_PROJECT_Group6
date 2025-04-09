@@ -63,7 +63,6 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity {
 
         for(int i = 0; i < days.length; i++){
             if(days[i].isChecked()){
-
                 String day = days[i].getText().toString();
                 workoutDays.add(Utility.getDay(day));
             }

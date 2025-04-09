@@ -101,8 +101,6 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
                     int newSets = Integer.parseInt(data);
 
                     //A direct change to the source routine.
-
-
                     parentActivity.editedRoutine.workouts.get(holder.getAdapterPosition()).sets = newSets;
 
                 } catch (NumberFormatException e) {
@@ -111,8 +109,6 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
                     return;
                 }
 
-                //DEBUG
-                Log.d("EditWorkoutAdapter","NEW SET: " + parentActivity.editedRoutine.workouts.get(holder.getAdapterPosition()).sets);
             }
         });
 

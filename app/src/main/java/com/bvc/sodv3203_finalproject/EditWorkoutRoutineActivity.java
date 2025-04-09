@@ -35,7 +35,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
     public CheckBox[] newDays;
     public Button submit;
 
-    public RecyclerView routineWorkouts;
+    public RecyclerView routineWorkouts = null;
 
     public static int RoutineIndex = 0;
 
@@ -176,7 +176,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
         int index = WorkoutData.getInstance().indexOf(editedRoutine.name);
 
         WorkoutData.getInstance().routines().set(index,
-                new WorkoutRoutine(name, workoutDays.toArray(new DayOfWeek[0]))
+                new WorkoutRoutine(name, editedRoutine.workouts, workoutDays.toArray(new DayOfWeek[0]))
         );
 
         this.finish();

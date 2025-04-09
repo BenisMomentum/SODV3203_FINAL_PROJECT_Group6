@@ -96,7 +96,6 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
             //Edit MenuItem
             popup.getMenu().getItem(1).setOnMenuItemClickListener(item -> {
 
-                //Temporary:
                 final Intent intent = new Intent(Utility.applicationContext, EditWorkoutRoutineActivity.class);
 
                 intent.putExtra(Utility.EDIT_WORKOUT_BUNDLE_KEY, routine.toJSON().toString());

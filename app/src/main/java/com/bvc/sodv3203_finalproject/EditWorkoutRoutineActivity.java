@@ -144,7 +144,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
             }
         }
 
-        int index = WorkoutData.getInstance().routines().indexOf(editedRoutine);
+        int index = WorkoutData.getInstance().indexOf(editedRoutine.name);
 
         WorkoutData.getInstance().routines().set(index,
                 new WorkoutRoutine(name, workoutDays.toArray(new DayOfWeek[workoutDays.size()]))

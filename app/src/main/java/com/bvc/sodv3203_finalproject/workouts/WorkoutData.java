@@ -52,6 +52,16 @@ public class WorkoutData {
         return routines.get(index);
     }
 
+    public int indexOf(String routineName){
+
+        for(int i = 0; i < routines.size(); i++){
+            if(routines.get(i).name.equals(routineName))
+                return i;
+        }
+
+        return -1;
+    }
+
     public int length(){
         return routines.size();
     }

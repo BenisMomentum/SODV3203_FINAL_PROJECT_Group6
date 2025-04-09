@@ -89,4 +89,10 @@
     <string name="CWR_Saturday">Saturday</string>
     <string name="CWR_btn_SubmitText">Submit</string>
     <string name="RLRD_TV_name_default">default_name</string>
+    <string name="RLRD_dropdownbtn_speaktext">Drop down button to view, edit, or delete\nthis workout routine.</string>
+    <string name="RLRD_PopUpMenu_WorkoutItem">Workout</string>
+    <string name="RLRD_PopUpMenu_Edit">Edit</string>
+    <string name="RLRD_PopUpMenu_Delete">Delete</string>
+    <string name="EWR_titleText">Edit Workout</string>
+    <string name="EWR_ET_hintTxt">New Routine Name</string>
 </resources>

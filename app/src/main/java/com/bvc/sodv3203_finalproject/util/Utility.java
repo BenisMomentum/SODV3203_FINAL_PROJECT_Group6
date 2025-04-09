@@ -15,9 +15,9 @@ import java.time.DayOfWeek;
 public class Utility {
 
 
-    //BEHOLD, a solution to a stupid problem.
+    public static Context applicationContext; //BEHOLD, a solution to a stupid problem.
 
-    public static Context applicationContext;
+    public static final String EDIT_WORKOUT_BUNDLE_KEY = "routine_to_edit";
 
     /**
      *   @param  input   The source input for the text

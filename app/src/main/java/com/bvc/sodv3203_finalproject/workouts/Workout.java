@@ -53,7 +53,7 @@ public class Workout {
 
         this.name = obj.getString(WorkoutJSONKeys.NAME);
 
-        this.targetMuscle = (TargetMuscle) obj.get(WorkoutJSONKeys.TARGET_MUSCLE);
+        this.targetMuscle = TargetMuscle.valueOf(obj.getString(WorkoutJSONKeys.TARGET_MUSCLE));
 
         this.sets = obj.getInt(WorkoutJSONKeys.SETS);
         this.reps = obj.getInt(WorkoutJSONKeys.REPS);
@@ -81,7 +81,7 @@ public class Workout {
 
         try {
             obj.put(WorkoutJSONKeys.NAME, this.name);
-            obj.put(WorkoutJSONKeys.TARGET_MUSCLE, this.targetMuscle.name().toLowerCase());
+            obj.put(WorkoutJSONKeys.TARGET_MUSCLE, this.targetMuscle.name().toUpperCase());
             obj.put(WorkoutJSONKeys.SETS, this.sets);
             obj.put(WorkoutJSONKeys.REPS, this.reps);
 

@@ -1,12 +1,14 @@
 package com.bvc.sodv3203_finalproject.Adapters;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,21 +37,20 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
         private TextView workoutName, tgtMuscle;
         private EditText setCount, repCount;
 
+        private ImageButton btnDelete;
+
         public WorkoutViewHolder(@NonNull View itemView, WorkoutRoutine w) {
             super(itemView);
 
             this.sourceData = w;
 
+            workoutName = itemView.findViewById(R.id.RLWED_workoutTitle);
+            tgtMuscle = itemView.findViewById(R.id.RLWED_targetMuscle);
 
-            //RLEWD is meant to be an acronym for Recycle Layout Edit Workout Display
-            //I apologize for any correlation to any inappropriate wording or phrase present
+            setCount = itemView.findViewById(R.id.RLWED_ET_sets);
+            repCount = itemView.findViewById(R.id.RLWED_ET_reps);
 
-            workoutName = itemView.findViewById(R.id.RLEWD_workoutTitle);
-            tgtMuscle = itemView.findViewById(R.id.RLEWD_targetMuscle);
-
-            setCount = itemView.findViewById(R.id.RLEWD_ET_sets);
-            repCount = itemView.findViewById(R.id.RLEWD_ET_reps);
-
+            btnDelete = itemView.findViewById(R.id.RLWED_ibtn_Delete);
         }
 
     }
@@ -58,7 +59,7 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
     @NonNull
     @Override
     public EditWorkoutAdapter.WorkoutViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_layout_editworkout_display, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_layout_workoutedit_display, parent, false);
 
         return new EditWorkoutAdapter.WorkoutViewHolder(itemView, parentActivity.editedRoutine);
     }
@@ -110,6 +111,26 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
                 }
 
             }
+        });
+
+        holder.btnDelete.setOnClickListener(v -> {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
+
+            builder.setMessage("Are you sure? (This cannot be undone.)");
+            builder.setNegativeButton("No", (dialog, which) -> {});
+
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+
+                if(which != DialogInterface.BUTTON_POSITIVE) return;
+
+                holder.sourceData.workouts.remove(w);
+
+                notifyDataSetChanged();
+            });
+
+            builder.show();
+
         });
 
     }

@@ -2,6 +2,9 @@ package com.bvc.sodv3203_finalproject.Adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +28,11 @@ import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
 public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineViewHolder>{
 
-    public RoutineAdapter(){
+    private Context parentContext;
+
+    public RoutineAdapter(Context context){
+
+        this.parentContext = context;
     }
 
     public class RoutineViewHolder extends RecyclerView.ViewHolder{
@@ -96,11 +103,11 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
             //Edit MenuItem
             popup.getMenu().getItem(1).setOnMenuItemClickListener(item -> {
 
-                final Intent intent = new Intent(Utility.applicationContext, EditWorkoutRoutineActivity.class);
+                final Intent intent = new Intent(parentContext, EditWorkoutRoutineActivity.class);
 
                 intent.putExtra(Utility.EDIT_WORKOUT_BUNDLE_KEY, routine.toJSON().toString());
 
-                ContextCompat.startActivity(v.getContext(), intent, new Bundle());
+                ContextCompat.startActivity(parentContext, intent, new Bundle());
 
                 return true;
             });
@@ -108,8 +115,21 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
             //Delete MenuItem
             popup.getMenu().getItem(2).setOnMenuItemClickListener(item -> {
 
-                //Temporary:
-                Utility.displayMsg(Utility.applicationContext, "Delete Item Clicked", true);
+                AlertDialog.Builder builder = new AlertDialog.Builder(parentContext);
+
+                builder.setMessage("Are you sure? (This cannot be undone.)");
+                builder.setNegativeButton("No", (dialog, which) -> {});
+
+                builder.setPositiveButton("Yes", (dialog, which) -> {
+
+                    if(which != DialogInterface.BUTTON_POSITIVE) return;
+
+                    WorkoutData.getInstance().routines().remove(routine);
+
+                    notifyDataSetChanged();
+                });
+
+                builder.show();
 
                 return true;
             });

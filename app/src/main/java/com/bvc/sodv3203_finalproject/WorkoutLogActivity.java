@@ -66,7 +66,7 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
 
     private void setRoutineDisplayAdapter(){
 
-        RoutineAdapter adapter = new RoutineAdapter();
+        RoutineAdapter adapter = new RoutineAdapter(this);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
 
 

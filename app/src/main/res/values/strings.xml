@@ -99,6 +99,7 @@
     <string name="RLWD_targetMuscle_defaultText">default_tgt</string>
     <string name="RLWD_setsTitle">Sets:</string>
     <string name="RLWD_repsTitle">Reps:</string>
-    <string name="RLEWD_ET_setHint">Set Count</string>
-    <string name="RLEWD_ET_repHint">Rep Count</string>
+    <string name="RLWED_ET_setHint">Set Count</string>
+    <string name="RLWED_ET_repHint">Rep Count</string>
+    <string name="RLWED_ibtn_delete_speakText">Delete this workout</string>
 </resources>

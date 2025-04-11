@@ -102,4 +102,10 @@
     <string name="RLWED_ET_setHint">Set Count</string>
     <string name="RLWED_ET_repHint">Rep Count</string>
     <string name="RLWED_ibtn_delete_speakText">Delete this workout</string>
+    <string name="WM_routineSpeakText">Your workout list for this routine</string>
+    <string name="WM_exitBtn_text">Exit Workout Mode</string>
+    <string name="RLWMD_doneText_default">def_done</string>
+    <string name="RLWMD_incSetBtn_speakText">Increment Set</string>
+    <string name="RLWMD_decSetBtn_speakText">Decrement Set</string>
+    <string name="RLWMD_setsTitle_defaultText">Set: X</string>
 </resources>

@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.EditWorkoutRoutineActivity;
 import com.bvc.sodv3203_finalproject.R;
+import com.bvc.sodv3203_finalproject.WorkoutModeActivity;
 import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
@@ -94,8 +95,11 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
             //Workout MenuItem
             popup.getMenu().getItem(0).setOnMenuItemClickListener(item -> {
 
-                //Temporary:
-                Utility.displayMsg(Utility.applicationContext, "Workout Item Clicked", true);
+                final Intent intent = new Intent(parentContext, WorkoutModeActivity.class);
+
+                intent.putExtra(Utility.WORKOUT_MODE_BUNDLE_KEY, routine.toJSON().toString());
+
+                ContextCompat.startActivity(parentContext, intent, new Bundle());
 
                 return true;
             });

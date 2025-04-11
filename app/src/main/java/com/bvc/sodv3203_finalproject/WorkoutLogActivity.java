@@ -84,4 +84,9 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         startActivity(intent);
     }
 
+    @Override
+    public void btn_GoBack(View view) {
+        this.finish();
+    }
+
 }

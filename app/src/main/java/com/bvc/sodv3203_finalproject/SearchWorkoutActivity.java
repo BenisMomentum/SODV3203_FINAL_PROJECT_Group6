@@ -86,6 +86,11 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         startActivity(intent);
     }
 
+    @Override
+    public void btn_GoBack(View view) {
+        this.finish();
+    }
+
 
 }
 

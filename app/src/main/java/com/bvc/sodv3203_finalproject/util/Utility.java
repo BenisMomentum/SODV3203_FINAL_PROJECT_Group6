@@ -18,6 +18,7 @@ public class Utility {
     public static Context applicationContext; //BEHOLD, a solution to a stupid problem.
 
     public static final String EDIT_WORKOUT_BUNDLE_KEY = "routine_to_edit";
+    public static final String WORKOUT_MODE_BUNDLE_KEY = "routine";
 
     /**
      *   @param  input   The source input for the text

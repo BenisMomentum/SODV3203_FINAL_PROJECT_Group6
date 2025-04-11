@@ -2,4 +2,5 @@
 <resources>
     <dimen name="checkBox_minHeight">50dp</dimen>
     <dimen name="RLWED_editText_width">70dp</dimen>
+    <dimen name="generic_minHeight">48dp</dimen>
 </resources>

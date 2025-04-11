@@ -37,8 +37,6 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
 
     public RecyclerView routineWorkouts = null;
 
-    public static int RoutineIndex = 0;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +59,6 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
         this.routineWorkouts = findViewById(R.id.EWR_cont_r_workout);
         loadRoutineWorkoutAdapter();
 
-        if(this.editedRoutine == null){
-            RoutineIndex = -1;
-        }else{
-
-            RoutineIndex = WorkoutData.getInstance().indexOf(editedRoutine.name);
-
-        }
     }
 
 

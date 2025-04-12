@@ -9,17 +9,18 @@ import android.widget.Switch;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.bvc.sodv3203_finalproject.util.IGoBack;
+import com.bvc.sodv3203_finalproject.util.INavigation;
 
-public class SettingsActivity extends AppCompatActivity {
+
+public class SettingsActivity extends AppCompatActivity implements IGoBack, INavigation {
 
 
     public SharedPreferences sharedPreferences; //for dark mode switch btn
 
-    public ImageButton homeBarBtn_workout;
-
     public Switch darkModeSwitch; //darkmode swicth nbtn
 
-    ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
+    public ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
 
     public final static String PREF_SETTINGS_KEY = "settings";
     public final static String PREF_DARKMODE_KEY = "dark_mode";
@@ -41,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
         workoutBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
-        backBtn.setOnClickListener(view -> finish());
+        backBtn.setOnClickListener(this::btn_GoBack);
 
         //--
 
@@ -92,8 +93,13 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
     //to have the footer image buttons functional
-    private void navigateTo(Class<?> activityClass) {
+    public void navigateTo(Class<?> activityClass) {
         Intent intent = new Intent(SettingsActivity.this, activityClass);
         startActivity(intent);
+    }
+
+    @Override
+    public void btn_GoBack(View view) {
+        this.finish();
     }
 }

@@ -11,5 +11,4 @@ import android.view.View;
 //I don't want to have to refactor all of this.
 public interface INavigation {
     void navigateTo(Class<?> activityClass);
-    void btn_GoBack(View view);
 }

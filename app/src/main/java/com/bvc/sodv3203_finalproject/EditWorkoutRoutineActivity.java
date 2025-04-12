@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.Adapters.EditWorkoutAdapter;
+import com.bvc.sodv3203_finalproject.util.IGoBack;
 import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
@@ -26,7 +27,7 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditWorkoutRoutineActivity extends AppCompatActivity {
+public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGoBack {
 
     public WorkoutRoutine editedRoutine = null;
 
@@ -170,6 +171,11 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity {
                 new WorkoutRoutine(name, editedRoutine.workouts, workoutDays.toArray(new DayOfWeek[0]))
         );
 
+        this.finish();
+    }
+
+    @Override
+    public void btn_GoBack(View view) {
         this.finish();
     }
 }

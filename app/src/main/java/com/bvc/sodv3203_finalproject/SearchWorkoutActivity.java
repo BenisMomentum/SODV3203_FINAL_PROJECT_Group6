@@ -11,13 +11,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bvc.sodv3203_finalproject.util.IGoBack;
 import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
 import java.util.List;
 
-public class SearchWorkoutActivity extends AppCompatActivity implements INavigation {
+public class SearchWorkoutActivity extends AppCompatActivity implements INavigation, IGoBack {
     private EditText searchBar;
     private LinearLayout searchResults;
     private Button searchButton, showAllButton;

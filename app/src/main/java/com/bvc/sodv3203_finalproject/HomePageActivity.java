@@ -8,16 +8,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomePageActivity extends AppCompatActivity {
 
-    ImageButton createWorkoutBtn, workoutRoutineBtn, searchBtn;
+    ImageButton createWorkoutBtn, workoutRoutineBtn, searchBtn, settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        createWorkoutBtn = findViewById(R.id.create_workout_routine_homepage);
-        workoutRoutineBtn = findViewById(R.id.workout_routine_btn);
-        searchBtn = findViewById(R.id.searchBtn_homepage);
+        createWorkoutBtn = findViewById(R.id.home_ibtn_createWorkout);
+        workoutRoutineBtn = findViewById(R.id.home_ibtn_workout);
+        searchBtn = findViewById(R.id.home_ibtn_search);
+        settingsBtn = findViewById(R.id.home_ibtn_settings);
 
         // Exemplo de navegação ao clicar no botão
         createWorkoutBtn.setOnClickListener(v -> {

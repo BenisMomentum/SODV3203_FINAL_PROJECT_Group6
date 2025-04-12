@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bvc.sodv3203_finalproject.util.IGoBack;
 import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.Adapters.RoutineAdapter;
 
-public class WorkoutLogActivity extends AppCompatActivity implements INavigation {
+public class WorkoutLogActivity extends AppCompatActivity implements INavigation, IGoBack {
 
 
     RecyclerView workoutContainer;

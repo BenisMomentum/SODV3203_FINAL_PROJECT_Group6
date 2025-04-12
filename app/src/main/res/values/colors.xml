@@ -31,4 +31,6 @@
     <color name="workoutResult_dateDisplay_Text_true">@color/black</color>
     <color name="workoutResult_dateDisplay_Text_false">@color/white</color>
 
+    <color name="homePage_titleBGColor">#66363636</color>
+
 </resources>

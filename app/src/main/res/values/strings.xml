@@ -115,4 +115,9 @@
     <string name="create_workout">Create Workout</string>
     <string name="workout_routine">Workout routine</string>
     <string name="search_homepage">Search</string>
+    <string name="home_TV_settingsTitle">Settings</string>
+    <string name="home_ibtn_settings_desc">Settings Button</string>
+    <string name="home_ibtn_workout_desc">View Workouts</string>
+    <string name="home_ibtn_createWorkout_desc">Create A Workout</string>
+    <string name="home_ibtn_search_desc">Search for a Workout</string>
 </resources>

@@ -79,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(moveToLogin);
     }
 
-//    All button hooks here are generic and will be used for common widgets app-wide.
-
     public void btn_GoBack(View view){
         finish();
     }

@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bvc.sodv3203_finalproject.util.IGoBack;
+import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
@@ -19,7 +21,7 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateWorkoutRoutineActivity extends AppCompatActivity {
+public class CreateWorkoutRoutineActivity extends AppCompatActivity implements IGoBack {
 
     public EditText nameInput;
     public CheckBox[] days;
@@ -84,4 +86,8 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity {
         this.finish();
     }
 
+    @Override
+    public void btn_GoBack(View view) {
+        this.finish();
+    }
 }

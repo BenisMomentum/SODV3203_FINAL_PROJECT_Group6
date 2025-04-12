@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,8 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity {
     public EditText nameInput;
     public CheckBox[] days;
     public Button submit;
+
+    public ImageButton backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity {
 
         submit = findViewById(R.id.CWR_btn_submit);
         submit.setOnClickListener(this::AddWorkoutToData);
+        backBtn = findViewById(R.id.btn_goBack);
+        backBtn.setOnClickListener(view -> finish());
 
     }
 

@@ -108,4 +108,11 @@
     <string name="RLWMD_incSetBtn_speakText">Increment Set</string>
     <string name="RLWMD_decSetBtn_speakText">Decrement Set</string>
     <string name="RLWMD_setsTitle_defaultText">Set: X</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="big_text">BIG</string>
+    <string name="step_text">STEP</string>
+    <string name="Subttitle">Ready to crush today\'s workout?</string>
+    <string name="create_workout">Create Workout</string>
+    <string name="workout_routine">Workout routine</string>
+    <string name="search_homepage">Search</string>
 </resources>

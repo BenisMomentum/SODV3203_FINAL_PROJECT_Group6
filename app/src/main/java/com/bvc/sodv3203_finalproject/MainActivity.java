@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_launch_page);
+        setContentView(R.layout.activity_homepage);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     //Moved to function for cleanliness
     private void switchToWorkoutLogs(){
 
-        final Intent moveToLogin = new Intent(this, WorkoutLogActivity.class);
+        final Intent moveToLogin = new Intent(this, HomePageActivity.class);
 
         startActivity(moveToLogin);
     }

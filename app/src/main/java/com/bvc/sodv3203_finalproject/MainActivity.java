@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_launch_page);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -74,14 +75,16 @@ public class MainActivity extends AppCompatActivity {
     //Moved to function for cleanliness
     private void switchToHome(){
 
-        final Intent moveToLogin = new Intent(this, HomePageActivity.class);
+        final Intent moveToHomePage = new Intent(this, HomePageActivity.class);
 
-        startActivity(moveToLogin);
-    }
-
-
-    public void btn_GoBack(View view){
+        startActivity(moveToHomePage);
         finish();
     }
+
+
+ /*  not necessary here
+  public void btn_GoBack(View view){
+
+        finish(); */
 
 }

@@ -1,5 +1,7 @@
 package com.bvc.sodv3203_finalproject.util;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
@@ -10,6 +12,13 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.time.DayOfWeek;
 
 public class Utility {
@@ -48,8 +57,6 @@ public class Utility {
 
         name = name.substring(0, 3).toLowerCase(); //Turns Monday into mon
 
-
-
         switch(name){
 
             case "sun": return DayOfWeek.SUNDAY;
@@ -62,6 +69,47 @@ public class Utility {
 
             default:
                 throw new IllegalStateException("Unexpected value: " + name);
+        }
+
+    }
+
+    public static void writeToFile(Context context, String filename, String data){
+
+        if(filename == null || data == null) return;
+        if(filename.isBlank()) return;
+
+        //Using try with resources to auto-close
+        try(FileOutputStream fstream = context.openFileOutput(filename, Context.MODE_PRIVATE)){
+
+            fstream.write(data.getBytes());
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("ERR: FILE NOT FOUND\n\n" + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException("ERR: IO EXCEPTION WHEN SAVING TO FILE\n\n" + e.getMessage());
+        }
+    }
+
+    public static String readFromFile(Context context, String filename){
+
+        if(filename == null) return null;
+        if(filename.isBlank()) return null;
+
+        StringBuilder jsonString = new StringBuilder();
+        String line;
+
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(context.openFileInput(filename)))){
+
+            while((line = reader.readLine()) != null){
+                jsonString.append(line);
+            }
+
+            return jsonString.toString();
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("ERR: FILE NOT FOUND\n\n" + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException("ERR: IO EXCEPTION WHEN SAVING TO FILE\n\n" + e.getMessage());
         }
 
     }

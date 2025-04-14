@@ -30,16 +30,22 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        //This is where we'd start synchronizing our persistent data from files.
 
-        WorkoutData.getInstance().loadTestingData();
 
         setStartupThemeMode();
-
         //This is a solution to a stupid problem...
         Utility.applicationContext = getApplicationContext();
+
+        //This is where we'd start synchronizing our persistent data from files.
+        WorkoutData.getInstance().startUp();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        WorkoutData.getInstance().saveData();
+    }
 
     @Override
     protected void onResume(){
@@ -78,13 +84,6 @@ public class MainActivity extends AppCompatActivity {
         final Intent moveToHomePage = new Intent(this, HomePageActivity.class);
 
         startActivity(moveToHomePage);
-        finish();
     }
-
-
- /*  not necessary here
-  public void btn_GoBack(View view){
-
-        finish(); */
 
 }

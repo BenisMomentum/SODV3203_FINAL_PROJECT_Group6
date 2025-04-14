@@ -4,18 +4,21 @@ import android.annotation.SuppressLint;
 
 import androidx.annotation.NonNull;
 
+import com.bvc.sodv3203_finalproject.util.Utility;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutData {
 
+    public static final String FILE_NAME = "workoutData.json";
     private static final WorkoutData _instance = new WorkoutData();
-
     protected List<WorkoutRoutine> routines = new ArrayList<>();
 
     private WorkoutData(){
@@ -180,4 +183,30 @@ public class WorkoutData {
         return false;
     }
 
+    public void saveData(){
+        Utility.writeToFile(Utility.applicationContext, FILE_NAME, this.toJSON().toString());
+    }
+
+    public void syncFromFile(){
+
+        if(new File(FILE_NAME).exists()){
+            String data = Utility.readFromFile(Utility.applicationContext, FILE_NAME);
+
+            routines.clear();
+
+            addFromJSON(data);
+        }
+
+    }
+
+    public void startUp() {
+
+        //If the file exists, we perform startup synchronization.
+        if(new File(FILE_NAME).exists()){
+            syncFromFile();
+        }else{
+            saveData();
+        }
+
+    }
 }

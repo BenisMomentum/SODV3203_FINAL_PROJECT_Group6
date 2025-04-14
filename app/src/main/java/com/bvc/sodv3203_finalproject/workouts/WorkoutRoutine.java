@@ -2,6 +2,8 @@ package com.bvc.sodv3203_finalproject.workouts;
 
 import android.annotation.SuppressLint;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -125,4 +127,14 @@ public class WorkoutRoutine {
         return workouts;
     }
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+
+        if(obj == null) return false;
+        if(!(obj instanceof WorkoutRoutine)) return false;
+
+        WorkoutRoutine wR = (WorkoutRoutine) obj;
+
+        return this.name.equals(wR.name);
+    }
 }

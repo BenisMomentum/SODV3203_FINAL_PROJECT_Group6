@@ -53,8 +53,8 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         searchBtn = findViewById(R.id.homeBtn_search);
         settingsBtn = findViewById(R.id.homeBtn_settings);
 
-        homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
-        workoutBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
+        homeBtn.setOnClickListener(view -> navigateTo(HomePageActivity.class));
+        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
 

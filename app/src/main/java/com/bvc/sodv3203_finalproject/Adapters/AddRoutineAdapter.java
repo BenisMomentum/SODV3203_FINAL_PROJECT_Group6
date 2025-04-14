@@ -38,7 +38,7 @@ public class AddRoutineAdapter extends RoutineAdapter {
             try{
 
                 int sets = Integer.parseInt(parent.setsInput.getText().toString());
-                int reps = Integer.parseInt(parent.setsInput.getText().toString());
+                int reps = Integer.parseInt(parent.repsInput.getText().toString());
 
                 WorkoutData.getInstance().get(position).add(new Workout(
                         workoutToBeAdded.name,
@@ -46,8 +46,6 @@ public class AddRoutineAdapter extends RoutineAdapter {
                         reps,
                         workoutToBeAdded.targetMuscle
                 ));
-
-                Log.d("DEBUG", "NEW DATA LEN: " + WorkoutData.getInstance().get(position).workouts.size());
 
 
             } catch (NumberFormatException e) {

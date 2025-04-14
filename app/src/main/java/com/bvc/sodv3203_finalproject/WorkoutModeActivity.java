@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.Adapters.WorkoutModeAdapter;
 import com.bvc.sodv3203_finalproject.util.Utility;
+import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
 import org.json.JSONException;
@@ -39,6 +40,8 @@ public class WorkoutModeActivity extends AppCompatActivity {
         loadWorkoutViewAdapter();
     }
 
+
+
     private void loadWorkoutViewAdapter() {
 
         WorkoutModeAdapter adapter = new WorkoutModeAdapter(this);
@@ -51,11 +54,15 @@ public class WorkoutModeActivity extends AppCompatActivity {
 
     public void loadSelectedRoutine(){
         try {
+
             if(getIntent().getExtras() == null) throw new IllegalStateException("ERR: DATA WAS NOT PASSED\n\n");
 
             String routineData = this.getIntent().getStringExtra(Utility.WORKOUT_MODE_BUNDLE_KEY);
 
-            this.selectedRoutine = WorkoutRoutine.fromJSON(new JSONObject(routineData));
+            WorkoutRoutine routineRef = WorkoutRoutine.fromJSON(new JSONObject(routineData));
+
+            this.selectedRoutine = WorkoutData.getInstance().get(routineRef);
+
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

@@ -1,4 +1,5 @@
 package com.bvc.sodv3203_finalproject;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,14 +13,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.bvc.sodv3203_finalproject.util.IGoBack;
 import com.bvc.sodv3203_finalproject.util.INavigation;
 
-
 public class SettingsActivity extends AppCompatActivity implements IGoBack, INavigation {
 
-
-    public SharedPreferences sharedPreferences; //for dark mode switch btn
-
-    public Switch darkModeSwitch; //darkmode swicth nbtn
-
+    public SharedPreferences sharedPreferences; // for dark mode switch button
+    public Switch darkModeSwitch; // dark mode switch button
     public ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
 
     public final static String PREF_SETTINGS_KEY = "settings";
@@ -30,35 +27,42 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_page);
 
-        //------------------------------------------------footer btns
+        //------------------------------------------------footer buttons
         homeBtn = findViewById(R.id.homeBtn_Home);
         workoutBtn = findViewById(R.id.homeBtn_workout);
         searchBtn = findViewById(R.id.homeBtn_search);
         settingsBtn = findViewById(R.id.homeBtn_settings);
         backBtn = findViewById(R.id.btn_goBack);
 
+        // Disable settings button since we're already on the SettingsActivity
+        settingsBtn.setEnabled(false);
 
         homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
         workoutBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
-        settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
+
         backBtn.setOnClickListener(this::btn_GoBack);
 
         //--
 
-        //darkmode switch
+        // Dark mode switch setup
         darkModeSwitch = findViewById(R.id.settings_darkModeSwitch);
 
-
-        //used for dark_mode
+        // Used for dark_mode
         sharedPreferences = getSharedPreferences(PREF_SETTINGS_KEY, MODE_PRIVATE);
         boolean isDarkModeOn = sharedPreferences.getBoolean(PREF_DARKMODE_KEY, false);
 
-        setDefaultNightMode(isDarkModeOn);
-
         darkModeSwitch.setChecked(isDarkModeOn);
 
-        //not too sure about this
+        // Update the theme only when the switch is toggled
+        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // Just update the shared preferences for the dark mode state
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(PREF_DARKMODE_KEY, isChecked);
+            editor.apply();
+        });
+
+        // Button actions for forgot password and delete account
         ImageButton btnForgotPassword = findViewById(R.id.settings_btn_forgotPwd);
         ImageButton btnDeleteAccount = findViewById(R.id.settings_btn_DelAcc);
 
@@ -66,33 +70,47 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
             Intent intent = new Intent(SettingsActivity.this, SetPasswordActivity.class);
             startActivity(intent);
         });
-
     }
 
-    public void settings_applyChanges(View view){
 
+    //this code below fixes the darkmode glicthing issue
+    public void settings_applyChanges(View view) {
+        boolean isDark = darkModeSwitch.isChecked();
+
+        // Apply the theme change when the Apply Changes button is clicked
+        setDefaultNightMode(isDark);
+
+        // Save the user's choice to preferences
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(PREF_DARKMODE_KEY, isDark);
+        editor.apply();
+
+        // Optional: Finish the activity or show a confirmation toast
+        finish(); // Optionally finish the activity, or you can show a confirmation message
+    }
+
+    //this was the code for applychanges before
+    /*public void settings_applyChanges() {
         boolean isDark = darkModeSwitch.isChecked();
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putBoolean("dark_mode", isDark);
-
+        editor.putBoolean(PREF_DARKMODE_KEY, isDark);
         editor.apply();
 
+
         setDefaultNightMode(isDark);
+    }*/
 
-        finish();
-    }
-
-    //Function made to keep code DRY
-    public static void setDefaultNightMode(boolean isModeNight){
-        if(isModeNight){
+    // Function to set default night mode based on preference
+    public static void setDefaultNightMode(boolean isModeNight) {
+        if (isModeNight) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }else{
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
-    //to have the footer image buttons functional
+
+    // Footer buttons navigation functionality
     public void navigateTo(Class<?> activityClass) {
         Intent intent = new Intent(SettingsActivity.this, activityClass);
         startActivity(intent);
@@ -100,6 +118,6 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
 
     @Override
     public void btn_GoBack(View view) {
-        this.finish();
+        this.finish(); // Go back to the previous activity
     }
 }

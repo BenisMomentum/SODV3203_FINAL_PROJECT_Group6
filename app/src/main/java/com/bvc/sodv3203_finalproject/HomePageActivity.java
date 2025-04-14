@@ -6,7 +6,9 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HomePageActivity extends AppCompatActivity {
+import com.bvc.sodv3203_finalproject.util.INavigation;
+
+public class HomePageActivity extends AppCompatActivity implements INavigation {
 
     ImageButton createWorkoutBtn, workoutRoutineBtn, searchBtn, settingsBtn;
 
@@ -21,19 +23,18 @@ public class HomePageActivity extends AppCompatActivity {
         settingsBtn = findViewById(R.id.home_ibtn_settings);
 
         // Exemplo de navegação ao clicar no botão
-        createWorkoutBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePageActivity.this, CreateWorkoutRoutineActivity.class);
-            startActivity(intent);
-        });
+        createWorkoutBtn.setOnClickListener(v -> navigateTo(CreateWorkoutRoutineActivity.class));
 
-        workoutRoutineBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePageActivity.this, WorkoutLogActivity.class);
-            startActivity(intent);
-        });
+        workoutRoutineBtn.setOnClickListener(v -> navigateTo(WorkoutLogActivity.class));
 
-        searchBtn.setOnClickListener(v -> {
-                Intent intent = new Intent(HomePageActivity.this, SearchWorkoutActivity.class);
-            startActivity(intent);
-        });
+        searchBtn.setOnClickListener(v -> navigateTo(SearchWorkoutActivity.class));
+
+        settingsBtn.setOnClickListener(v -> navigateTo(SettingsActivity.class));
+    }
+
+    @Override
+    public void navigateTo(Class<?> activityClass) {
+        Intent intent = new Intent(HomePageActivity.this, activityClass);
+        startActivity(intent);
     }
 }

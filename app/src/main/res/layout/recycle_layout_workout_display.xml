@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/BigStepTheme.WorkoutDisplay.Container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/_null"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/RLW_workoutTitle"
+                style="@style/Widget.BigStepTheme.WorkoutDisplay.Container.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/RLRD_TV_name_default" />
+
+            <TextView
+                android:id="@+id/RLW_workoutTarget"
+                style="@style/Widget.BigStepTheme.WorkoutDisplay.Container.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/RLWD_targetMuscle_defaultText"
+                android:textStyle="bold|italic" />
+
+            <ImageButton
+                android:id="@+id/RLW_ibtn_AddToRoutine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/workoutResultBGColor"
+                android:contentDescription="@string/RLW_ibtn_AddToRoutine_desc"
+                app:srcCompat="@drawable/bot_video_add" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

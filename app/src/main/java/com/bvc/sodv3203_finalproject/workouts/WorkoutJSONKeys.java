@@ -14,7 +14,7 @@ public class WorkoutJSONKeys {
     //When parsing from API
 
     public static String API_NAME = "name";
-    public static String API_MUSCLE = "target";
+    public static String API_MUSCLE = "muscle";
 
     //WorkoutRoutine's tags
 

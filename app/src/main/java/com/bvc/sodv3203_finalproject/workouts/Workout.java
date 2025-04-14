@@ -92,6 +92,23 @@ public class Workout {
         return obj;
     }
 
+    public static Workout fromJSON(JSONObject object){
+
+        try{
+
+            String name = object.getString(WorkoutJSONKeys.NAME);
+            TargetMuscle muscle = TargetMuscle.valueOf(object.getString(WorkoutJSONKeys.TARGET_MUSCLE));
+            int sets = object.getInt(WorkoutJSONKeys.SETS);
+            int reps = object.getInt(WorkoutJSONKeys.REPS);
+
+            return new Workout(name, sets, reps, muscle);
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public static Workout ParseFromAPI(JSONObject obj){
 
         String name = null;
@@ -99,7 +116,10 @@ public class Workout {
 
         try {
             name = obj.getString(WorkoutJSONKeys.API_NAME);
-            muscle = TargetMuscle.valueOf(obj.getString(WorkoutJSONKeys.API_MUSCLE));
+
+            String targetStr = obj.getString(WorkoutJSONKeys.API_MUSCLE);
+
+            muscle = TargetMuscle.valueOf(targetStr.toUpperCase());
 
             return new Workout(name, muscle);
         } catch (JSONException e) {

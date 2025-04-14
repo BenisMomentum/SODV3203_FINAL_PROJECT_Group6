@@ -2,27 +2,40 @@ package com.bvc.sodv3203_finalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bvc.sodv3203_finalproject.Adapters.SearchWorkoutAdapter;
+import com.bvc.sodv3203_finalproject.util.APICaller;
 import com.bvc.sodv3203_finalproject.util.IGoBack;
 import com.bvc.sodv3203_finalproject.util.INavigation;
+import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchWorkoutActivity extends AppCompatActivity implements INavigation, IGoBack {
     private EditText searchBar;
-    private LinearLayout searchResults;
-    private Button searchButton, showAllButton;
-    ImageButton backBtn, homeBtn, workoutBtn, searchBtn, settingsBtn;
+
+    private RecyclerView searchResults;
+
+    private Button searchButton;
+    private ImageButton backBtn, homeBtn, workoutBtn, searchBtn, settingsBtn;
+
+    public List<Workout> resultList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +43,10 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         setContentView(R.layout.activity_search_workout);
 
         searchBar = findViewById(R.id.search_SearchBar);
-        searchResults = findViewById(R.id.search_cont_SearchResults);
+        this.searchResults = findViewById(R.id.search_cont_SearchResults);
         searchButton = findViewById(R.id.settings_btn_search);
-        showAllButton = findViewById(R.id.settings_btn_all);
         backBtn = findViewById(R.id.btn_goBack);
+
         //------------------------------------------------footer btns
         homeBtn = findViewById(R.id.homeBtn_Home);
         workoutBtn = findViewById(R.id.homeBtn_workout);
@@ -44,43 +57,57 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         workoutBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
-        //--
 
-//        searchButton.setOnClickListener(this::searchWorkouts);
-//        showAllButton.setOnClickListener(this::showAllWorkouts);
-        backBtn.setOnClickListener(view -> finish());
+        backBtn.setOnClickListener(this::btn_GoBack);
+        searchButton.setOnClickListener(this::processSearch);
+
+        setAdapterForSearchResults();
     }
 
+    private void setAdapterForSearchResults() {
 
+        SearchWorkoutAdapter adapter = new SearchWorkoutAdapter(this);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
 
+        searchResults.setAdapter(adapter);
+        searchResults.setItemAnimator(new DefaultItemAnimator());
+        searchResults.setLayoutManager(manager);
 
+    }
 
-//    public void searchWorkouts(View view) {
-//        String query = searchBar.getText().toString();
-//        if(query.isEmpty()){
-//            searchResults.setText("Please enter your search");
-//            return;
-//        }
-//        List<Workout> results = WorkoutData.getInstance().searchWorkouts(query);
-//        displaySearchResults(results);
-//    }
-//
-//    public void showAllWorkouts(View view){
-//        List<Workout> allWorkouts = WorkoutData.getInstance().getAllWorkouts();
-//        displaySearchResults(allWorkouts);
-//    }
-//
-//    private void displaySearchResults(List<Workout> workouts) {
-//        if (workouts.isEmpty()) {
-//            searchResults.setText("No workouts found");
-//        } else {
-//            StringBuilder builder = new StringBuilder();
-//            for (Workout workout : workouts) {
-//                builder.append(workout.getName()).append("\n");
-//            }
-//            searchResults.setText(builder.toString());
-//        }
-//    }
+    public void processSearch(View view){
+
+        String query = searchBar.getText().toString().trim();
+
+        if(query.isBlank()){
+
+            Utility.displayMsg(this, "Cannot search for nothing!", false);
+
+            return;
+        }
+
+        JSONObject source = APICaller.getExercise(query);
+
+        try {
+            JSONArray dataArr = source.getJSONArray(APICaller.API_RET_KEY);
+            Workout w = null;
+
+            for(int i = 0; i < dataArr.length(); i++){
+
+                w = Workout.ParseFromAPI(dataArr.getJSONObject(i));
+
+                resultList.add(w);
+
+            }
+
+            searchResults.getAdapter().notifyDataSetChanged();
+
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 //------------------------------------------------footer btns
     public void navigateTo(Class<?> activityClass) {
         Intent intent = new Intent(SearchWorkoutActivity.this, activityClass);

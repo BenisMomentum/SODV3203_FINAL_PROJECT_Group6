@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish(){
 
-                switchToWorkoutLogs();
+                switchToHome();
             }
         }.start();
 
@@ -72,22 +72,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Moved to function for cleanliness
-    private void switchToWorkoutLogs(){
+    private void switchToHome(){
 
         final Intent moveToLogin = new Intent(this, HomePageActivity.class);
 
         startActivity(moveToLogin);
     }
 
+
     public void btn_GoBack(View view){
         finish();
     }
 
-
-    public void switchPages(Context context, Class<? extends AppCompatActivity> cls){
-        final Intent intent = new Intent(context, cls);
-
-        startActivity(intent);
-        finish();
-    }
 }

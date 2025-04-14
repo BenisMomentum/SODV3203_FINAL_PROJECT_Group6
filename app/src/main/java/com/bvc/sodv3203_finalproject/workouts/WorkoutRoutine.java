@@ -41,7 +41,9 @@ public class WorkoutRoutine {
     //The following functions are to
     //Simplify and shorten future syntax.
     public void add(Workout workout){
-        this.workouts.add(workout);
+        boolean status = this.workouts.add(workout);
+
+        if(!status) throw new RuntimeException("ERROR: UNABLE TO ADD WORKOUT TO ROUTINE\n\n");
     }
 
     public Workout get(int index){

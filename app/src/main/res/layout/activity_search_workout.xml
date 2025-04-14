@@ -88,9 +88,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:gravity="center|right"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/homeBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,53 +108,35 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/search_SearchBar"
-            style="@style/Widget.BigStepTheme.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:autofillHints=""
-            android:background="@drawable/round_corner_bg"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/search_placeholder"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:textSize="16sp" />
-
         <LinearLayout
-            style="?android:attr/buttonBarStyle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/settings_btn_all"
-                style="@style/Widget.BigStepTheme.Button"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/search_SearchBar"
+                style="@style/Widget.BigStepTheme.EditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:autofillHints=""
+                android:background="@drawable/round_corner_bg"
+                android:backgroundTint="@color/white"
+                android:ems="10"
                 android:gravity="center"
-                android:text="@string/all_txt"
-                android:textColor="@color/TextColor"
-                tools:ignore="TextSizeCheck" />
+                android:hint="@string/search_placeholder"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/settings_btn_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/search_txt"
-                android:textColor="@color/TextColor"
-                tools:ignore="TextSizeCheck" />
-
+                android:text="@string/search_txt" />
         </LinearLayout>
 
         <TextView
@@ -170,23 +152,16 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/search_cont_SearchResults"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:gravity="center|top"
-            android:orientation="vertical"
-            android:scrollbars="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                style="@style/BigStepTheme.WorkoutSearchResult.Container"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_cont_SearchResults"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/textview" />
-
-        </LinearLayout>
+                android:contentDescription="@string/search_cont_SearchResults_desc" />
+        </ScrollView>
 
     </LinearLayout>
 

@@ -120,4 +120,9 @@
     <string name="home_ibtn_workout_desc">View Workouts</string>
     <string name="home_ibtn_createWorkout_desc">Create A Workout</string>
     <string name="home_ibtn_search_desc">Search for a Workout</string>
+    <string name="search_cont_SearchResults_desc">Search Results</string>
+    <string name="RLW_ibtn_AddToRoutine_desc">Add to specific routine</string>
+    <string name="AWFS_btn_cancelText">Cancel</string>
+    <string name="AWFS_TV_titleText">Add to?</string>
+    <string name="AWFS_sets_hint">#</string>
 </resources>

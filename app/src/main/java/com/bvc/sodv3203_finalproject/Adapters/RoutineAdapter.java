@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -29,22 +30,25 @@ import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
 public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineViewHolder>{
 
-    private Context parentContext;
+    protected Context parentContext;
 
     public RoutineAdapter(Context context){
 
         this.parentContext = context;
+
     }
 
     public class RoutineViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView name;
+        protected TextView name;
 
         //The array is in the following order:
         //Sun, Mon, Tue, Wed, Thur, Fri, Sat
-        private TextView[] days;
+        protected TextView[] days;
 
-        private ImageButton dropdownbtn;
+        protected ImageButton dropdownbtn;
+
+        protected LinearLayout container = null;
 
         public RoutineViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,6 +66,8 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
                 itemView.findViewById(R.id.RLRD_TV_Fri),
                 itemView.findViewById(R.id.RLRD_TV_Sat)
             };
+
+            container = itemView.findViewById(R.id.RLRD_container);
         }
     }
 

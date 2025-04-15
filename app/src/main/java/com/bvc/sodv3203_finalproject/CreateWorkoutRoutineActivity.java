@@ -82,7 +82,7 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
         Log.d("CreateWorkoutRoutineActivity", routine.name);
 
 
-
+        WorkoutData.getInstance().saveData();
         this.finish();
     }
 
@@ -90,4 +90,5 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
     public void btn_GoBack(View view) {
         this.finish();
     }
+
 }

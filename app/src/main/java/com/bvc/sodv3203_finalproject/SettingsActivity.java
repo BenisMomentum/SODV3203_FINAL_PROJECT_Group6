@@ -36,14 +36,11 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
 
         // Disable settings button since we're already on the SettingsActivity
         settingsBtn.setEnabled(false);
-
-        homeBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
-        workoutBtn.setOnClickListener(view -> navigateTo(MainActivity.class));
+        homeBtn.setOnClickListener(view -> navigateTo(HomePageActivity.class));
+        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
 
         backBtn.setOnClickListener(this::btn_GoBack);
-
-        //--
 
         // Dark mode switch setup
         darkModeSwitch = findViewById(R.id.settings_darkModeSwitch);
@@ -62,14 +59,6 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
             editor.apply();
         });
 
-        // Button actions for forgot password and delete account
-        ImageButton btnForgotPassword = findViewById(R.id.settings_btn_forgotPwd);
-        ImageButton btnDeleteAccount = findViewById(R.id.settings_btn_DelAcc);
-
-        btnForgotPassword.setOnClickListener(v -> {
-            Intent intent = new Intent(SettingsActivity.this, SetPasswordActivity.class);
-            startActivity(intent);
-        });
     }
 
 
@@ -86,18 +75,6 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         editor.apply();
         finish();
     }
-
-    //this was the code for applychanges before
-    /*public void settings_applyChanges() {
-        boolean isDark = darkModeSwitch.isChecked();
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(PREF_DARKMODE_KEY, isDark);
-        editor.apply();
-
-
-        setDefaultNightMode(isDark);
-    }*/
 
     // Function to set default night mode based on preference
     public static void setDefaultNightMode(boolean isModeNight) {

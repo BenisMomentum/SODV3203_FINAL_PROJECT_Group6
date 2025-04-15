@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.Adapters.AddRoutineAdapter;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
+import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +61,13 @@ public class AddWorkoutFromSearchActivity extends AppCompatActivity {
         repsInput.setText("0");
     }
 
-        private void setRoutineViewAdapter() {
+    @Override
+    protected void onStop() {
+        super.onStop();
+        WorkoutData.getInstance().saveData();
+    }
+
+    private void setRoutineViewAdapter() {
 
         AddRoutineAdapter adapter = new AddRoutineAdapter(this, selectedWorkout);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
@@ -69,4 +76,5 @@ public class AddWorkoutFromSearchActivity extends AppCompatActivity {
         routineView.setItemAnimator(new DefaultItemAnimator());
         routineView.setLayoutManager(manager);
     }
+
 }

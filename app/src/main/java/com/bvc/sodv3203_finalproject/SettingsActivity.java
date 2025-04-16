@@ -73,9 +73,7 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(PREF_DARKMODE_KEY, isDark);
         editor.apply();
-
-        // Optional: Finish the activity or show a confirmation toast
-        finish(); // Optionally finish the activity, or you can show a confirmation message
+        finish();
     }
 
     // Function to set default night mode based on preference

@@ -64,7 +64,7 @@ public class AddWorkoutFromSearchActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        WorkoutData.getInstance().saveData();
+        WorkoutData.getInstance().saveData(this);
     }
 
     private void setRoutineViewAdapter() {

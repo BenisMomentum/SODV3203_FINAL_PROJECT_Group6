@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,6 +30,8 @@ public class Utility {
 
     public static final String EDIT_WORKOUT_BUNDLE_KEY = "routine_to_edit";
     public static final String WORKOUT_MODE_BUNDLE_KEY = "routine";
+
+    public static final String DEBUG_CODE = "_dbg";
 
     /**
      *   @param  input   The source input for the text
@@ -79,9 +83,13 @@ public class Utility {
         if(filename.isBlank()) return;
 
         //Using try with resources to auto-close
-        try(FileOutputStream fstream = context.openFileOutput(filename, Context.MODE_PRIVATE)){
+        try{
+
+            FileOutputStream fstream = context.openFileOutput(filename, Context.MODE_PRIVATE);
 
             fstream.write(data.getBytes());
+
+            fstream.close();
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException("ERR: FILE NOT FOUND\n\n" + e.getMessage());
@@ -103,6 +111,8 @@ public class Utility {
             while((line = reader.readLine()) != null){
                 jsonString.append(line);
             }
+
+            Log.d(DEBUG_CODE, "Read Data:\n\n" + jsonString);
 
             return jsonString.toString();
 

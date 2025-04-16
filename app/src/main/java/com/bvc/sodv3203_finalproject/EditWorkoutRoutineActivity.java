@@ -171,7 +171,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
                 new WorkoutRoutine(name, editedRoutine.workouts, workoutDays.toArray(new DayOfWeek[0]))
         );
 
-        WorkoutData.getInstance().saveData();
+        WorkoutData.getInstance().saveData(this);
         this.finish();
     }
 

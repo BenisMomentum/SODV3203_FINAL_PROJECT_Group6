@@ -79,10 +79,7 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
 
         WorkoutData.getInstance().add(routine);
 
-        Log.d("CreateWorkoutRoutineActivity", routine.name);
-
-
-        WorkoutData.getInstance().saveData();
+        WorkoutData.getInstance().saveData(this);
         this.finish();
     }
 

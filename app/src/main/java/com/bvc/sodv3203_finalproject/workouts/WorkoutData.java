@@ -1,6 +1,8 @@
 package com.bvc.sodv3203_finalproject.workouts;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -11,13 +13,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Paths;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutData {
 
-    public static final String FILE_NAME = "workoutData.json";
+    public static final String FILE_NAME = "workout_data.json";
     private static final WorkoutData _instance = new WorkoutData();
     protected List<WorkoutRoutine> routines = new ArrayList<>();
 
@@ -183,11 +188,13 @@ public class WorkoutData {
         return false;
     }
 
-    public void saveData(){
-        Utility.writeToFile(Utility.applicationContext, FILE_NAME, this.toJSON().toString());
+    public void saveData(Context context){
+        Utility.writeToFile(context, FILE_NAME, this.toJSON().toString());
+
+        Log.d(Utility.DEBUG_CODE, "Write Successful\n" + this.toJSON().toString());
     }
 
-    public void syncFromFile(){
+    public void syncFromFile(Context context){
 
         if(new File(FILE_NAME).exists()){
             String data = Utility.readFromFile(Utility.applicationContext, FILE_NAME);
@@ -195,18 +202,29 @@ public class WorkoutData {
             routines.clear();
 
             addFromJSON(data);
+
+            Log.d(Utility.DEBUG_CODE, "Read from Successful");
         }
 
     }
 
-    public void startUp() {
+    @SuppressLint("NewApi")
+    public void startUp(Context context) {
+
+
+        if(Files.notExists(Paths.get(FILE_NAME))){
+
+            Log.d(Utility.DEBUG_CODE, "File did not exist. Writing empty data");
+
+            saveData(context);
+
+            return;
+        }
+
+        Log.d(Utility.DEBUG_CODE, "Sync from file Successful");
 
         //If the file exists, we perform startup synchronization.
-        if(new File(FILE_NAME).exists()){
-            syncFromFile();
-        }else{
-            saveData();
-        }
+        syncFromFile(context);
 
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -36,15 +37,7 @@ public class MainActivity extends AppCompatActivity {
         //This is a solution to a stupid problem...
         Utility.applicationContext = getApplicationContext();
 
-        //This is where we'd start synchronizing our persistent data from files.
-        WorkoutData.getInstance().startUp();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        WorkoutData.getInstance().saveData();
+        WorkoutData.getInstance().startUp(this);
     }
 
     @Override

@@ -196,12 +196,14 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
 
     private void set_DaysTV_toTrue(TextView daysTV){
 
+        //.getApplicationContext() prevents a bug where the TextViews are the wrong color.
+
         daysTV.setBackgroundTintList(
-            ContextCompat.getColorStateList(Utility.applicationContext, R.color.workoutResult_dateDisplay_BG_true)
+            ContextCompat.getColorStateList(parentContext.getApplicationContext(), R.color.workoutResult_dateDisplay_BG_true)
         );
 
         daysTV.setTextColor(
-            ContextCompat.getColor(Utility.applicationContext, R.color.workoutResult_dateDisplay_Text_true)
+            ContextCompat.getColor(parentContext.getApplicationContext(), R.color.workoutResult_dateDisplay_Text_true)
         );
 
     }

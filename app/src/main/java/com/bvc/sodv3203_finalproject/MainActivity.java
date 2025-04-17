@@ -1,12 +1,9 @@
 package com.bvc.sodv3203_finalproject;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +12,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bvc.sodv3203_finalproject.util.Utility;
+import com.bvc.sodv3203_finalproject.workouts.DataFileNotFoundException;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
+
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,10 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         setStartupThemeMode();
-        //This is a solution to a stupid problem...
-        Utility.applicationContext = getApplicationContext();
 
-        WorkoutData.getInstance().startUp(this);
+        WorkoutData.getInstance().startUp(getApplicationContext());
     }
 
     @Override

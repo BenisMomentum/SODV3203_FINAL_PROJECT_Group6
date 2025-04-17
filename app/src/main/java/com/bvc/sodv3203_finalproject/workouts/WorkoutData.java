@@ -2,7 +2,6 @@ package com.bvc.sodv3203_finalproject.workouts;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -12,42 +11,32 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Paths;
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutData {
 
     public static final String FILE_NAME = "workout_data.json";
+
     private static final WorkoutData _instance = new WorkoutData();
+
     protected List<WorkoutRoutine> routines = new ArrayList<>();
 
-    private WorkoutData(){
+    private WorkoutData(){}
 
-    }
+    public static WorkoutData getInstance(){    return _instance;   }
 
-    public static WorkoutData getInstance(){
+    // === ABSTRACTION METHODS ===
 
-        return _instance;
-    }
-
-    public int add(WorkoutRoutine routine){
+    public boolean add(@NonNull WorkoutRoutine routine){
 
         //This method helps shorten syntax massively.
-        this.routines.add(routine);
-
-
-        return 0;
+        return this.routines.add(routine);
     }
 
-    public int addAll(@NonNull List<WorkoutRoutine> routines){
-        this.routines.addAll(routines);
+    public boolean addAll(@NonNull List<WorkoutRoutine> routines){
 
-        return 0;
+        return this.routines.addAll(routines);
     }
 
     public WorkoutRoutine get(int index){
@@ -56,6 +45,8 @@ public class WorkoutData {
 
     public WorkoutRoutine get(WorkoutRoutine routine){
 
+        //Linear search algorithm
+        //Binary search algorithm was too buggy to implement.
         for(int i = 0; i < routines.size(); i++){
             if(routine.name.equals(routines.get(i).name)) return routines.get(i);
         }
@@ -66,8 +57,10 @@ public class WorkoutData {
     public int indexOf(String routineName){
 
         for(int i = 0; i < routines.size(); i++){
-            if(routines.get(i).name.equals(routineName))
+
+            if(routines.get(i).name.equals(routineName)){
                 return i;
+            }
         }
 
         return -1;
@@ -81,10 +74,11 @@ public class WorkoutData {
         return routines;
     }
 
-    public JSONObject toJSON(){
-        JSONObject obj = new JSONObject();
+    // === END OF ABSTRACTION METHODS ===
 
+    public JSONObject toJSON(){
         try{
+            JSONObject obj = new JSONObject();
             JSONArray routinesArr = new JSONArray();
 
             for(int i = 0; i < this.routines.size(); i++){
@@ -112,7 +106,6 @@ public class WorkoutData {
      *
      * @param obj The JSONObject derived from a file.
      */
-    @SuppressLint("NewApi") //Because its stupid.
     public void addFromJSON(JSONObject obj){
 
         try {
@@ -127,7 +120,6 @@ public class WorkoutData {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void addFromJSON(String jsonStr){
@@ -138,46 +130,16 @@ public class WorkoutData {
         }
     }
 
-    @SuppressLint("NewApi")
-    public void loadTestingData() {
-        //TESTING DATA, REMOVE WHEN WE HAVE PERSITENCY:
+    /**
+     * Routines are meant to have unique names.
+     * Therefore, we can search by them.
+     *
+     * @param name Name of the routine
+     * @return `true` if routine exists
+     */
+    public boolean hasName(@NonNull String name){
 
-        WorkoutRoutine routine1 = new WorkoutRoutine("Test Workout 1", new DayOfWeek[]{DayOfWeek.SUNDAY});
-        Workout w = new Workout("Pushups", 4, 10, TargetMuscle.CHEST);
-
-        routine1.add(w);
-
-        //WARNING: CLEARS DATA
-        routines.clear();
-
-        routines.add(routine1);
-    }
-//----------------------------------------------------------------------
-
-    //I had to create these functions for the searchWorkout page
-    public List<Workout> searchWorkouts(String query) {//Create
-        List<Workout> results = new ArrayList<>();
-
-        for (WorkoutRoutine routine : routines) {
-            for (Workout workout : routine.getWorkouts()) { // we need this method in the WorkoutRoutine class
-                if (workout.getName().toLowerCase().contains(query.toLowerCase())) {
-                    results.add(workout);
-                }
-            }
-        }
-        return results;
-    }
-
-    public List<Workout> getAllWorkouts() {
-        List<Workout> allWorkouts = new ArrayList<>();
-        for (WorkoutRoutine routine : routines) {
-            allWorkouts.addAll(routine.getWorkouts()); // add all workouts of the list
-        }
-        return allWorkouts;
-    }
-    //--------------------------------------------------------------------------
-
-    public boolean hasName(String name){
+        if(this.routines.isEmpty()) return false;
 
         for(int i = 0; i < routines.size(); i++){
             if(routines.get(i).name.equals(name)){
@@ -190,41 +152,44 @@ public class WorkoutData {
 
     public void saveData(Context context){
         Utility.writeToFile(context, FILE_NAME, this.toJSON().toString());
-
-        Log.d(Utility.DEBUG_CODE, "Write Successful\n" + this.toJSON().toString());
     }
 
     public void syncFromFile(Context context){
 
-        if(new File(FILE_NAME).exists()){
-            String data = Utility.readFromFile(Utility.applicationContext, FILE_NAME);
+        //Still broken, but it's supposed to only do it if the file exists.
 
-            routines.clear();
+        String data = Utility.readFromFile(context, FILE_NAME);
 
-            addFromJSON(data);
+        routines.clear();
 
-            Log.d(Utility.DEBUG_CODE, "Read from Successful");
-        }
-
+        addFromJSON(data);
     }
+
 
     @SuppressLint("NewApi")
     public void startUp(Context context) {
 
+        /*
+          So, here's the problem:
 
-        if(Files.notExists(Paths.get(FILE_NAME))){
+          Because android studio/the android framework is being
+          incredibly dense, we have to THROW a custom exception all the way from
+          the Utility.readFromFile() function
+          THEN, we're going to catch it here.
 
-            Log.d(Utility.DEBUG_CODE, "File did not exist. Writing empty data");
+          Catching the error will tell us that the file doesn't exist
+          Therefore, we write an empty file and THEN we can proceed.
 
+          This should not work. But, it does. It's stupid that this is
+          what I have to do to get it to work.
+          But, it works.
+         */
+
+        try {
+            syncFromFile(context);
+        } catch(DataFileNotFoundException e){
             saveData(context);
-
-            return;
         }
-
-        Log.d(Utility.DEBUG_CODE, "Sync from file Successful");
-
-        //If the file exists, we perform startup synchronization.
-        syncFromFile(context);
 
     }
 }

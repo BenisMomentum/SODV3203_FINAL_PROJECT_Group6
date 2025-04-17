@@ -1,22 +1,14 @@
 package com.bvc.sodv3203_finalproject.util;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import org.json.JSONObject;
+import com.bvc.sodv3203_finalproject.workouts.DataFileNotFoundException;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,12 +17,8 @@ import java.time.DayOfWeek;
 
 public class Utility {
 
-
-    public static Context applicationContext; //BEHOLD, a solution to a stupid problem.
-
     public static final String EDIT_WORKOUT_BUNDLE_KEY = "routine_to_edit";
     public static final String WORKOUT_MODE_BUNDLE_KEY = "routine";
-
     public static final String DEBUG_CODE = "_dbg";
 
     /**
@@ -55,6 +43,7 @@ public class Utility {
 
         Toast.makeText(context, text, length).show();
     }
+
 
     @SuppressLint("NewApi")
     public static DayOfWeek getDay(String name){
@@ -92,7 +81,9 @@ public class Utility {
             fstream.close();
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("ERR: FILE NOT FOUND\n\n" + e.getMessage());
+            //By far one of the stupidest hacks I've had to perform.
+            throw new DataFileNotFoundException("ERR: FILE NOT FOUND\n\n" + e.getMessage());
+
         } catch (IOException e) {
             throw new RuntimeException("ERR: IO EXCEPTION WHEN SAVING TO FILE\n\n" + e.getMessage());
         }
@@ -112,12 +103,10 @@ public class Utility {
                 jsonString.append(line);
             }
 
-            Log.d(DEBUG_CODE, "Read Data:\n\n" + jsonString);
-
             return jsonString.toString();
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("ERR: FILE NOT FOUND\n\n" + e.getMessage());
+            throw new DataFileNotFoundException("ERR: FILE NOT FOUND\n\n" + e.getMessage());
         } catch (IOException e) {
             throw new RuntimeException("ERR: IO EXCEPTION WHEN SAVING TO FILE\n\n" + e.getMessage());
         }

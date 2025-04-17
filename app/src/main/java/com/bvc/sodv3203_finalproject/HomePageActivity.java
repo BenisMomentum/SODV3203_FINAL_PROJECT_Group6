@@ -7,7 +7,6 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bvc.sodv3203_finalproject.util.INavigation;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
 public class HomePageActivity extends AppCompatActivity implements INavigation {
 
@@ -18,12 +17,12 @@ public class HomePageActivity extends AppCompatActivity implements INavigation {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
+        //Navigation button instantiation
         createWorkoutBtn = findViewById(R.id.home_ibtn_createWorkout);
         workoutRoutineBtn = findViewById(R.id.home_ibtn_workout);
         searchBtn = findViewById(R.id.home_ibtn_search);
         settingsBtn = findViewById(R.id.home_ibtn_settings);
 
-        // Exemplo de navegação ao clicar no botão
         createWorkoutBtn.setOnClickListener(v -> navigateTo(CreateWorkoutRoutineActivity.class));
         workoutRoutineBtn.setOnClickListener(v -> navigateTo(WorkoutLogActivity.class));
         searchBtn.setOnClickListener(v -> navigateTo(SearchWorkoutActivity.class));

@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 public class Workout {
 
+    //The basis for our data.
+
     public String name;
     public TargetMuscle targetMuscle;
     public int sets = 0;
@@ -49,6 +51,7 @@ public class Workout {
     }
 
     //I am averse to putting try-catches in constructors. This is easier.
+    //Anyone who tells me otherwise should subject themselves to it.
     public Workout(JSONObject obj) throws JSONException{
 
         this.name = obj.getString(WorkoutJSONKeys.NAME);
@@ -58,22 +61,6 @@ public class Workout {
         this.sets = obj.getInt(WorkoutJSONKeys.SETS);
         this.reps = obj.getInt(WorkoutJSONKeys.REPS);
 
-    }
-
-    public void parseIntoSets(String input){
-        try {
-            this.sets = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            Log.d("Workout_Parse", "Err: Could not parse string: \n\t" + input);
-        }
-    }
-
-    public void parseIntoReps(String input){
-        try {
-            this.reps = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            Log.d("Workout_Parse", "Err: Could not parse string: \n\t" + input);
-        }
     }
 
     public JSONObject toJSON(){

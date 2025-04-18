@@ -2,7 +2,6 @@ package com.bvc.sodv3203_finalproject;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -29,14 +28,16 @@ import java.util.List;
 
 public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGoBack {
 
-    public WorkoutRoutine editedRoutine = null;
-
     private EditText newName;
 
+    //Sequence:
+    //Sun, Mon, Tue, Wed, Thu, Fri, Sat
     public CheckBox[] newDays;
+
     public Button submit;
 
     public RecyclerView routineWorkouts = null;
+    public WorkoutRoutine editedRoutine = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,7 +62,6 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
         loadRoutineWorkoutAdapter();
 
     }
-
 
 
     private void loadRoutineWorkoutAdapter() {
@@ -111,12 +111,10 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
 
         if(workoutDays.length == 0) return;
 
+        //TLDR: Uses a switch-case to determine which checkboxes should be checked on launch.
         int i = 0;
 
-//        TLDR: Uses a switch-case to determine which checkboxes should be checked on launch.
-
         while(i < workoutDays.length){
-
             switch(workoutDays[i]){
                 case SUNDAY:
                     this.newDays[0].setChecked(true);
@@ -139,9 +137,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
                 case SATURDAY:
                     this.newDays[6].setChecked(true);
                     break;
-
             }
-
             i++;
         }
 
@@ -165,6 +161,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
             }
         }
 
+        //We get the index in order to directly set the new routine using the singleton
         int index = WorkoutData.getInstance().indexOf(editedRoutine.name);
 
         WorkoutData.getInstance().routines().set(index,

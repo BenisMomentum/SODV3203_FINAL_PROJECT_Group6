@@ -26,16 +26,21 @@ public class APICaller extends AsyncTask<String, Void, String> {
     public static JSONObject getExercise(String name){
         try {
 
-            AsyncTask<String, Void, String> data = new APICaller().execute(API_URL + "?name=" + name.trim());
+            //Essentially, we call the API and pack the resulting exercised up into JSON
+            //We pack it into a string, then a JSON, and return the object with the correct return key
+
+            AsyncTask<String, Void, String> dataSrc = new APICaller().execute(API_URL + "?name=" + name.trim());
+
+            String data = dataSrc.get();
 
             JSONObject obj = new JSONObject();
 
-            obj.put(API_RET_KEY, new JSONArray(data.get()));
+            obj.put(API_RET_KEY, new JSONArray(data));
 
             return obj;
 
         } catch (JSONException e) {
-            Log.d("DEBUG_MSG", e.getMessage());
+            Log.d(Utility.DEBUG_CODE, e.getMessage());
 
             throw new RuntimeException(e);
         } catch (ExecutionException e) {

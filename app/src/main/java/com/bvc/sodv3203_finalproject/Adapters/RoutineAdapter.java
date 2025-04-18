@@ -34,6 +34,8 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
 
     public RoutineAdapter(Context context){
 
+        //The context is just here because some
+        //functions need it.
         this.parentContext = context;
 
     }
@@ -160,7 +162,7 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
         int i = 0;
 
         //Long story short: For every day that the user has this routine
-        //
+        //it will set the corresponding checkbox to true.
 
         while(i < routine.workoutDays.length){
             switch(routine.workoutDays[i]){

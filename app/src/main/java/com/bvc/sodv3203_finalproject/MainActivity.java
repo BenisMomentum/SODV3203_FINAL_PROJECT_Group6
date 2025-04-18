@@ -17,6 +17,11 @@ import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
 import org.json.JSONObject;
 
+/**
+ * This is our launch page, effectively. It's where we startup our data
+ * and then transition to the home page.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -30,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
 
         setStartupThemeMode();
 

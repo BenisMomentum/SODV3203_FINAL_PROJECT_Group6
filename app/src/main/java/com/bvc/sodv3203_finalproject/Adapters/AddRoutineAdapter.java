@@ -1,7 +1,5 @@
 package com.bvc.sodv3203_finalproject.Adapters;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -21,6 +19,8 @@ public class AddRoutineAdapter extends RoutineAdapter {
     public AddRoutineAdapter(AddWorkoutFromSearchActivity parent, @NonNull Workout w) {
         super(parent);
 
+        //While we already have the parentContext, we need to access
+        //some specific variables from the parent class.
         this.parent = parent;
         this.workoutToBeAdded = w;
     }

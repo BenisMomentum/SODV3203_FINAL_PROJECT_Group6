@@ -17,14 +17,18 @@ import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class AddWorkoutFromSearchActivity extends AppCompatActivity {
 
     public static final String WORKOUT_BUNDLE_KEY = "workout";
 
+    //Container for the routines.
     protected RecyclerView routineView;
 
     protected Button btn_cancel;
 
+    //We use this to reference the workout selected by the user
+    //in SearchWorkoutActivity.java
     private Workout selectedWorkout;
 
     public EditText setsInput, repsInput;
@@ -42,6 +46,8 @@ public class AddWorkoutFromSearchActivity extends AppCompatActivity {
 
         btn_cancel.setOnClickListener(v -> finish());
 
+
+        //SHOULD never error.
         try {
             selectedWorkout = Workout.fromJSON(new JSONObject(getIntent().getStringExtra(WORKOUT_BUNDLE_KEY)));
         } catch (JSONException e) {

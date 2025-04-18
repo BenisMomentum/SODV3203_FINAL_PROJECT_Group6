@@ -18,7 +18,6 @@ import com.bvc.sodv3203_finalproject.EditWorkoutRoutineActivity;
 import com.bvc.sodv3203_finalproject.R;
 import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
-import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
 public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.WorkoutViewHolder>{
@@ -42,6 +41,8 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
         public WorkoutViewHolder(@NonNull View itemView, WorkoutRoutine w) {
             super(itemView);
 
+            //The source data is used to retrieve the original element in the data array
+            //This is to prevent any bugs caused by faulty modification.
             this.sourceData = w;
 
             workoutName = itemView.findViewById(R.id.RLWED_workoutTitle);
@@ -71,9 +72,16 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
         holder.workoutName.setText(w.name);
         holder.tgtMuscle.setText(w.targetMuscle.name().toUpperCase());
 
-        holder.setCount.setText(String.format("%d", w.sets));
-        holder.repCount.setText(String.format("%d", w.reps));
+        //This is simpler than using String.format()
+        holder.setCount.setText("" + w.sets);
+        holder.repCount.setText("" + w.reps);
 
+        //The reason we do this is simple:
+        //We want to make sure that the sets change in real time
+        //as it is nearly impossible for us to loop through
+        //all the elements in order to change them individually.
+
+        //Yes, this process is inefficient, however, it works brilliantly.
         holder.setCount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

@@ -70,8 +70,6 @@ public class WorkoutLogActivity extends AppCompatActivity implements INavigation
         RoutineAdapter adapter = new RoutineAdapter(this);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
 
-
-
         workoutContainer.setLayoutManager(manager);
         workoutContainer.setItemAnimator(new DefaultItemAnimator());
         workoutContainer.setAdapter(adapter);

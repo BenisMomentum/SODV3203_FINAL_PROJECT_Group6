@@ -17,6 +17,8 @@ import com.bvc.sodv3203_finalproject.workouts.Workout;
 
 public class SearchWorkoutAdapter extends RecyclerView.Adapter<SearchWorkoutAdapter.SearchWorkoutViewHolder> {
 
+    //The parent activity is used to acquire the resultList
+    //so that we can display each workout properly
     private final SearchWorkoutActivity parentActivity;
 
     public SearchWorkoutAdapter(SearchWorkoutActivity parent){
@@ -24,7 +26,6 @@ public class SearchWorkoutAdapter extends RecyclerView.Adapter<SearchWorkoutAdap
     }
 
     public class SearchWorkoutViewHolder extends RecyclerView.ViewHolder{
-
 
         private TextView name, targetMuscle;
 

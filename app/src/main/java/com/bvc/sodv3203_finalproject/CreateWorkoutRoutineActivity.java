@@ -24,6 +24,9 @@ import java.util.List;
 public class CreateWorkoutRoutineActivity extends AppCompatActivity implements IGoBack {
 
     public EditText nameInput;
+
+    //The sequencing for this is as follows:
+    //Sun, Mon, Tue, Wed, Thu, Fri, Sat
     public CheckBox[] days;
     public Button submit;
 
@@ -37,6 +40,8 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
 
         nameInput = findViewById(R.id.CWR_ET_routineName);
 
+        //We use an array here as it would make
+        //indexing easier and faster.
         days = new CheckBox[]{
             findViewById(R.id.CWR_CB_Sun),
             findViewById(R.id.CWR_CB_Mon),
@@ -47,8 +52,11 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
             findViewById(R.id.CWR_CB_Sat)
         };
 
+        //Submit button handling
         submit = findViewById(R.id.CWR_btn_submit);
         submit.setOnClickListener(this::AddWorkoutToData);
+
+        //Back button handling
         backBtn = findViewById(R.id.btn_goBack);
         backBtn.setOnClickListener(view -> finish());
 
@@ -65,6 +73,12 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
 
             return;
         }
+
+        //In short, the below code loops through the days
+        //and registers each day the user has selected
+        //then converts it back to a primitive array.
+
+        //This is the easiest way I could find.
 
         List<DayOfWeek> workoutDays = new ArrayList<>();
 

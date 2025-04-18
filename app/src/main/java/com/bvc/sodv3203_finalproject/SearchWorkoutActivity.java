@@ -42,12 +42,19 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_workout);
 
-        searchBar = findViewById(R.id.search_SearchBar);
+        //Standard instantiation
+        this.searchBar = findViewById(R.id.search_SearchBar);
         this.searchResults = findViewById(R.id.search_cont_SearchResults);
-        searchButton = findViewById(R.id.settings_btn_search);
-        backBtn = findViewById(R.id.btn_goBack);
 
-        //------------------------------------------------footer btns
+        backBtn = findViewById(R.id.btn_goBack);
+        backBtn.setOnClickListener(this::btn_GoBack);
+
+        searchButton = findViewById(R.id.settings_btn_search);
+        searchButton.setOnClickListener(this::processSearch);
+
+        setAdapterForSearchResults();
+
+        //Navigation buttons
         homeBtn = findViewById(R.id.homeBtn_Home);
         workoutBtn = findViewById(R.id.homeBtn_workout);
         searchBtn = findViewById(R.id.homeBtn_search);
@@ -57,11 +64,6 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
         settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
-
-        backBtn.setOnClickListener(this::btn_GoBack);
-        searchButton.setOnClickListener(this::processSearch);
-
-        setAdapterForSearchResults();
     }
 
     private void setAdapterForSearchResults() {
@@ -80,12 +82,12 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         String query = searchBar.getText().toString().trim();
 
         if(query.isBlank()){
-
             Utility.displayMsg(this, "Cannot search for nothing!", false);
 
             return;
         }
 
+        //Gets the exercise from the API.
         JSONObject source = APICaller.getExercise(query);
 
         try {

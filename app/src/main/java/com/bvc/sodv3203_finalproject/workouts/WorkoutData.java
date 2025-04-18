@@ -170,19 +170,20 @@ public class WorkoutData {
     public void startUp(Context context) {
 
         /*
-          So, here's the problem:
+            So, here's the problem:
 
-          Because android studio/the android framework is being
-          incredibly dense, we have to THROW a custom exception all the way from
-          the Utility.readFromFile() function
-          THEN, we're going to catch it here.
+            Because android studio/the android framework is being
+            incredibly dense, we have to THROW a custom exception all the way from
+            the Utility.readFromFile() function
+            THEN, we're going to catch it here.
 
-          Catching the error will tell us that the file doesn't exist
-          Therefore, we write an empty file and THEN we can proceed.
+            Catching the error will tell us that the file doesn't exist
+            Therefore, we write an empty file and THEN we can proceed.
 
-          This should not work. But, it does. It's stupid that this is
-          what I have to do to get it to work.
-          But, it works.
+            This should not work. But, it does. It's stupid that this is
+            what I have to do to get it to work.
+            But, it works.
+
          */
 
         try {

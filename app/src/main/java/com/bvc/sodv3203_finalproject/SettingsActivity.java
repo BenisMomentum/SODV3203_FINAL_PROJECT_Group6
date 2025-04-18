@@ -39,7 +39,6 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         homeBtn.setOnClickListener(view -> navigateTo(HomePageActivity.class));
         workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
         searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
-
         backBtn.setOnClickListener(this::btn_GoBack);
 
         // Dark mode switch setup

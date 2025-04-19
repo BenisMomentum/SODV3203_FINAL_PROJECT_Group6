@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.bvc.sodv3203_finalproject.util.IGoBack;
 import com.bvc.sodv3203_finalproject.util.INavigation;
+import com.bvc.sodv3203_finalproject.util.Utility;
 
 public class SettingsActivity extends AppCompatActivity implements IGoBack, INavigation {
 
@@ -44,12 +45,6 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         // Dark mode switch setup
         darkModeSwitch = findViewById(R.id.settings_darkModeSwitch);
 
-        // Used for dark_mode
-        sharedPreferences = getSharedPreferences(PREF_SETTINGS_KEY, MODE_PRIVATE);
-        boolean isDarkModeOn = sharedPreferences.getBoolean(PREF_DARKMODE_KEY, false);
-
-        darkModeSwitch.setChecked(isDarkModeOn);
-
         // Update the theme only when the switch is toggled
         darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             // Just update the shared preferences for the dark mode state
@@ -59,6 +54,17 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         });
 
     }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        // Used for dark_mode
+        sharedPreferences = getSharedPreferences(PREF_SETTINGS_KEY, MODE_PRIVATE);
+        boolean isDarkModeOn = sharedPreferences.getBoolean(PREF_DARKMODE_KEY, Utility.GetSystemIsDark(this));
+        darkModeSwitch.setChecked(isDarkModeOn);
+    }
+
 
 
     //this code below fixes the darkmode glicthing issue

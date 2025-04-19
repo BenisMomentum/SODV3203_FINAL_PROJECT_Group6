@@ -48,18 +48,16 @@ public class MainActivity extends AppCompatActivity {
         //This is where we'd swap over to the login page.
 
         //Artificial delay.
-        new CountDownTimer(1000, 1000){
+        new CountDownTimer(500, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
                 //Does nothing. Should not do anything.
             }
             @Override
             public void onFinish(){
-
                 switchToHome();
             }
         }.start();
-
     }
 
     private void setStartupThemeMode() {

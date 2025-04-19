@@ -2,6 +2,7 @@ package com.bvc.sodv3203_finalproject.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -111,6 +112,22 @@ public class Utility {
             throw new RuntimeException("ERR: IO EXCEPTION WHEN SAVING TO FILE\n\n" + e.getMessage());
         }
 
+    }
+
+    /**
+     *  The function is used to get the system's theme that's being used.
+     * @param context The context needed in order to use this.
+     * @return Returns true if system mode is dark. Default return is true.
+     */
+    public static boolean GetSystemIsDark(Context context){
+        switch(context.getResources().getConfiguration().uiMode){
+            case Configuration.UI_MODE_NIGHT_YES:
+                return true;
+            case Configuration.UI_MODE_NIGHT_NO:
+                return false;
+            default:
+                return true; //Default is dark mode.
+        }
     }
 
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
     public CheckBox[] newDays;
 
     public Button submit;
+    public ImageButton backBtn;
 
     public RecyclerView routineWorkouts = null;
     public WorkoutRoutine editedRoutine = null;
@@ -45,6 +47,9 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
         setContentView(R.layout.activity_edit_workoutroutine);
 
         loadRoutineToEdit();
+
+        backBtn = findViewById(R.id.btn_goBack);
+        backBtn.setOnClickListener(this::btn_GoBack);
 
         this.newName = findViewById(R.id.EWR_ET_routineName);
 

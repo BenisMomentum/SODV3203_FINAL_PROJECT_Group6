@@ -68,4 +68,6 @@
     <string name="AWFS_btn_cancelText">Cancel</string>
     <string name="AWFS_TV_titleText">Add to?</string>
     <string name="AWFS_sets_hint">#</string>
+    <string name="launch_BigStepIcon_desc">A man running.</string>
+    <string name="backBtn_contentDesc">Go Back</string>
 </resources>

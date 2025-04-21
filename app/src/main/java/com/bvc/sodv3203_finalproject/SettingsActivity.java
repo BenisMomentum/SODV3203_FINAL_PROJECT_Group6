@@ -14,12 +14,20 @@ import com.bvc.sodv3203_finalproject.util.IGoBack;
 import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.util.Utility;
 
+
+/**
+ * Settings activity
+ *
+ * Allows the user to switch between Light and Dark Mode easily.
+ */
 public class SettingsActivity extends AppCompatActivity implements IGoBack, INavigation {
 
-    public SharedPreferences sharedPreferences; // for dark mode switch button
+    //Used for any needed settings.
+    public SharedPreferences sharedPreferences;
     public Switch darkModeSwitch; // dark mode switch button
     public ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
 
+    //Static keys for centralization.
     public final static String PREF_SETTINGS_KEY = "settings";
     public final static String PREF_DARKMODE_KEY = "dark_mode";
 

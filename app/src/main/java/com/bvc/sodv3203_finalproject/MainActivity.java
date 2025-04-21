@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences(SettingsActivity.PREF_SETTINGS_KEY, MODE_PRIVATE);
 
         //Gets dark mode. Default is Dark.
-        boolean isDark = pref.getBoolean(SettingsActivity.PREF_DARKMODE_KEY, true);
+        boolean isDark = pref.getBoolean(SettingsActivity.PREF_DARKMODE_KEY, Utility.GetSystemIsDark(this));
 
         SettingsActivity.setDefaultNightMode(isDark);
     }

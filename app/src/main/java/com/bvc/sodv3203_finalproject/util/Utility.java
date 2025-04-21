@@ -26,7 +26,6 @@ public class Utility {
      *   @param  input   The source input for the text
      *   @return         The text from the input
      */
-    //Yippeeee, special Javadoc formatting
     public static String getText(EditText input){
         return input.getText().toString().trim();
     }

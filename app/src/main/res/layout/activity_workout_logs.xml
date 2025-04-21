@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/back_container"
-        android:layout_width="132dp"
-        android:layout_height="160dp"
+        android:layout_width="@dimen/backBtn_width"
+        android:layout_height="@dimen/backBtn_height"
         android:backgroundTint="@color/BackgroundColor"
         android:gravity="center"
         android:orientation="horizontal"
@@ -22,8 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/BackgroundColor"
-            app:srcCompat="@drawable/arrow"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:contentDescription="@string/backBtn_contentDesc"
+            android:minHeight="@dimen/generic_minHeight"
+            app:srcCompat="@drawable/arrow" />
 
         <TextView
             android:id="@+id/label_back"

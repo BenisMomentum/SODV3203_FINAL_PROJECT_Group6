@@ -2,7 +2,7 @@ package com.bvc.sodv3203_finalproject.workouts;
 
 
 //Centralized location for JSON keys.
-//Doesn't require memorizing keys
+//Doesn't require memorizing keys and centralizes data
 public class WorkoutJSONKeys {
 
     //When parsing from file

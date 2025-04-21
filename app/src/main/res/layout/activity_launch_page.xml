@@ -1,57 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    style="@style/BigStepTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/Launch_Screen"
-        android:layout_width="283dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="333dp"
-        android:layout_marginBottom="334dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/TitleBig"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/bigtitle"
-            android:textColor="@color/YellowSecondary"
-            android:textSize="50sp"
-            android:textStyle="bold|italic" />
-
-        <TextView
-            android:id="@+id/TitleStep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="@string/step"
-            android:textColor="@color/GreenSecondary"
-            android:textSize="50sp"
-            android:textStyle="italic" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/big_step_Iicon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-20dp"
-        android:contentDescription="@string/bigstep_icon"
-        app:layout_constraintBottom_toTopOf="@+id/Launch_Screen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/group" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@drawable/round_corner_bg"
+        android:backgroundTint="@color/homePage_titleBGColor"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/big_step_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/_null"
+            android:contentDescription="@string/bigstep_icon"
+            tools:src="@drawable/big_step_main_icon" />
+
+        <LinearLayout
+            android:id="@+id/Launch_Screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/_null"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/TitleBig"
+                style="@style/Widget.BigStepTheme.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bigtitle"
+                android:textColor="@color/YellowSecondary"
+                android:textSize="50sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/TitleStep"
+                style="@style/Widget.BigStepTheme.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="@string/step"
+                android:textColor="@color/GreenSecondary"
+                android:textSize="50sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

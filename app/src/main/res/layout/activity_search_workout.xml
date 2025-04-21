@@ -23,11 +23,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/BackgroundColor"
-            app:srcCompat="@drawable/arrow"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:contentDescription="@string/backBtn_contentDesc"
+            android:minHeight="@dimen/generic_minHeight"
+            app:srcCompat="@drawable/arrow" />
 
         <TextView
-            android:id="@+id/label_back"
             style="@style/Widget.BigStepTheme.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

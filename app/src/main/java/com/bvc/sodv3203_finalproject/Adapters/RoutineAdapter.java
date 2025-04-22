@@ -1,13 +1,11 @@
 package com.bvc.sodv3203_finalproject.Adapters;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +15,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ComplexColorCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bvc.sodv3203_finalproject.EditWorkoutRoutineActivity;
@@ -144,6 +142,8 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
                     WorkoutData.getInstance().routines().remove(routine);
 
                     notifyDataSetChanged();
+
+                    WorkoutData.getInstance().saveData(parentContext);
                 });
 
                 builder.show();
@@ -163,6 +163,10 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
 
         if(WorkoutData.getInstance().get(index).workoutDays.length == 0) return;
 
+        for(int i = 0; i < holder.days.length; i++){
+            set_DaysTV_colorAndBG(holder.days[i], false);
+        }
+
         WorkoutRoutine routine = WorkoutData.getInstance().get(index);
         int i = 0;
 
@@ -172,25 +176,25 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
         while(i < routine.workoutDays.length){
             switch(routine.workoutDays[i]){
                 case MONDAY:
-                    set_DaysTV_toTrue(holder.days[1]);
+                    set_DaysTV_colorAndBG(holder.days[1], true);
                     break;
                 case TUESDAY:
-                    set_DaysTV_toTrue(holder.days[2]);
+                    set_DaysTV_colorAndBG(holder.days[2], true);
                     break;
                 case WEDNESDAY:
-                    set_DaysTV_toTrue(holder.days[3]);
+                    set_DaysTV_colorAndBG(holder.days[3], true);
                     break;
                 case THURSDAY:
-                    set_DaysTV_toTrue(holder.days[4]);
+                    set_DaysTV_colorAndBG(holder.days[4], true);
                     break;
                 case FRIDAY:
-                    set_DaysTV_toTrue(holder.days[5]);
+                    set_DaysTV_colorAndBG(holder.days[5], true);
                     break;
                 case SATURDAY:
-                    set_DaysTV_toTrue(holder.days[6]);
+                    set_DaysTV_colorAndBG(holder.days[6], true);
                     break;
                 case SUNDAY:
-                    set_DaysTV_toTrue(holder.days[0]);
+                    set_DaysTV_colorAndBG(holder.days[0], true);
                     break;
             }
 
@@ -201,16 +205,25 @@ public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineV
     }
 
 
-    private void set_DaysTV_toTrue(TextView daysTV){
+    /** An assisting function that allows us to dynamically change the
+     * color of the days TextViews such that they are highlighted
+     * when the user has selected that day for their workout routine.
+     *
+     * @param daysTV The text view apart of the days list we wish to alter
+     * @param onThatDay Whether or not the workout is on that day or not
+     */
+    private void set_DaysTV_colorAndBG(TextView daysTV, boolean onThatDay){
 
-        //.getApplicationContext() prevents a bug where the TextViews are the wrong color.
+        //Not using application context prevents a really bad bug.
 
         daysTV.setBackgroundTintList(
-            ContextCompat.getColorStateList(parentContext.getApplicationContext(), R.color.workoutResult_dateDisplay_BG_true)
+            ContextCompat.getColorStateList(parentContext,
+            (onThatDay) ? R.color.workoutResult_dateDisplay_BG_true : R.color.workoutResult_dateDisplay_BG_false)
         );
 
         daysTV.setTextColor(
-            ContextCompat.getColor(parentContext.getApplicationContext(), R.color.workoutResult_dateDisplay_Text_true)
+            ContextCompat.getColor(parentContext,
+            (onThatDay) ? R.color.workoutResult_dateDisplay_Text_true : R.color.workoutResult_dateDisplay_Text_false)
         );
 
     }

@@ -2,6 +2,7 @@ package com.bvc.sodv3203_finalproject;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -112,6 +113,8 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
         newName.setText(editedRoutine.name);
 
         setCheckBoxValues(editedRoutine.workoutDays);
+
+        Log.d(Utility.DEBUG_CODE, editedRoutine.toJSON().toString());
 
     }
 

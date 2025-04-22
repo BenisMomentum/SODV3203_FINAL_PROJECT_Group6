@@ -84,7 +84,6 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(PREF_DARKMODE_KEY, isDark);
         editor.apply();
-        finish();
     }
 
     /**

@@ -56,8 +56,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1"
+            android:contentDescription="@string/home_ibtn_createWorkout_desc"
             app:srcCompat="@drawable/homebar_home_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_workout"
@@ -65,8 +66,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:contentDescription="@string/home_ibtn_workout_desc"
             app:srcCompat="@drawable/homebar_workout_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_search"
@@ -74,8 +76,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:contentDescription="@string/home_ibtn_search_desc"
             app:srcCompat="@drawable/homebar_search_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_settings"
@@ -83,14 +86,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:contentDescription="@string/home_ibtn_settings_desc"
             app:srcCompat="@drawable/homebar_settings_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center|right"
+        android:gravity="center|end"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/homeBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,14 +133,16 @@
                 android:inputType="text"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/settings_btn_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:text="@string/search_txt" />
+                android:text="@string/search_txt"
+                tools:ignore="TextContrastCheck" />
         </LinearLayout>
 
         <TextView
@@ -148,6 +154,7 @@
             android:backgroundTint="@color/buttonBGColor"
             android:padding="10dp"
             android:text="@string/search_SearchResults"
+            android:textAlignment="center"
             android:textColor="@color/TextColor"
             android:textSize="18sp"
             android:textStyle="bold" />

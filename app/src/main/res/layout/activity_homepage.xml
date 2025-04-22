@@ -26,9 +26,9 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="102dp"
-                android:layout_height="54dp"
+                android:id="@+id/bigStepIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/launch_BigStepIcon_desc"

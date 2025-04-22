@@ -35,7 +35,6 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
     //Sun, Mon, Tue, Wed, Thu, Fri, Sat
     public CheckBox[] newDays;
 
-    public Button submit;
     public ImageButton backBtn;
 
     public RecyclerView routineWorkouts = null;
@@ -152,7 +151,7 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
     @SuppressLint("NewApi")
     public void submit(View view){
 
-        String name = newName.getText().toString().trim();
+        String name = Utility.getText(newName);
 
         //Since we'll be mostly searching by name as opposed to ID, we cannot have a duplicate name.
 

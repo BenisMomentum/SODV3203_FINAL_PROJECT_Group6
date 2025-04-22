@@ -1,22 +1,26 @@
 package com.bvc.sodv3203_finalproject.Adapters;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bvc.sodv3203_finalproject.AddWorkoutFromSearchActivity;
+import com.bvc.sodv3203_finalproject.R;
+import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
 
 //We just extend the original class so that we don't reinvent the wheel.
-public class AddRoutineAdapter extends RoutineAdapter {
+public class AddSearchWorkoutToRoutineAdapter extends RoutineAdapter {
 
     protected Workout workoutToBeAdded;
     private AddWorkoutFromSearchActivity parent;
 
-    public AddRoutineAdapter(AddWorkoutFromSearchActivity parent, @NonNull Workout w) {
+    public AddSearchWorkoutToRoutineAdapter(AddWorkoutFromSearchActivity parent, @NonNull Workout w) {
         super(parent);
 
         //While we already have the parentContext, we need to access
@@ -37,8 +41,14 @@ public class AddRoutineAdapter extends RoutineAdapter {
 
             try{
 
-                int sets = Integer.parseInt(parent.setsInput.getText().toString());
-                int reps = Integer.parseInt(parent.repsInput.getText().toString());
+                int sets = Integer.parseInt(Utility.getText(parent.setsInput));
+                int reps = Integer.parseInt(Utility.getText(parent.repsInput));
+
+                if(sets == 0 || reps == 0){
+                    Utility.displayMsg(parent, Utility.getErrorMessage(parent, R.string.ErrorMessage_setsOrRepsAre0), false);
+
+                    return;
+                }
 
                 WorkoutData.getInstance().get(position).add(new Workout(
                         workoutToBeAdded.name,

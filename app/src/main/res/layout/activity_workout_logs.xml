@@ -67,32 +67,36 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
+            android:contentDescription="@string/home_ibtn_home_contentDesc"
             app:srcCompat="@drawable/homebar_home_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_workout"
             style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:contentDescription="@string/home_ibtn_workout_desc"
             app:srcCompat="@drawable/homebar_workout_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_search"
             style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:contentDescription="@string/home_ibtn_search_desc"
             app:srcCompat="@drawable/homebar_search_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
 
         <ImageButton
             android:id="@+id/homeBtn_settings"
             style="@style/Widget.BigStepTheme.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:contentDescription="@string/home_ibtn_settings_desc"
             app:srcCompat="@drawable/homebar_settings_icon"
-            tools:ignore="ContentDescription,ImageContrastCheck,SpeakableTextPresentCheck" />
+            tools:ignore="ImageContrastCheck" />
     </LinearLayout>
 
     <ScrollView
@@ -135,11 +139,10 @@
                 style="@style/Widget.BigStepTheme.ImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:backgroundTint="@color/BackgroundColor"
+                android:contentDescription="@string/create_workout"
                 android:onClick="btnHook_AddWorkout"
-                app:srcCompat="@drawable/bot_video_add"
-                tools:ignore="ContentDescription,ImageContrastCheck,InefficientWeight,SpeakableTextPresentCheck" />
+                app:srcCompat="@drawable/bot_video_add" />
 
         </LinearLayout>
 

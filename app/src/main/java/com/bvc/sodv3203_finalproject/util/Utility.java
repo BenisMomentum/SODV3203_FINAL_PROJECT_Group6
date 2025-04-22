@@ -2,11 +2,18 @@ package com.bvc.sodv3203_finalproject.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bvc.sodv3203_finalproject.HomePageActivity;
+import com.bvc.sodv3203_finalproject.SearchWorkoutActivity;
+import com.bvc.sodv3203_finalproject.SettingsActivity;
+import com.bvc.sodv3203_finalproject.WorkoutLogActivity;
 import com.bvc.sodv3203_finalproject.workouts.DataFileNotFoundException;
 
 import java.io.BufferedReader;
@@ -16,13 +23,64 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.DayOfWeek;
 
+/**
+ * The Utility class is filled with common methods and keys that we will need
+ * throughout our entire application. It is to centralize any data necessary
+ */
 public class Utility {
 
     public static final String EDIT_WORKOUT_BUNDLE_KEY = "routine_to_edit";
     public static final String WORKOUT_MODE_BUNDLE_KEY = "routine";
     public static final String DEBUG_CODE = "_dbg";
+    
 
     /**
+     * Used to keep code DRY and set our home bar button's selected item listeners.
+     * It navigates to a new page if a new page is selected.
+     *
+     * First 4 parameters are each button so that we may modify them directly.
+     *
+     * @param home - The direct reference to the home button
+     * @param workouts - The direct reference to the workouts button
+     * @param search - The direct reference to the search button
+     * @param settings - The direct reference to the settings button
+     * @param parent - The parent activity
+     * @return true if success, false if same page is selected.
+     */
+    public static void SetupHomeBarButtons(ImageButton home,
+                                           ImageButton workouts,
+                                           ImageButton search,
+                                           ImageButton settings,
+                                           AppCompatActivity parent){
+
+        //Helps shorten our syntax:
+        INavigation navigator = activityClass -> {
+            final Intent intent = new Intent(parent.getApplicationContext(), activityClass);
+            parent.startActivity(intent);
+        };
+
+        home.setOnClickListener(v -> navigator.navigateTo(HomePageActivity.class));
+        workouts.setOnClickListener(v -> navigator.navigateTo(WorkoutLogActivity.class));
+        search.setOnClickListener(v -> navigator.navigateTo(SearchWorkoutActivity.class));
+        settings.setOnClickListener(v -> navigator.navigateTo(SettingsActivity.class));
+
+        //Now we disable whichever one that coressponds to the current page.
+        //Please note: since the Home Page doesn't have a home page button, it cannot be disabled.
+        if (parent instanceof WorkoutLogActivity){
+            workouts.setEnabled(false);
+        }
+        else if(parent instanceof SearchWorkoutActivity){
+            search.setEnabled(false);
+        }
+        else if(parent instanceof SettingsActivity){
+            search.setEnabled(false);
+        }
+    }
+
+    /**
+     *   Acquires the data from an EditText.
+     *   Used to streamline syntax
+     *
      *   @param  input   The source input for the text
      *   @return         The text from the input
      */
@@ -45,6 +103,11 @@ public class Utility {
     }
 
 
+    /** Basically, a much better valueOf() for the DayOfWeek enum we're using
+     *
+     * @param name The name of the day we wish to convert
+     * @return The resulting enum value.
+     */
     @SuppressLint("NewApi")
     public static DayOfWeek getDay(String name){
 
@@ -66,6 +129,12 @@ public class Utility {
 
     }
 
+    /** Using the parent context, we write data to the inputted file.
+     *
+     * @param context The parent context we need in order to open the file ouput
+     * @param filename The filename we're using (to keep this method decoupled)
+     * @param data The data we wish to write
+     */
     public static void writeToFile(Context context, String filename, String data){
 
         if(filename == null || data == null) return;
@@ -89,6 +158,12 @@ public class Utility {
         }
     }
 
+    /** A simple method to read from the specified file using the parent context.
+     *
+     * @param context The parent context
+     * @param filename The file name we wish to read from
+     * @return A string of the file's contents.
+     */
     public static String readFromFile(Context context, String filename){
 
         if(filename == null) return null;
@@ -127,6 +202,10 @@ public class Utility {
             default:
                 return true; //Default is dark mode.
         }
+    }
+
+    public static String getErrorMessage(Context context, int resid){
+        return String.valueOf(context.getText(resid));
     }
 
 }

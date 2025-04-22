@@ -28,6 +28,11 @@ import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
+/**
+ * The following adapter is used to display our workout routines in WorkoutLogActivity.
+ * It also initializes a drop-down menu that allows us to enter workout mode for said routine,
+ * to delete, and to edit the workout routine itself.
+ */
 public class RoutineAdapter extends RecyclerView.Adapter<RoutineAdapter.RoutineViewHolder>{
 
     protected Context parentContext;

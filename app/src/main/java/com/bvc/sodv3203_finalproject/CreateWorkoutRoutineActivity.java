@@ -65,11 +65,11 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
     @SuppressLint("NewApi")
     public void AddWorkoutToData(View view){
 
-        String name = nameInput.getText().toString().trim();
+        String name = Utility.getText(nameInput);
 
         //Since we'll be mostly searching by name as opposed to ID, we cannot have a duplicate name.
         if(WorkoutData.getInstance().hasName(name)){
-            Utility.displayMsg(this, "Cannot have routines with the same name. Please change it.", false);
+            Utility.displayMsg(this, Utility.getErrorMessage(this, R.string.ErrorMessage_duplicateRoutineNames), false);
 
             return;
         }

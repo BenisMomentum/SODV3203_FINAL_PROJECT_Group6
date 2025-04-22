@@ -1,5 +1,6 @@
 package com.bvc.sodv3203_finalproject.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.text.Editable;
@@ -20,6 +21,11 @@ import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
+/**
+ * The following adapter is used when we enter the EditWorkoutRoutineActivity
+ * It enables automatic generation of each workout in the routine and allows the user to
+ * change any aspects or delete any workouts they desire.
+ */
 public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.WorkoutViewHolder>{
 
     EditWorkoutRoutineActivity parentActivity;
@@ -65,6 +71,7 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
         return new EditWorkoutAdapter.WorkoutViewHolder(itemView, parentActivity.editedRoutine);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull EditWorkoutAdapter.WorkoutViewHolder holder, int position) {
         Workout w = holder.sourceData.workouts.get(position);
@@ -95,7 +102,7 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
                 if(data.isEmpty()) return;
 
                 if(data.contains("-")){
-                    Utility.displayMsg(parentActivity, "Set # cannot be negative", false);
+                    Utility.displayMsg(parentActivity, Utility.getErrorMessage(parentActivity, R.string.ErrorMessage_setsCannotBeNegative), false);
                     return;
                 }
 
@@ -108,7 +115,7 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
                     parentActivity.editedRoutine.workouts.get(holder.getAdapterPosition()).sets = newSets;
 
                 } catch (NumberFormatException e) {
-                    Utility.displayMsg(parentActivity, "Only enter numbers for the set count!", false);
+                    Utility.displayMsg(parentActivity, Utility.getErrorMessage(parentActivity, R.string.ErrorMessage_setsNumberFormatException), false);
                 }
 
             }
@@ -118,15 +125,16 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
 
             AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
 
-            builder.setMessage("Are you sure? (This cannot be undone.)");
-            builder.setNegativeButton("No", (dialog, which) -> {});
+            builder.setMessage(Utility.getErrorMessage(parentActivity, R.string.alert_deletionConfirmation));
+            builder.setNegativeButton(parentActivity.getText(R.string.alert_No), (dialog, which) -> {});
 
-            builder.setPositiveButton("Yes", (dialog, which) -> {
+            builder.setPositiveButton(parentActivity.getText(R.string.alert_Yes), (dialog, which) -> {
 
                 if(which != DialogInterface.BUTTON_POSITIVE) return;
 
                 holder.sourceData.workouts.remove(w);
 
+                //Prevents any consistency errors.
                 notifyDataSetChanged();
             });
 

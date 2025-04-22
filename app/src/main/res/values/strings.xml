@@ -14,7 +14,7 @@
     <string name="back">Back</string>
     <string name="add_a_new_workout">Add a New Workout</string>
     <string name="search">Search</string>
-    <string name="search_placeholder">Search</string>
+    <string name="search_placeholder">Search for a Workout</string>
     <string name="search_txt">Search</string>
     <string name="settings_txt">Settings</string>
     <string name="search_SearchResults">Results</string>
@@ -59,8 +59,8 @@
     <string name="workout_routine">Workout routine</string>
     <string name="search_homepage">Search</string>
     <string name="home_TV_settingsTitle">Settings</string>
-    <string name="home_ibtn_settings_desc">Settings Button</string>
-    <string name="home_ibtn_workout_desc">View Workouts</string>
+    <string name="home_ibtn_settings_desc">Go to Settings</string>
+    <string name="home_ibtn_workout_desc">View your Workouts</string>
     <string name="home_ibtn_createWorkout_desc">Create A Workout</string>
     <string name="home_ibtn_search_desc">Search for a Workout</string>
     <string name="search_cont_SearchResults_desc">Search Results</string>
@@ -70,4 +70,17 @@
     <string name="AWFS_sets_hint">#</string>
     <string name="launch_BigStepIcon_desc">A man running.</string>
     <string name="backBtn_contentDesc">Go Back</string>
+    <string name="home_ibtn_home_contentDesc">Go to the Home Page</string>
+    <string name="alert_setsOrRepsAre0">Your reps or sets are set to 0, are you sure you want to continue?</string>
+    <string name="alert_Ok">Ok</string>
+    <string name="alert_Cancel">Cancel</string>
+    <string name="alert_Yes">Yes</string>
+    <string name="alert_No">No</string>
+    <string name="alert_deletionConfirmation">Are you sure you want to continue? (This cannot be undone.)</string>
+    <string name="ErrorMessage_setsOrRepsAre0">Error: Sets and Reps cannot be 0</string>
+    <string name="ErrorMessage_searchForNothing">Cannot search for nothing!</string>
+    <string name="ErrorMessage_setsCannotBeNegative">Set # cannot be negative</string>
+    <string name="ErrorMessage_setsNumberFormatException">Only enter numbers for the set count!</string>
+    <string name="ErrorMessage_duplicateRoutineNames">Cannot have routines with the same name. Please change it.</string>
+
 </resources>

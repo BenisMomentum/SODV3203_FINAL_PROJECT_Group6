@@ -1,8 +1,8 @@
 package com.bvc.sodv3203_finalproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,8 +26,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class SearchWorkoutActivity extends AppCompatActivity implements INavigation, IGoBack {
+/**
+ * The search page for our application.
+ * The search results are displayed in the searchResults Recycler View
+ */
+public class SearchWorkoutActivity extends AppCompatActivity implements IGoBack {
     private EditText searchBar;
 
     private RecyclerView searchResults;
@@ -59,11 +64,13 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
         workoutBtn = findViewById(R.id.homeBtn_workout);
         searchBtn = findViewById(R.id.homeBtn_search);
         settingsBtn = findViewById(R.id.homeBtn_settings);
+    }
 
-        homeBtn.setOnClickListener(view -> navigateTo(HomePageActivity.class));
-        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
-        searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
-        settingsBtn.setOnClickListener(view -> navigateTo(SettingsActivity.class));
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Utility.SetupHomeBarButtons(homeBtn, workoutBtn, searchBtn, settingsBtn, this);
     }
 
     private void setAdapterForSearchResults() {
@@ -77,12 +84,13 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void processSearch(View view){
 
-        String query = searchBar.getText().toString().trim();
+        String query = Utility.getText(searchBar);
 
         if(query.isBlank()){
-            Utility.displayMsg(this, "Cannot search for nothing!", false);
+            Utility.displayMsg(this, Utility.getErrorMessage(this, R.string.ErrorMessage_searchForNothing), false);
 
             return;
         }
@@ -102,18 +110,13 @@ public class SearchWorkoutActivity extends AppCompatActivity implements INavigat
 
             }
 
-            searchResults.getAdapter().notifyDataSetChanged();
+            //Prevents any consistency errors by reloading the entire dataset.
+            Objects.requireNonNull(searchResults.getAdapter()).notifyDataSetChanged();
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
 
-    }
-
-//------------------------------------------------footer btns
-    public void navigateTo(Class<?> activityClass) {
-        Intent intent = new Intent(SearchWorkoutActivity.this, activityClass);
-        startActivity(intent);
     }
 
     @Override

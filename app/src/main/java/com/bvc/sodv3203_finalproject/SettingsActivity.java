@@ -1,17 +1,15 @@
 package com.bvc.sodv3203_finalproject;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.bvc.sodv3203_finalproject.util.IGoBack;
-import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.util.Utility;
 
 
@@ -20,11 +18,11 @@ import com.bvc.sodv3203_finalproject.util.Utility;
  *
  * Allows the user to switch between Light and Dark Mode easily.
  */
-public class SettingsActivity extends AppCompatActivity implements IGoBack, INavigation {
+public class SettingsActivity extends AppCompatActivity implements IGoBack {
 
     //Used for any needed settings.
     public SharedPreferences sharedPreferences;
-    public Switch darkModeSwitch; // dark mode switch button
+    public SwitchCompat darkModeSwitch; // dark mode switch button
     public ImageButton homeBtn, workoutBtn, searchBtn, settingsBtn, backBtn;
 
     //Static keys for centralization.
@@ -36,18 +34,13 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_page);
 
-        //------------------------------------------------footer buttons
+        //Home bar buttons
         homeBtn = findViewById(R.id.homeBtn_Home);
         workoutBtn = findViewById(R.id.homeBtn_workout);
         searchBtn = findViewById(R.id.homeBtn_search);
         settingsBtn = findViewById(R.id.homeBtn_settings);
-        backBtn = findViewById(R.id.btn_goBack);
 
-        // Disable settings button since we're already on the SettingsActivity
-        settingsBtn.setEnabled(false);
-        homeBtn.setOnClickListener(view -> navigateTo(HomePageActivity.class));
-        workoutBtn.setOnClickListener(view -> navigateTo(WorkoutLogActivity.class));
-        searchBtn.setOnClickListener(view -> navigateTo(SearchWorkoutActivity.class));
+        backBtn = findViewById(R.id.btn_goBack);
         backBtn.setOnClickListener(this::btn_GoBack);
 
         // Dark mode switch setup
@@ -71,6 +64,8 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         sharedPreferences = getSharedPreferences(PREF_SETTINGS_KEY, MODE_PRIVATE);
         boolean isDarkModeOn = sharedPreferences.getBoolean(PREF_DARKMODE_KEY, Utility.GetSystemIsDark(this));
         darkModeSwitch.setChecked(isDarkModeOn);
+
+        Utility.SetupHomeBarButtons(homeBtn, workoutBtn, searchBtn, settingsBtn, this);
     }
 
 
@@ -96,12 +91,6 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack, INav
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
-    }
-
-    // Footer buttons navigation functionality
-    public void navigateTo(Class<?> activityClass) {
-        Intent intent = new Intent(SettingsActivity.this, activityClass);
-        startActivity(intent);
     }
 
     @Override

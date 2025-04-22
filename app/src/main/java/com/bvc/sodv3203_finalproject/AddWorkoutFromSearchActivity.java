@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bvc.sodv3203_finalproject.Adapters.AddRoutineAdapter;
+import com.bvc.sodv3203_finalproject.Adapters.AddSearchWorkoutToRoutineAdapter;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 
@@ -75,7 +75,7 @@ public class AddWorkoutFromSearchActivity extends AppCompatActivity {
 
     private void setRoutineViewAdapter() {
 
-        AddRoutineAdapter adapter = new AddRoutineAdapter(this, selectedWorkout);
+        AddSearchWorkoutToRoutineAdapter adapter = new AddSearchWorkoutToRoutineAdapter(this, selectedWorkout);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
 
         routineView.setAdapter(adapter);

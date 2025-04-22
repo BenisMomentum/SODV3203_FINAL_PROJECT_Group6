@@ -17,9 +17,7 @@ import java.util.Locale;
 
 public class WorkoutModeAdapter extends RecyclerView.Adapter<WorkoutModeAdapter.WorkoutModeViewHolder>{
 
-
     public WorkoutRoutine parentRoutine;
-
     public WorkoutModeActivity parentActivity;
 
     public WorkoutModeAdapter(WorkoutModeActivity parent){
@@ -30,7 +28,6 @@ public class WorkoutModeAdapter extends RecyclerView.Adapter<WorkoutModeAdapter.
     public class WorkoutModeViewHolder extends RecyclerView.ViewHolder {
 
         public WorkoutRoutine sourceData;
-
 
         public int sets = 0, reps = 0;
 

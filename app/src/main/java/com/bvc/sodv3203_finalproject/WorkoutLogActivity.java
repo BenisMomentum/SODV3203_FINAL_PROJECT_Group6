@@ -86,9 +86,6 @@ public class WorkoutLogActivity extends AppCompatActivity implements IGoBack {
         startActivity(intent);
     }
 
-    /**
-     * Sets the Routine Adapter to our recycler view.
-     */
     private void setRoutineDisplayAdapter(){
 
         RoutineAdapter adapter = new RoutineAdapter(this);

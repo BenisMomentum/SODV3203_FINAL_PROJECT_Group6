@@ -31,8 +31,6 @@ public class Utility {
 
     public static final String EDIT_WORKOUT_BUNDLE_KEY = "routine_to_edit";
     public static final String WORKOUT_MODE_BUNDLE_KEY = "routine";
-    public static final String DEBUG_CODE = "_dbg";
-    
 
     /**
      * Used to keep code DRY and set our home bar button's selected item listeners.

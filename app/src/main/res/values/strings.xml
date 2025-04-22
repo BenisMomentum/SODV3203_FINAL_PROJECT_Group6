@@ -83,6 +83,7 @@
     <string name="ErrMsg_setsNumberFormatException">Only enter numbers for the set count!</string>
     <string name="ErrMsg_duplicateRoutineNames">Cannot have routines with the same name. Please change it.</string>
     <string name="ErrMsg_CreateWorkoutRoutineIntent_ParsingError">ERROR: Parsing JSON when unpacking intent went wrong.</string>
+    <string name="ErrMsg_APICallError">Something went wrong! Cannot search for a workout at this time!</string>
     <string name="AWFS_btn_AddNewRoutine">Add New</string>
 
 </resources>

@@ -1,7 +1,10 @@
 package com.bvc.sodv3203_finalproject.util;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.bvc.sodv3203_finalproject.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,9 +30,9 @@ public class APICaller extends AsyncTask<String, Void, String> {
     /**
      * Gets the exercise by calling our API using its name as apart of its query.
      * @param name The exercise's name, derived from the user's input.
-     * @return a Workout array in the form of a JSON object.
+     * @return a Workout array in the form of a JSON object. Null if error.
      */
-    public static JSONObject getExercise(String name){
+    public static JSONObject getExercise(String name, Context context){
         try {
 
             //Essentially, we call the API and pack the resulting exercised up into JSON
@@ -45,14 +48,10 @@ public class APICaller extends AsyncTask<String, Void, String> {
 
             return obj;
 
-        } catch (JSONException e) {
-            Log.d(Utility.DEBUG_CODE, e.getMessage());
+        } catch (JSONException | ExecutionException | InterruptedException e) {
+            Utility.displayMsg(context, Utility.getErrorMessage(context, R.string.ErrMsg_APICallError), false);
 
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            return null;
         }
     }
 

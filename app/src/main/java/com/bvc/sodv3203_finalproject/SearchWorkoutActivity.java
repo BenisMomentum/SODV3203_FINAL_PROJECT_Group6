@@ -36,6 +36,8 @@ public class SearchWorkoutActivity extends AppCompatActivity implements IGoBack 
     private RecyclerView searchResults;
 
     private Button searchButton;
+
+    //Home and Back buttons.
     private ImageButton backBtn, homeBtn, workoutBtn, searchBtn, settingsBtn;
 
     public List<Workout> resultList = new ArrayList<>();
@@ -71,9 +73,6 @@ public class SearchWorkoutActivity extends AppCompatActivity implements IGoBack 
         Utility.SetupHomeBarButtons(homeBtn, workoutBtn, searchBtn, settingsBtn, this);
     }
 
-    /**
-     * Sets our SearchWorkoutAdapter to our RecyclerView layout.
-     */
     private void setAdapterForSearchResults() {
 
         SearchWorkoutAdapter adapter = new SearchWorkoutAdapter(this);
@@ -102,7 +101,11 @@ public class SearchWorkoutActivity extends AppCompatActivity implements IGoBack 
         }
 
         //Gets the exercise from the API.
-        JSONObject source = APICaller.getExercise(query);
+        JSONObject source = APICaller.getExercise(query, this);
+
+        //If something went wrong, we don't want any errors
+        //So just return.
+        if(source == null) return;
 
         try {
             JSONArray dataArr = source.getJSONArray(APICaller.API_RET_KEY);

@@ -45,9 +45,6 @@ public class WorkoutModeActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * Loads the adapter for the recycler view
-     */
     private void loadWorkoutViewAdapter() {
 
         WorkoutModeAdapter adapter = new WorkoutModeAdapter(this);

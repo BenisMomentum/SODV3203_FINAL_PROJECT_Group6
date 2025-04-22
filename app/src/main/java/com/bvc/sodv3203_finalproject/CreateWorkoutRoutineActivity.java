@@ -2,7 +2,6 @@ package com.bvc.sodv3203_finalproject;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,10 +11,13 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bvc.sodv3203_finalproject.util.IGoBack;
-import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.util.Utility;
+import com.bvc.sodv3203_finalproject.workouts.Workout;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -54,7 +56,7 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
 
         //Submit button handling
         submit = findViewById(R.id.CWR_btn_submit);
-        submit.setOnClickListener(this::AddWorkoutToData);
+        submit.setOnClickListener(this::AddRoutineToData);
 
         //Back button handling
         backBtn = findViewById(R.id.btn_goBack);
@@ -62,14 +64,19 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
 
     }
 
+    /**
+     * Button hook that adds our workout routine to the
+     * main data structure present in WorkoutData
+     * @param view Necessary for the button hook.
+     */
     @SuppressLint("NewApi")
-    public void AddWorkoutToData(View view){
+    public void AddRoutineToData(View view){
 
         String name = Utility.getText(nameInput);
 
         //Since we'll be mostly searching by name as opposed to ID, we cannot have a duplicate name.
         if(WorkoutData.getInstance().hasName(name)){
-            Utility.displayMsg(this, Utility.getErrorMessage(this, R.string.ErrorMessage_duplicateRoutineNames), false);
+            Utility.displayMsg(this, Utility.getErrorMessage(this, R.string.ErrMsg_duplicateRoutineNames), false);
 
             return;
         }
@@ -90,6 +97,20 @@ public class CreateWorkoutRoutineActivity extends AppCompatActivity implements I
         }
 
         WorkoutRoutine routine = new WorkoutRoutine(name, workoutDays.toArray(new DayOfWeek[workoutDays.size()]));
+
+        //If this was called by AddWorkoutFromSearchActivity, we add the workout that was attached
+        //to this intent.
+        if(getIntent().hasExtra(AddWorkoutFromSearchActivity.ADDNEW_INTENT_EXTRA_KEY)){
+
+            try{
+               Workout w = Workout.fromJSON(new JSONObject(getIntent().getStringExtra(AddWorkoutFromSearchActivity.ADDNEW_INTENT_EXTRA_KEY)));
+
+               routine.add(w);
+            } catch (JSONException e) {
+                throw new RuntimeException(Utility.getErrorMessage(this, R.string.ErrMsg_CreateWorkoutRoutineIntent_ParsingError));
+            }
+
+        }
 
         WorkoutData.getInstance().add(routine);
 

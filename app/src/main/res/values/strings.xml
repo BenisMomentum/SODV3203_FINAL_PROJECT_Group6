@@ -77,10 +77,12 @@
     <string name="alert_Yes">Yes</string>
     <string name="alert_No">No</string>
     <string name="alert_deletionConfirmation">Are you sure you want to continue? (This cannot be undone.)</string>
-    <string name="ErrorMessage_setsOrRepsAre0">Error: Sets and Reps cannot be 0</string>
-    <string name="ErrorMessage_searchForNothing">Cannot search for nothing!</string>
-    <string name="ErrorMessage_setsCannotBeNegative">Set # cannot be negative</string>
-    <string name="ErrorMessage_setsNumberFormatException">Only enter numbers for the set count!</string>
-    <string name="ErrorMessage_duplicateRoutineNames">Cannot have routines with the same name. Please change it.</string>
+    <string name="ErrMsg_setsOrRepsAre0">Error: Sets and Reps cannot be 0</string>
+    <string name="ErrMsg_searchForNothing">Cannot search for nothing!</string>
+    <string name="ErrMsg_setsCannotBeNegative">Set # cannot be negative</string>
+    <string name="ErrMsg_setsNumberFormatException">Only enter numbers for the set count!</string>
+    <string name="ErrMsg_duplicateRoutineNames">Cannot have routines with the same name. Please change it.</string>
+    <string name="ErrMsg_CreateWorkoutRoutineIntent_ParsingError">ERROR: Parsing JSON when unpacking intent went wrong.</string>
+    <string name="AWFS_btn_AddNewRoutine">Add New</string>
 
 </resources>

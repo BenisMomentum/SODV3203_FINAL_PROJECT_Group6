@@ -102,7 +102,7 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
                 if(data.isEmpty()) return;
 
                 if(data.contains("-")){
-                    Utility.displayMsg(parentActivity, Utility.getErrorMessage(parentActivity, R.string.ErrorMessage_setsCannotBeNegative), false);
+                    Utility.displayMsg(parentActivity, Utility.getErrorMessage(parentActivity, R.string.ErrMsg_setsCannotBeNegative), false);
                     return;
                 }
 
@@ -115,7 +115,7 @@ public class EditWorkoutAdapter extends RecyclerView.Adapter<EditWorkoutAdapter.
                     parentActivity.editedRoutine.workouts.get(holder.getAdapterPosition()).sets = newSets;
 
                 } catch (NumberFormatException e) {
-                    Utility.displayMsg(parentActivity, Utility.getErrorMessage(parentActivity, R.string.ErrorMessage_setsNumberFormatException), false);
+                    Utility.displayMsg(parentActivity, Utility.getErrorMessage(parentActivity, R.string.ErrMsg_setsNumberFormatException), false);
                 }
 
             }

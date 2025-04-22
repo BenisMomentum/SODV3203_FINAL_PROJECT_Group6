@@ -15,14 +15,20 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * This class calls our API. Some methods are abstracted for the sake of ease.
+ */
 public class APICaller extends AsyncTask<String, Void, String> {
-
-//    This class calls our API. Some methods are abstracted for the sake of ease.
 
     public static final String API_RET_KEY = "exercises";
     private static final String API_URL = "https://api.api-ninjas.com/v1/exercises";
     private static final String API_KEY = "BrcmuaWFWMgEDYFRX2rACA==GTJG6pXv69ECiGwA";
 
+    /**
+     * Gets the exercise by calling our API using its name as apart of its query.
+     * @param name The exercise's name, derived from the user's input.
+     * @return a Workout array in the form of a JSON object.
+     */
     public static JSONObject getExercise(String name){
         try {
 
@@ -50,6 +56,12 @@ public class APICaller extends AsyncTask<String, Void, String> {
         }
     }
 
+    /**
+     * Performs the api call in the background and returns a JSON string.
+     * @param urls The parameters of the task.
+     *
+     * @return JSON string of workout list.
+     */
     @Override
     protected String doInBackground (String... urls) {
 

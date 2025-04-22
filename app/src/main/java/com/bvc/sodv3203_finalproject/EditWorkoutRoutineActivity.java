@@ -67,7 +67,9 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
 
     }
 
-
+    /**
+     * Just loads the EditWorkoutAdapter for this activity.
+     */
     private void loadRoutineWorkoutAdapter() {
         EditWorkoutAdapter adapter = new EditWorkoutAdapter(this);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
@@ -88,6 +90,11 @@ public class EditWorkoutRoutineActivity extends AppCompatActivity implements IGo
 
     }
 
+    /**
+     * Loads the Routine to edit from the intent extras.
+     *
+     * Note: the intent was much more intuitive to implement over the Bundle.
+     */
     public void loadRoutineToEdit(){
         try {
             if(getIntent().getExtras() == null) throw new IllegalStateException("ERR: DATA WAS NOT PASSED\n\n");

@@ -82,7 +82,7 @@ public class Utility {
      *   Used to streamline syntax
      *
      *   @param  input   The source input for the text
-     *   @return         The text from the input
+     *   @return         The text from the input as a String
      */
     public static String getText(EditText input){
         return input.getText().toString().trim();

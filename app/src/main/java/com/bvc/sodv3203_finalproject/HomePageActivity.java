@@ -8,6 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bvc.sodv3203_finalproject.util.INavigation;
 
+/**
+ * Our home page activity.
+ *
+ * Note: Utility.SetupHomeBarButtons() is not used as we need all of these buttons active.
+ */
 public class HomePageActivity extends AppCompatActivity implements INavigation {
 
     ImageButton createWorkoutBtn, workoutRoutineBtn, searchBtn, settingsBtn;

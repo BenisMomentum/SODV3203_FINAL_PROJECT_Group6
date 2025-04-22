@@ -15,6 +15,10 @@ import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 
 import java.util.Locale;
 
+/**
+ * Used for our WorkoutModeActivity. Allows the user to track how many sets
+ * they've done without altering the actual set count.
+ */
 public class WorkoutModeAdapter extends RecyclerView.Adapter<WorkoutModeAdapter.WorkoutModeViewHolder>{
 
     public WorkoutRoutine parentRoutine;

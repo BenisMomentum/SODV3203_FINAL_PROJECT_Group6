@@ -26,8 +26,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/AWFS_cont_setsReps"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/AWFS_AddNewRoutine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AWFS_titleText">
@@ -38,21 +38,12 @@
             android:layout_height="wrap_content" />
     </ScrollView>
 
-    <Button
-        android:id="@+id/AWFS_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="@string/AWFS_btn_cancelText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/AWFS_cont_setsReps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:baselineAligned="false"
         android:gravity="center"
         android:minHeight="60dp"
         android:orientation="horizontal"
@@ -75,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/RLWD_setsTitle"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:ignore="NestedWeights" />
 
             <EditText
                 android:id="@+id/AWFS_input_sets"
@@ -102,7 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/RLWD_repsTitle"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:ignore="NestedWeights" />
 
             <EditText
                 android:id="@+id/AWFS_input_reps"
@@ -115,5 +108,25 @@
                 android:inputType="number" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/AWFS_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="@string/AWFS_btn_cancelText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/AWFS_AddNewRoutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/AWFS_btn_AddNewRoutine"
+        app:layout_constraintBottom_toTopOf="@+id/AWFS_cont_setsReps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

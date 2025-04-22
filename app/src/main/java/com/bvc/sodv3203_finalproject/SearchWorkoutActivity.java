@@ -1,7 +1,6 @@
 package com.bvc.sodv3203_finalproject;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bvc.sodv3203_finalproject.Adapters.SearchWorkoutAdapter;
 import com.bvc.sodv3203_finalproject.util.APICaller;
 import com.bvc.sodv3203_finalproject.util.IGoBack;
-import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.util.Utility;
 import com.bvc.sodv3203_finalproject.workouts.Workout;
 
@@ -73,6 +71,9 @@ public class SearchWorkoutActivity extends AppCompatActivity implements IGoBack 
         Utility.SetupHomeBarButtons(homeBtn, workoutBtn, searchBtn, settingsBtn, this);
     }
 
+    /**
+     * Sets our SearchWorkoutAdapter to our RecyclerView layout.
+     */
     private void setAdapterForSearchResults() {
 
         SearchWorkoutAdapter adapter = new SearchWorkoutAdapter(this);
@@ -84,13 +85,18 @@ public class SearchWorkoutActivity extends AppCompatActivity implements IGoBack 
 
     }
 
+    /**
+     * Processes our search using our API caller.
+     * @param view Required for Button Hook.
+     */
     @SuppressLint("NotifyDataSetChanged")
     public void processSearch(View view){
 
+        //Acquires the search query from the search bar.
         String query = Utility.getText(searchBar);
 
         if(query.isBlank()){
-            Utility.displayMsg(this, Utility.getErrorMessage(this, R.string.ErrorMessage_searchForNothing), false);
+            Utility.displayMsg(this, Utility.getErrorMessage(this, R.string.ErrMsg_searchForNothing), false);
 
             return;
         }

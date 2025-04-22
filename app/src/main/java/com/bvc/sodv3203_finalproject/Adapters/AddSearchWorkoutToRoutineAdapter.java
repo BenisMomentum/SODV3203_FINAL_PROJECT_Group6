@@ -1,7 +1,5 @@
 package com.bvc.sodv3203_finalproject.Adapters;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -45,7 +43,7 @@ public class AddSearchWorkoutToRoutineAdapter extends RoutineAdapter {
                 int reps = Integer.parseInt(Utility.getText(parent.repsInput));
 
                 if(sets == 0 || reps == 0){
-                    Utility.displayMsg(parent, Utility.getErrorMessage(parent, R.string.ErrorMessage_setsOrRepsAre0), false);
+                    Utility.displayMsg(parent, Utility.getErrorMessage(parent, R.string.ErrMsg_setsOrRepsAre0), false);
 
                     return;
                 }

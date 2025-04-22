@@ -11,18 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bvc.sodv3203_finalproject.util.INavigation;
 import com.bvc.sodv3203_finalproject.util.Utility;
-import com.bvc.sodv3203_finalproject.workouts.DataFileNotFoundException;
 import com.bvc.sodv3203_finalproject.workouts.WorkoutData;
-
-import org.json.JSONObject;
 
 /**
  * This is our launch page, effectively. It's where we startup our data
  * and then transition to the home page.
  */
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements INavigation {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +52,14 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onFinish(){
-                switchToHome();
+                navigateTo(HomePageActivity.class);
             }
         }.start();
     }
 
+    /**
+     * Sets up our theme mode upon startup.
+     */
     private void setStartupThemeMode() {
 
         SharedPreferences pref = getSharedPreferences(SettingsActivity.PREF_SETTINGS_KEY, MODE_PRIVATE);
@@ -70,12 +70,17 @@ public class MainActivity extends AppCompatActivity {
         SettingsActivity.setDefaultNightMode(isDark);
     }
 
-    //Moved to function for cleanliness
-    private void switchToHome(){
+    /**
+     * Switches to the home page once we've loaded everything.
+     *
+     * Note: This was made into a function for cleanliness.
+     */
+    @Override
+    public void navigateTo(Class<?> activityClass) {
+        final Intent swapToHome = new Intent(this, activityClass);
 
-        final Intent moveToHomePage = new Intent(this, HomePageActivity.class);
-
-        startActivity(moveToHomePage);
+        startActivity(swapToHome);
     }
+
 
 }

@@ -61,7 +61,7 @@ public class SearchWorkoutAdapter extends RecyclerView.Adapter<SearchWorkoutAdap
 
             final Intent intent = new Intent(parentActivity, AddWorkoutFromSearchActivity.class);
 
-            intent.putExtra(AddWorkoutFromSearchActivity.WORKOUT_BUNDLE_KEY, w.toJSON().toString());
+            intent.putExtra(AddWorkoutFromSearchActivity.WORKOUT_INTENT_EXTRA_KEY, w.toJSON().toString());
 
             parentActivity.startActivity(intent);
 

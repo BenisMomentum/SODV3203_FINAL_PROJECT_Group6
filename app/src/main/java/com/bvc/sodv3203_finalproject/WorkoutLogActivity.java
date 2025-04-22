@@ -17,11 +17,18 @@ import com.bvc.sodv3203_finalproject.util.Utility;
 
 import java.util.Objects;
 
+/**
+ * Our workout Log activity. AKA our Routine display that
+ * shows all of the user's Workout Routines.
+ *
+ * workoutContainer is our Recycler view and thus our container.
+ */
 public class WorkoutLogActivity extends AppCompatActivity implements IGoBack {
 
 
     RecyclerView workoutContainer;
 
+    //Other ImageButtons
     ImageButton addNewWorkout, backBtn;
 
     //Home bar imagebuttons
@@ -67,12 +74,21 @@ public class WorkoutLogActivity extends AppCompatActivity implements IGoBack {
         Objects.requireNonNull(workoutContainer.getAdapter()).notifyDataSetChanged();
     }
 
+    /**
+     * The button hook for our addNewWorkout button.
+     *
+     * Begins the process for adding a new workout routine.
+     * @param view Required for button hook.
+     */
     public void btnHook_AddWorkout(View view){
         Intent intent = new Intent(this, CreateWorkoutRoutineActivity.class);
 
         startActivity(intent);
     }
 
+    /**
+     * Sets the Routine Adapter to our recycler view.
+     */
     private void setRoutineDisplayAdapter(){
 
         RoutineAdapter adapter = new RoutineAdapter(this);

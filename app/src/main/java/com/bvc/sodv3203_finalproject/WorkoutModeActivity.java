@@ -16,8 +16,12 @@ import com.bvc.sodv3203_finalproject.workouts.WorkoutRoutine;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * This activity is what drives our Workout Mode. The workoutView RecyclerView is meant
+ * to display all of the user's workouts in a convenient format. To see where that's done
+ * please look at Adapters/WorkoutModeAdapter.java
+ */
 public class WorkoutModeActivity extends AppCompatActivity {
-
 
     private Button exitBtn;
 
@@ -41,7 +45,9 @@ public class WorkoutModeActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Loads the adapter for the recycler view
+     */
     private void loadWorkoutViewAdapter() {
 
         WorkoutModeAdapter adapter = new WorkoutModeAdapter(this);
@@ -52,6 +58,12 @@ public class WorkoutModeActivity extends AppCompatActivity {
         workoutView.setLayoutManager(manager);
     }
 
+    /**
+     * Gets the selected routine from the intent's string extra.
+     *
+     * Note: While I could have passed it in a bundle, doing it via
+     * the intent was more intuitive.
+     */
     public void loadSelectedRoutine(){
         try {
 

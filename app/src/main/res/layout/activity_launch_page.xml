@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:background="@color/_null"
             android:contentDescription="@string/bigstep_icon"
-            tools:src="@drawable/big_step_main_icon" />
+            android:src="@drawable/big_step_main_icon" />
 
         <LinearLayout
             android:id="@+id/Launch_Screen"
@@ -57,7 +57,8 @@
                 android:text="@string/step"
                 android:textColor="@color/GreenSecondary"
                 android:textSize="50sp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                tools:ignore="TextContrastCheck" />
         </LinearLayout>
     </LinearLayout>
 

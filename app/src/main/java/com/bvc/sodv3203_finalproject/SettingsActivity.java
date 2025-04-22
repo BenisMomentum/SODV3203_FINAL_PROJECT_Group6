@@ -69,8 +69,11 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack {
     }
 
 
-
-    //this code below fixes the darkmode glicthing issue
+    /**
+     *  Button hook that allows us to properly apply any settings changes
+     *  the user has made.
+     * @param view Necessary for button hook.
+     */
     public void settings_applyChanges(View view) {
         boolean isDark = darkModeSwitch.isChecked();
 
@@ -84,7 +87,9 @@ public class SettingsActivity extends AppCompatActivity implements IGoBack {
         finish();
     }
 
-    // Function to set default night mode based on preference
+    /**
+     * Function to set default night mode based on preference
+     */
     public static void setDefaultNightMode(boolean isModeNight) {
         if (isModeNight) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
